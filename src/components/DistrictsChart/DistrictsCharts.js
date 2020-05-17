@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../axios";
-
+import DistrictRow from "../DistrictRow/DistrictRow";
 const DistrictsCharts = () => {
   useEffect(() => {
     const getAllDistricts = async () => {
@@ -14,19 +14,35 @@ const DistrictsCharts = () => {
     };
     getAllDistricts();
   }, []);
-  const [disricts, setDisricts] = useState([]);
+  const [districts, setDisricts] = useState([]);
 
   return (
     <div>
       <h1>District Cases</h1>
-      {disricts.map((district) => {
-        return (
-          <div key={district.id}>
-            <p>{district.englishTitle}</p>
-            <p>{district.nepaliTitle}</p>
-          </div>
-        );
-      })}
+      <table
+        style={{
+          marginTop: "20px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          borderSpacing: "10px",
+          borderCollapse: "separate",
+        }}
+      >
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Total</th>
+            <th>Active</th>
+            <th>Deceased</th>
+            <th>Recovered</th>
+          </tr>
+        </thead>
+        <tbody>
+          {districts.map(({ id, englishTitle }) => {
+            return <DistrictRow key={id} id={id} name={englishTitle} />;
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
