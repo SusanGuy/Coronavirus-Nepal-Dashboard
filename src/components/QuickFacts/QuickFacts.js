@@ -35,7 +35,6 @@ const QuickFacts = () => {
   const {
     cases: { total, recovered, deaths, active },
     date,
-    loading,
   } = facts;
 
   return (

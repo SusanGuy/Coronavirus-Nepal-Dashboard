@@ -1,7 +1,6 @@
 import React from "react";
 import "./DataRow.css";
 const DataRow = ({ name, ...props }) => {
-  console.log(props);
   return (
     <tr className="odd">
       <td className="data-name name-width">

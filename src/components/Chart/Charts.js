@@ -27,6 +27,12 @@ const Charts = ({ province, district }) => {
   });
   const { cases, loading } = data;
 
+  const [keyword, setKeyword] = useState("");
+
+  const handleChange = (value) => {
+    setKeyword(value);
+  };
+
   return (
     <div className="stats-table">
       <div className="sorted-table__header">
@@ -35,11 +41,18 @@ const Charts = ({ province, district }) => {
         </div>
       </div>
       <div className="main-table-body">
-        <div className="dataTables_filter">
-          <label>
-            <input type="search" className="" placeholder="search data" />
-          </label>
-        </div>
+        {!province && (
+          <div className="dataTables_filter">
+            <label>
+              <input
+                type="search"
+                onChange={(e) => handleChange(e.target.value)}
+                className=""
+                placeholder="search data"
+              />
+            </label>
+          </div>
+        )}
         <div className="dataTables_scroll">
           <div className="dataTables_scrollHead">
             <div className="dataTables_scrollHeadInner">
@@ -98,17 +111,28 @@ const Charts = ({ province, district }) => {
               province ? "province-height" : ""
             }`}
           >
-            <table className="scrollable-table">
-              <tbody>
-                {loading ? (
-                  <Spinner />
-                ) : (
-                  cases
-                    .sort((a, b) => a.total < b.total)
-                    .map(({ id, ...rest }) => <DataRow key={id} {...rest} />)
-                )}
-              </tbody>
-            </table>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <table className="scrollable-table">
+                <tbody>
+                  {!province
+                    ? cases
+                        .filter((name) =>
+                          name.name
+                            .toLowerCase()
+                            .includes(keyword.toLowerCase())
+                        )
+                        .sort((a, b) => a.total < b.total)
+                        .map(({ id, ...rest }) => (
+                          <DataRow key={id} {...rest} />
+                        ))
+                    : cases.map(({ id, ...rest }) => (
+                        <DataRow key={id} {...rest} />
+                      ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </div>
