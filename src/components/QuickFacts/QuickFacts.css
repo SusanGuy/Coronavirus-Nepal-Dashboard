@@ -1,20 +1,12 @@
-.left-body {
-  flex: 0 0 35%;
-  max-width: 25%;
-}
-
-.column {
-  position: relative;
-  width: 100%;
-  padding-right: 25px;
-  padding-left: 25px;
-}
-
 .quick-stats {
   border-radius: 15px;
   margin: 5px;
-  padding: 10px;
+  padding: 15px;
   background-color: #456;
+}
+
+.municipality {
+  margin-top: 20px;
 }
 
 .quick-stats h1 {
@@ -64,4 +56,20 @@
 
 .death {
   color: #f65164;
+}
+
+.location-button {
+  cursor: pointer;
+  text-align: center;
+  border: 0;
+  border-radius: 4%;
+  background-color: rgb(62, 127, 187);
+  color: #fff;
+  height: 50px;
+  width: 200px;
+  font-size: 14px;
+}
+
+.location-button:hover {
+  background-color: rgba(62, 127, 187, 0.507);
 }

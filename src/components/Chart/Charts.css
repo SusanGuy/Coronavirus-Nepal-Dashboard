@@ -1,7 +1,7 @@
 .stats-table {
   border-radius: 15px;
   margin-top: 5px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding: 15px;
   background-color: #456;
 }
@@ -94,7 +94,7 @@ tr:last-child {
 .dataTables_scrollBody {
   position: relative;
   overflow: auto;
-  height: 448px;
+  height: 358px;
   width: 100%;
   border: none;
 }

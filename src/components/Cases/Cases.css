@@ -1,0 +1,11 @@
+.left-body {
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+
+.column {
+  position: relative;
+  width: 100%;
+  padding-right: 25px;
+  padding-left: 25px;
+}
