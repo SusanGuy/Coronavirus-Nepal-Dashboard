@@ -1,10 +1,37 @@
 import React from "react";
 import "./DataRow.css";
-const DataRow = ({ name, ...props }) => {
+const DataRow = ({ name, setFavorites, ...props }) => {
   return (
     <tr className="odd">
       <td className="data-name name-width">
-        <span className="save-button">★</span>
+        <span
+          onClick={() => {
+            const saved = localStorage.getItem("saved");
+            if (saved) {
+              let mainData = JSON.parse(saved);
+              if (mainData.find((data) => data.name === name)) {
+                mainData = mainData.filter((data) => data.name !== name);
+              } else {
+                mainData.push({ name, ...props });
+              }
+              localStorage.setItem("saved", JSON.stringify(mainData));
+              setFavorites(mainData);
+            } else {
+              const data = [{ name, ...props }];
+              localStorage.setItem("saved", JSON.stringify(data));
+              setFavorites(data);
+            }
+          }}
+          className={`save-button ${
+            localStorage.getItem("saved") &&
+            JSON.parse(localStorage.getItem("saved")).find(
+              (data) => data.name === name
+            ) &&
+            "selected"
+          }`}
+        >
+          ★
+        </span>
         {name}
       </td>
 
