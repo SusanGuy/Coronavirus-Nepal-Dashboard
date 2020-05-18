@@ -6,7 +6,7 @@
     color: white;
 }
 .data-name span {
-    color: orange;
+    color: white;
     cursor: pointer;
     margin-right: 15px;
 }
@@ -14,23 +14,19 @@ td {
     text-align: center !important;
 }
 
-.save-button:hover {
-    color: orange;
-}
 .save-button {
     color: white;
     cursor: pointer;
     margin-right: 20px;
 }
 
-.selected {
+.save-button:hover {
     color: orange;
 }
 
 .selected {
-    color: orange;
+    color: orange !important;
 }
-
 .data-total {
     color: #ff9d00;
 }
