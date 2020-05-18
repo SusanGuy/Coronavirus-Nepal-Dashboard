@@ -1,119 +1,125 @@
 .odd {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 .data-name {
-    color: white;
+  color: white;
 }
 .data-name span {
-    color: white;
-    cursor: pointer;
-    margin-right: 15px;
+  color: white;
+  cursor: pointer;
+  margin-right: 15px;
 }
 td {
-    text-align: center !important;
+  text-align: center !important;
 }
 th {
-    text-align: center !important;
+  text-align: center !important;
 }
 
 .save-button {
-    color: white;
-    cursor: pointer;
-    margin-right: 20px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
 }
 
 .save-button:hover {
-    color: orange;
+  color: orange;
 }
 
 .selected {
-    color: orange !important;
+  color: orange !important;
 }
 .data-total {
-    color: #ff9d00;
+  color: #ff9d00;
 }
 
 .data-deceased {
-    color: #f65164;
+  color: #f65164;
 }
 
 .data-recovered {
-    color: rgb(101, 221, 155);
+  color: rgb(101, 221, 155);
 }
 
 .data-active {
-    color: rgb(248, 245, 64);
+  color: rgb(248, 245, 64);
 }
 tr {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 th.name-width {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 tr {
-    display: flex;
+  display: flex;
 }
 
 th.name-width {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .name-width {
-    flex: 1;
-    text-align: left !important;
+  flex: 1;
+  text-align: left !important;
 }
 
 .total-width {
-    flex: 1;
+  flex: 1;
 }
 
 .death-width {
-    flex: 1;
+  flex: 1;
 }
 
 .recovered-width {
-    flex: 1;
+  flex: 1;
 }
 
 .active-width {
-    flex: 1;
+  flex: 1;
+}
+
+@media only screen and (min-width: 1200px) {
+  .name-width {
+    min-width: 200px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
-    th {
-        padding-top: 7px;
-        padding-left: 20px;
-        overflow-wrap: break-word;
-        font-size: x-small;
-    }
-    .name-width {
-        flex: 1;
-        min-width: 100px;
-    }
+  th {
+    padding-top: 7px;
+    padding-left: 20px;
+    overflow-wrap: break-word;
+    font-size: x-small;
+  }
+  .name-width {
+    flex: 1;
+    min-width: 100px;
+  }
 
-    td.name-width {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  td.name-width {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .total-width {
-        flex: 1;
-        max-width: 70px;
-    }
-    .death-width {
-        flex: 1;
-        max-width: 70px;
-    }
-    .recovered-width {
-        flex: 1;
-        max-width: 70px;
-    }
+  .total-width {
+    flex: 1;
+    max-width: 70px;
+  }
+  .death-width {
+    flex: 1;
+    max-width: 70px;
+  }
+  .recovered-width {
+    flex: 1;
+    max-width: 70px;
+  }
 
-    .active-width {
-        flex: 1;
-        max-width: 70px;
-    }
+  .active-width {
+    flex: 1;
+    max-width: 70px;
+  }
 }
