@@ -1,68 +1,90 @@
 .odd {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
 .data-name {
-  color: white;
+    color: white;
 }
 .data-name span {
-  color: orange;
-  cursor: pointer;
-  margin-right: 20px;
+    color: orange;
+    cursor: pointer;
+    margin-right: 15px;
+}
+td {
+    text-align: center !important;
 }
 
 .data-total {
-  color: #ff9d00;
+    color: #ff9d00;
 }
 
 .data-deceased {
-  color: #f65164;
+    color: #f65164;
 }
 
 .data-recovered {
-  color: rgb(101, 221, 155);
+    color: rgb(101, 221, 155);
 }
 
 .data-active {
-  color: rgb(248, 245, 64);
+    color: rgb(248, 245, 64);
+}
+tr {
+    display: flex;
+}
+
+th.name-width {
+    padding-left: 20px;
 }
 
 .name-width {
-  width: 180px;
+    flex: 1;
+    text-align: left !important;
 }
 
 .total-width {
-  width: 100px;
+    flex: 1;
 }
 
 .death-width {
-  width: 100px;
+    flex: 1;
 }
 
 .recovered-width {
-  width: 80px;
+    flex: 1;
 }
 
 .active-width {
-  width: 80px;
+    flex: 1;
 }
 
-@media only screen and (max-width: 600px) {
-  .name-width {
-    width: 22%;
-  }
+@media only screen and (max-width: 800px) {
+    th {
+        margin-top: 7px;
+        padding-left: 20px;
+        overflow-wrap: break-word;
+        font-size: .69em;
+    }
+    .name-width {
+        flex: 1;
+        max-width: 150px;
+    }
 
-  .total-width {
-    width: 9%;
-  }
-  .death-width {
-    width: 9%;
-  }
-  .recovered-width {
-    width: 8%;
-  }
+    .total-width {
+        flex: 1;
+        max-width: 55px;
+    }
+    .death-width {
+        flex: 1;
+        max-width: 55px;
+    }
+    .recovered-width {
+        flex: 1;
+        max-width: 55px;
+    }
 
-  .active-width {
-    width: 9%;
-  }
+    .active-width {
+        flex: 1;
+        max-width: 55px;
+    }
 }
