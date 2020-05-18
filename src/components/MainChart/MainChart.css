@@ -7,6 +7,13 @@
   margin: 0 !important;
 }
 
+@media only screen and (min-width: 1200px) and (max-width: 1500px) {
+  .main-body {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .main-body {
     margin-top: 15px;
