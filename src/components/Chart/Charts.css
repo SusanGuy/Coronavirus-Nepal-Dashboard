@@ -107,7 +107,7 @@ tr:last-child {
   height: 290px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .stats-table {
     padding-left: 2px;
     padding-right: 2px;
