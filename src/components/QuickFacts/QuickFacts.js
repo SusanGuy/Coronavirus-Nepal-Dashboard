@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import axios from "axios";
+import "./QuickFacts.css";
 const QuickFacts = () => {
   const [facts, setFacts] = useState({
-    cases: { total: 0, active: 0, recovered: 0, deaths: 0 },
-    loading: true,
+    cases: { total: "-", active: "-", recovered: "-", deaths: "-" },
+    date: "",
   });
 
   useEffect(() => {
     const getAllFacts = async () => {
       try {
         const {
-          data: { tested_positive: total, recovered, deaths },
+          data: { tested_positive: total, recovered, deaths, updated_at: date },
         } = await axios.get("https://nepalcorona.info/api/v1/data/nepal");
 
         setFacts({
@@ -20,7 +22,7 @@ const QuickFacts = () => {
             deaths,
             active: total - recovered - deaths,
           },
-          loading: false,
+          date,
         });
       } catch (error) {
         console.log(error);
@@ -32,26 +34,26 @@ const QuickFacts = () => {
 
   const {
     cases: { total, recovered, deaths, active },
+    date,
     loading,
   } = facts;
 
   return (
-    <div>
-      <h1>Total Cases</h1>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <p>Total: {total}</p>
-          <br />
-          <p>Active: {active}</p>
-          <br />
-          <p>Deaths: {deaths}</p>
-          <br />
-          <p>Recovered: {recovered}</p>
-          <br />
-        </div>
-      )}
+    <div className="left-body column">
+      <div className="quick-stats">
+        <h1>Quick Facts</h1>
+        <p className="quick-facts-time">
+          updated: <i className="last_updated">{moment().fromNow(date)}</i>
+        </p>
+        <p className="main-stats total">{total}</p>
+        <p className="main-stats-footer">Total Confirmed</p>
+        <p className="main-stats active">{active}</p>
+        <p className="main-stats-footer">Total Active</p>
+        <p className="main-stats recovered">{recovered}</p>
+        <p className="main-stats-footer">Total Recovered</p>
+        <p className="main-stats death">{deaths}</p>
+        <p className="main-stats-footer">Total Death</p>
+      </div>
     </div>
   );
 };

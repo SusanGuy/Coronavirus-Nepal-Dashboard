@@ -1,0 +1,8 @@
+.main-body {
+  flex: 0 0 65%;
+  max-width: 65%;
+}
+
+.row-m0 {
+  margin: 0 !important;
+}
