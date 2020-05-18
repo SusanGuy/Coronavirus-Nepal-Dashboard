@@ -1,6 +1,6 @@
 import React from "react";
 
-const DistrictRow = ({ name, ...props }) => {
+const DataRow = ({ name, ...props }) => {
   return (
     <tr>
       <td>{name}</td>
@@ -11,4 +11,4 @@ const DistrictRow = ({ name, ...props }) => {
   );
 };
 
-export default DistrictRow;
+export default DataRow;

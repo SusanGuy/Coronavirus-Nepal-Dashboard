@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../axios";
-import DistrictRow from "../DistrictRow/DistrictRow";
+import DistrictRow from "../DataRow/DataRow";
 const DistrictsCharts = () => {
   useEffect(() => {
     const getAllDistricts = async () => {
@@ -14,6 +14,7 @@ const DistrictsCharts = () => {
         console.log(error);
       }
     };
+
     getAllDistricts();
   }, []);
   const [districts, setDisricts] = useState({

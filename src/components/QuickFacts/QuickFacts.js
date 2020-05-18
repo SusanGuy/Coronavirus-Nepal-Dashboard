@@ -12,6 +12,7 @@ const QuickFacts = () => {
         const {
           data: { tested_positive: total, recovered, deaths },
         } = await axios.get("https://nepalcorona.info/api/v1/data/nepal");
+
         setFacts({
           cases: {
             total,
@@ -25,6 +26,7 @@ const QuickFacts = () => {
         console.log(error);
       }
     };
+
     getAllFacts();
   }, []);
 

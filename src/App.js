@@ -1,6 +1,7 @@
 import React from "react";
 import QuickFacts from "./components/QuickFacts/QuickFacts";
 import DistrictCharts from "./components/DistrictsChart/DistrictsCharts";
+import ProvinceCharts from "./components/ProvinceCharts/ProvinceCharts";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     >
       <QuickFacts />
       <DistrictCharts />
+      <ProvinceCharts />
     </div>
   );
 }
