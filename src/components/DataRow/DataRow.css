@@ -64,6 +64,7 @@ th.name-width {
         padding-top: 7px;
         padding-left: 20px;
         overflow-wrap: break-word;
+        font-size: x-small;
     }
     .name-width {
         flex: 1;
