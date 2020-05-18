@@ -17,6 +17,15 @@ td {
 .save-button:hover {
     color: orange;
 }
+.save-button {
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.selected {
+    color: orange;
+}
 
 .selected {
     color: orange;
