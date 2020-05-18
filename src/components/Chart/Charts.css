@@ -106,3 +106,40 @@ tr:last-child {
 .province-height {
   height: 290px;
 }
+
+@media only screen and (max-width: 600px) {
+  .stats-table {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .sorted-table__container h2 {
+    margin-bottom: 20px;
+  }
+  .dataTables_filter {
+    position: absolute;
+    right: 15px;
+    top: -35px;
+  }
+
+  .dataTables_scrollBody {
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+  }
+  .province-height {
+    height: 100%;
+  }
+
+  .header-table {
+    font-size: 0.75em;
+    padding: 2px 8px;
+  }
+
+  .scrollable-table {
+    font-size: 0.75em;
+  }
+}

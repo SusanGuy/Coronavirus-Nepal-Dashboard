@@ -27,8 +27,6 @@
   color: rgb(248, 245, 64);
 }
 
-
-
 .name-width {
   width: 180px;
 }
@@ -47,4 +45,24 @@
 
 .active-width {
   width: 80px;
+}
+
+@media only screen and (max-width: 600px) {
+  .name-width {
+    width: 22%;
+  }
+
+  .total-width {
+    width: 9%;
+  }
+  .death-width {
+    width: 9%;
+  }
+  .recovered-width {
+    width: 8%;
+  }
+
+  .active-width {
+    width: 9%;
+  }
 }
