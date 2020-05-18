@@ -31,6 +31,7 @@ td {
 }
 tr {
     display: flex;
+    width: 100%;
 }
 
 th.name-width {
@@ -60,30 +61,35 @@ th.name-width {
 
 @media only screen and (max-width: 800px) {
     th {
+        padding-top: 7px;
         padding-left: 20px;
         overflow-wrap: break-word;
-        font-size: .69em;
     }
     .name-width {
         flex: 1;
-        max-width: 150px;
+        min-width: 100px;
+    }
+
+    td.name-width {
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .total-width {
         flex: 1;
-        max-width: 55px;
+        max-width: 70px;
     }
     .death-width {
         flex: 1;
-        max-width: 55px;
+        max-width: 70px;
     }
     .recovered-width {
         flex: 1;
-        max-width: 55px;
+        max-width: 70px;
     }
 
     .active-width {
         flex: 1;
-        max-width: 55px;
+        max-width: 70px;
     }
 }
