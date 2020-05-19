@@ -34,7 +34,10 @@ const Charts = ({
             updatedData.push(provinceData);
           }
         }
+
         setFavorites(updatedData);
+        if (updatedData.length !== 0)
+          localStorage.setItem("saved", JSON.stringify(updatedData));
       }
     };
     if (favorites) getSaved();
@@ -121,7 +124,7 @@ const Charts = ({
                       {cases.map(({ id, ...rest }) => (
                         <DataRow
                           setFavorites={setFavorites}
-                          key={id}
+                          key={rest.name}
                           {...rest}
                         />
                       ))}
