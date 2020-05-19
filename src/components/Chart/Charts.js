@@ -1,39 +1,16 @@
-import React, { useState, useEffect } from "react";
-import axios from "../../axios";
+import React, { useState } from "react";
+
 import "./Charts.css";
 import DataRow from "../DataRow/DataRow";
 import Spinner from "../Spinner/Spinner";
-const Charts = ({ province, district, favorites, setFavorites }) => {
-  useEffect(() => {
-    const getAll = async () => {
-      try {
-        const { data } = await axios.get(
-          province ? "/provinces" : "/districts"
-        );
-        setData({
-          cases: data,
-          loading: false,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (!favorites) getAll();
-    else {
-      setData({
-        cases: favorites,
-        loading: false,
-      });
-    }
-  }, [province, favorites]);
-  const [data, setData] = useState({
-    cases: [],
-    loading: true,
-  });
-
-  const { cases, loading } = data;
-
+const Charts = ({
+  province,
+  district,
+  favorites,
+  loading,
+  cases,
+  setFavorites,
+}) => {
   const [keyword, setKeyword] = useState("");
 
   const handleChange = (value) => {
