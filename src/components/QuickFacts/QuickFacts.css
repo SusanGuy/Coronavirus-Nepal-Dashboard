@@ -15,6 +15,7 @@
   text-align: center;
   padding-top: 5px;
   font-weight: bolder;
+  word-wrap: break-word;
   margin-bottom: 0;
 }
 
