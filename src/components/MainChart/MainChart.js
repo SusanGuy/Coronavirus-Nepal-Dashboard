@@ -39,17 +39,20 @@ const MainChart = () => {
     };
     getProvinceData();
     getDistrictData();
-    let data = localStorage.getItem("saved");
-    if (data) {
-      setFavorites(JSON.parse(data));
-    }
   }, []);
 
   return (
     <div className="main-body column">
       <div className="row-m0">
-        {favorites.length !== 0 && (
-          <Chart setFavorites={setFavorites} favorites cases={favorites} />
+        {districts.cases.legth !== 0 && province.cases.legth !== 0 && (
+          <Chart
+            setFavorites={setFavorites}
+            districts={districts.cases}
+            provinces={province.cases}
+            favorites
+            cases={favorites}
+            loading={province.loading}
+          />
         )}
         <Chart
           loading={districts.loading}
