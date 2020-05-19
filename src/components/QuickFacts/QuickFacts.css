@@ -1,0 +1,75 @@
+.quick-stats {
+  border-radius: 15px;
+  margin: 5px;
+  padding: 15px;
+  background-color: #456;
+}
+
+.municipality {
+  margin-top: 20px;
+}
+
+.quick-stats h1 {
+  color: #dfdfef;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 5px;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+.quick-facts-time {
+  color: #dfdfef;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+.main-stats {
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 0;
+  font-size: 50px;
+  margin-bottom: 0px;
+}
+
+.total {
+  color: #ff9d00;
+}
+
+.main-stats-footer {
+  color: #dfdfef;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 0;
+  text-align: center;
+}
+
+.recovered {
+  color: rgb(101, 221, 155);
+}
+
+.active {
+  color: rgb(248, 245, 64);
+}
+
+.death {
+  color: #f65164;
+}
+
+.location-button {
+  cursor: pointer;
+  text-align: center;
+  border: 0;
+  border-radius: 4%;
+  background-color: rgb(62, 127, 187);
+  color: #fff;
+  height: 50px;
+  width: 200px;
+  font-size: 14px;
+}
+
+.location-button:hover {
+  background-color: rgba(62, 127, 187, 0.507);
+}

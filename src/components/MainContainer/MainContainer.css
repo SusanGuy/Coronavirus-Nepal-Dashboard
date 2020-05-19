@@ -1,0 +1,23 @@
+.container {
+  margin-top: 60px;
+  padding-top: 15px;
+  width: 100%;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 35px;
+  padding-left: 35px;
+}
+
+@media only screen and (max-width: 800px) {
+  .row {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
