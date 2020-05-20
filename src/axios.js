@@ -1,6 +1,8 @@
 import axios from "axios";
 
-console.log(process.env);
 export default axios.create({
-  baseURL: process.env.REACT_APP_ROUTE,
+  baseURL:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:5000"
+      : "https://corona-nepal-api.herokuapp.com/",
 });

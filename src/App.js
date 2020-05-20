@@ -10,8 +10,8 @@ import { Switch, Route } from "react-router-dom";
 import Feed from "./containers/Feed/Feed";
 function App() {
   useEffect(() => {
-    initGA(process.env.REACT_APP_TRACKING_ID);
-    PageView();
+    process.env.NODE_ENV !== "development" && initGA("UA-167235016-1");
+    process.env.NODE_ENV !== "development" && PageView();
   }, []);
   const [mode, setMode] = useState(false);
   return (
