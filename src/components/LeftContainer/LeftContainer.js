@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
 import moment from "moment";
+
 import Municipality from "../Municipality/Municipality";
 import axios from "axios";
 const LeftContainer = () => {
@@ -38,13 +39,13 @@ const LeftContainer = () => {
     cases: { total, recovered, deaths, active },
     date,
   } = facts;
+
   return (
     <div className="home-left">
       <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
         <div className="actions">
           <h5>
-            Updated at {moment(date).format("dddd, MMMM Do YYYY")}{" "}
-            {moment(date).format("hh:mm a")}
+            Updated at {moment(date).zone(0).format("MMM Do, YYYY HH:MM")}
           </h5>
         </div>
       </div>

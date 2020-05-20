@@ -1,5 +1,6 @@
 import axios from "axios";
 
+console.log(process.env);
 export default axios.create({
-  baseURL: "https://corona-nepal-api.herokuapp.com/",
+  baseURL: process.env.REACT_APP_ROUTE,
 });
