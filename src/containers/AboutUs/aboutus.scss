@@ -3,12 +3,18 @@
     text-align: center;
 }
 
+@media only screen and (max-width: 769px) {
+    .about-header {
+        margin-top: 100px;
+    }
+}
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
 .snip1336 {
     font-family: 'Roboto', Arial, sans-serif;
     position: relative;
     overflow: hidden;
-    margin: 10px;
+    margin: auto;
     min-width: 230px;
     max-width: 315px;
     width: 100%;
