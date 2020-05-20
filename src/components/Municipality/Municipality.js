@@ -12,8 +12,8 @@ const Municipality = () => {
     const getMunicipalityData = async (position) => {
       try {
         const { data } = await axios.post("/location", {
-          latitude: position.latitude,
-          longitude: position.longitude,
+          latitude: position.longitude,
+          longitude: position.latitude,
         });
         setMunicipal({
           cases: data,
