@@ -131,6 +131,45 @@ const NewBody = () => {
                     <h5 className='table-fineprint fadeInUp' style={{ animationDelay: '1.5s' }}>
                         Compiled from Nepal Health Ministry,
                     </h5>
+                    <div className='MapExplorer fadeInUp' style={{ animationDelay: '1.5s' }}>
+                        <div className='header'>
+                            <h1>Municipality Name</h1>
+                            <h6>Here are some details from your nearby municipality</h6>
+                        </div>
+
+                        <div className='map-stats'>
+                            <div className='stats fadeInUp focused' style={{ animationDelay: '2s' }}>
+                                <h5>Confirmed</h5>
+                                <div className='stats-bottom'>
+                                    <h1>12,141</h1>
+                                    <h6>+395</h6>
+                                </div>
+                            </div>
+                            <div className='stats is-blue fadeInUp' style={{ animationDelay: '2.1s' }}>
+                                <h5>Active</h5>
+                                <div className='stats-bottom'>
+                                    <h1>6,379</h1>
+                                    <h6 />
+                                </div>
+                            </div>
+                            <div className='stats is-green fadeInUp' style={{ animationDelay: '2.2s' }}>
+                                <h5>Recovered</h5>
+                                <div className='stats-bottom'>
+                                    <h1>5,043</h1>
+                                    <h6>+239</h6>
+                                </div>
+                            </div>
+                            <div className='stats is-gray fadeInUp' style={{ animationDelay: '2.3s' }}>
+                                <h5>Deceased</h5>
+                                <div className='stats-bottom'>
+                                    <h1>719</h1>
+                                    <h6>+25</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='home-right'>
                     <Tabs />
                     <Search />
                     <table className='table fadeInUp' style={{ animationDelay: '1.8s' }}>
@@ -399,45 +438,6 @@ const NewBody = () => {
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div className='home-right'>
-                    <div className='MapExplorer fadeInUp' style={{ animationDelay: '1.5s' }}>
-                        <div className='header'>
-                            <h1>Municipality Name</h1>
-                            <h6>Here are some details from your nearby municipality</h6>
-                        </div>
-
-                        <div className='map-stats'>
-                            <div className='stats fadeInUp focused' style={{ animationDelay: '2s' }}>
-                                <h5>Confirmed</h5>
-                                <div className='stats-bottom'>
-                                    <h1>12,141</h1>
-                                    <h6>+395</h6>
-                                </div>
-                            </div>
-                            <div className='stats is-blue fadeInUp' style={{ animationDelay: '2.1s' }}>
-                                <h5>Active</h5>
-                                <div className='stats-bottom'>
-                                    <h1>6,379</h1>
-                                    <h6 />
-                                </div>
-                            </div>
-                            <div className='stats is-green fadeInUp' style={{ animationDelay: '2.2s' }}>
-                                <h5>Recovered</h5>
-                                <div className='stats-bottom'>
-                                    <h1>5,043</h1>
-                                    <h6>+239</h6>
-                                </div>
-                            </div>
-                            <div className='stats is-gray fadeInUp' style={{ animationDelay: '2.3s' }}>
-                                <h5>Deceased</h5>
-                                <div className='stats-bottom'>
-                                    <h1>719</h1>
-                                    <h6>+25</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <Footer />

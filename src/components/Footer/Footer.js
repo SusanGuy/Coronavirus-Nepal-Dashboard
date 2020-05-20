@@ -29,34 +29,24 @@ const Footer = () => {
                 </a>
 
                 <a
-                    className='button excel'
-                    href='http://patientdb.covid19india.org'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    <Icon.Database />
-                    <span>{'Crowdsourced Patient Database'}</span>
-                </a>
-
-                <a
-                    href='https://twitter.com/covid19indiaorg'
+                    href='https://twitter.com/sushant_messi'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='button twitter'
                     style={{ justifyContent: 'center' }}
                 >
                     <Icon.Twitter />
-                    <span>{'View updates on Twitter'}</span>
+                    <span>{'Join Sushant on Twitter'}</span>
                 </a>
-
                 <a
-                    href='https://bit.ly/covid19crowd'
-                    className='button telegram'
+                    href='https://twitter.com/susanforchange'
                     target='_blank'
                     rel='noopener noreferrer'
+                    className='button twitter'
+                    style={{ justifyContent: 'center' }}
                 >
-                    <Icon.MessageCircle />
-                    <span>{'Join Telegram to Collaborate!'}</span>
+                    <Icon.Twitter />
+                    <span>{'Join Susan on Twitter'}</span>
                 </a>
             </footer>
         </div>
