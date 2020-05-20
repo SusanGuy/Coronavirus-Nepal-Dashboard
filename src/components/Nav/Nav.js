@@ -3,7 +3,7 @@ import * as Icon from "react-feather";
 import "./Nav.scss";
 import NavExpand from "../NavExpand/NavExpand";
 import { useWindowSize } from "react-use";
-
+import { Link } from "react-router-dom";
 const Nav = ({ mode, setMode }) => {
   const [expand, setExpand] = useState(false);
   const windowSize = useWindowSize();
@@ -27,14 +27,14 @@ const Nav = ({ mode, setMode }) => {
         </div>
       )}
       <div className="navbar-middle">
-        <a
+        <Link
           to="/"
           onClick={() => {
             setExpand(false);
           }}
         >
           Covid19<span>Nepal</span>
-        </a>
+        </Link>
       </div>
 
       <div
@@ -54,19 +54,19 @@ const Nav = ({ mode, setMode }) => {
         {windowSize.width > 769 && (
           <React.Fragment>
             <span>
-              <a to="/">
+              <Link to="/">
                 <Icon.Home />
-              </a>
+              </Link>
             </span>
             <span>
-              <a to="/demographics">
+              <Link to="/about-us">
                 <Icon.Users />
-              </a>
+              </Link>
             </span>
             <span>
-              <a to="/deepdive">
-                <Icon.BarChart2 />
-              </a>
+              <Link to="/feed">
+                <Icon.Facebook />
+              </Link>
             </span>
           </React.Fragment>
         )}

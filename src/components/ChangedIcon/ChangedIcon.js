@@ -1,8 +1,8 @@
 import React from "react";
 import * as Icon from "react-feather";
-const ChangedIcon = (data, mama) => {
+const ChangedIcon = ({ data, mama }) => {
   return (
-    <span className={`delta ${mama}`}>
+    <span style={{ display: "none" }} className={`delta ${mama}`}>
       <Icon.ArrowUp />
       123
     </span>

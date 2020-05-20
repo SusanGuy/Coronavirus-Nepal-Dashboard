@@ -60,7 +60,7 @@ const LeftContainer = () => {
         className="table-fineprint fadeInUp"
         style={{ animationDelay: "1.5s" }}
       >
-        Compiled from Nepal Health Ministry,
+        Compiled from Ministry of Health & Population of Nepal
       </h5>
       <Municipality />
     </div>

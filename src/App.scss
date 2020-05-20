@@ -2719,3 +2719,20 @@ table {
     overflow: scroll;
   }
 }
+
+
+.is-confirmed {
+        color: $cherry;
+      }
+
+      .is-active {
+        color: $blue;
+      }
+
+      .is-recovered {
+        color: $green;
+      }
+
+      .is-deaths {
+        color: $gray;
+      }

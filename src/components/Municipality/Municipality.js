@@ -79,7 +79,7 @@ const Municipality = () => {
           <h5>Confirmed</h5>
           <div className="stats-bottom">
             <h1>{cases.total}</h1>
-            <h6>+395</h6>
+            <h6>&nbsp;</h6>
           </div>
         </div>
         <div
@@ -89,7 +89,7 @@ const Municipality = () => {
           <h5>Active</h5>
           <div className="stats-bottom">
             <h1>{cases.active}</h1>
-            <h6 />
+            <h6>&nbsp;</h6>
           </div>
         </div>
         <div
@@ -99,7 +99,7 @@ const Municipality = () => {
           <h5>Recovered</h5>
           <div className="stats-bottom">
             <h1>{cases.recovered}</h1>
-            <h6>+239</h6>
+            <h6>&nbsp;</h6>
           </div>
         </div>
         <div
@@ -109,7 +109,7 @@ const Municipality = () => {
           <h5>Deceased</h5>
           <div className="stats-bottom">
             <h1>{cases.deaths}</h1>
-            <h6>+25</h6>
+            <h6>&nbsp;</h6>
           </div>
         </div>
       </div>

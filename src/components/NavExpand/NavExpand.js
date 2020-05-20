@@ -17,8 +17,8 @@ const Expand = ({ setExpand, mode, setMode }) => {
   });
 
   const pages = {
-    Home: "/home",
-    "About Us": "/aboutus",
+    Home: "/",
+    "About Us": "/about-us",
     Feed: "/feed",
   };
 
@@ -32,7 +32,7 @@ const Expand = ({ setExpand, mode, setMode }) => {
     >
       {Object.keys(pages).map((page, i) => {
         return (
-          <a
+          <Link
             to={pages[page]}
             key={i}
             onClick={() => {
@@ -40,7 +40,7 @@ const Expand = ({ setExpand, mode, setMode }) => {
             }}
           >
             <span>{page}</span>
-          </a>
+          </Link>
         );
       })}
 
