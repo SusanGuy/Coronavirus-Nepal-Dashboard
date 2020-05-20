@@ -1,0 +1,87 @@
+@media (min-width: 769px) {
+  .Navbar .expand {
+    background: #f6f6f7;
+    border-right: 2px solid #f6f6f7;
+    flex-direction: column;
+    padding-left: 0;
+    padding-top: 9.75rem;
+    top: 0;
+    width: 15rem;
+    z-index: -1 !important;
+  }
+}
+.Navbar .expand {
+  background: #f6f6f7;
+  color: #6c757d;
+  display: flex;
+  flex-direction: column;
+  font-family: "archia";
+  height: 100vh;
+  position: absolute;
+  top: 3.85rem;
+  -webkit-transform: none;
+  transform: none;
+  width: 100vw;
+  z-index: 9999;
+}
+.Navbar > * {
+  align-self: center;
+}
+user agent stylesheet div {
+  display: block;
+}
+@media (min-width: 769px) {
+  .Navbar .expand > * {
+    border: 0;
+    border-left: 1px solid rgba(108, 117, 125, 0.0627451);
+    color: #6c757d;
+    font-weight: 600;
+    height: 1.5rem;
+    width: 12rem;
+  }
+}
+.Navbar .expand > * span.focused {
+  background: rgba(76, 117, 242, 0.0627451);
+  color: #4c75f2;
+  padding: 0.25rem;
+}
+.fadeInUp {
+  -webkit-animation-duration: 0.45s;
+  animation-duration: 0.45s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+.Navbar .expand > * {
+  border-bottom: 1px solid rgba(108, 117, 125, 0.0627451);
+  border-top: 1px solid rgba(108, 117, 125, 0.0627451);
+  padding: 1.5rem;
+  transition: all 0.15s ease-in-out;
+}
+.Navbar a {
+  color: inherit;
+  text-decoration: none;
+}
+user agent stylesheet a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.Navbar .expand {
+  background: #f6f6f7;
+  color: #6c757d;
+  display: flex;
+  flex-direction: column;
+  font-family: "archia";
+  height: 100vh;
+  position: absolute;
+  top: 3.85rem;
+  -webkit-transform: none;
+  transform: none;
+  width: 100vw;
+  z-index: 9999;
+  a {
+    cursor: pointer;
+  }
+}
