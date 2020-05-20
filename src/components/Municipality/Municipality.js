@@ -52,7 +52,7 @@ const Municipality = () => {
   return (
     <div className="MapExplorer fadeInUp" style={{ animationDelay: "1.5s" }}>
       <div className="header">
-        <h1>{cases.name}</h1>
+        <h1>{cases.name && cases.name.replace("_", " ")}</h1>
         {!locationDenied ? (
           <h6>Here are some details from your nearby municipality</h6>
         ) : (

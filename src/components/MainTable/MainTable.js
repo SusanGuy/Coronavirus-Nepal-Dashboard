@@ -30,54 +30,56 @@ const MainTable = ({ type, search }) => {
   const windowSize = useWindowSize();
 
   return (
-    <table className="table fadeInUp" style={{ animationDelay: "1.8s" }}>
-      <thead>
-        <tr>
-          <th className="state-heading">
-            <div className="heading-content">
-              <abbr title="State">Name</abbr>
-            </div>
-          </th>
-          <th>
-            <div className="heading-content">
-              <abbr className="" title="confirmed">
-                {windowSize.width <= 850 ? "Confrmd" : "Confirmed"}
-              </abbr>
-            </div>
-          </th>
-          <th>
-            <div className="heading-content">
-              <abbr className="" title="active">
-                {windowSize.width <= 850 ? "Actv" : "Active"}
-              </abbr>
-            </div>
-          </th>
-          <th>
-            <div className="heading-content">
-              <abbr className="" title="recovered">
-                {windowSize.width <= 850 ? "Recvrd" : "Recovered"}
-              </abbr>
-            </div>
-          </th>
-          <th>
-            <div className="heading-content">
-              <abbr className="" title="deaths">
-                Death
-              </abbr>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {cases
-          .filter((dat) =>
-            dat.name.toLowerCase().includes(search.toLowerCase())
-          )
-          .map(({ id, ...rest }) => (
-            <MainRow key={id} {...rest} />
-          ))}
-      </tbody>
-    </table>
+    <div className="scrollable-table">
+      <table className="table fadeInUp" style={{ animationDelay: "1.8s" }}>
+        <thead>
+          <tr>
+            <th className="state-heading">
+              <div className="heading-content">
+                <abbr title="State">Name</abbr>
+              </div>
+            </th>
+            <th>
+              <div className="heading-content">
+                <abbr className="" title="confirmed">
+                  {windowSize.width <= 850 ? "Confrmd" : "Confirmed"}
+                </abbr>
+              </div>
+            </th>
+            <th>
+              <div className="heading-content">
+                <abbr className="" title="active">
+                  {windowSize.width <= 850 ? "Actv" : "Active"}
+                </abbr>
+              </div>
+            </th>
+            <th>
+              <div className="heading-content">
+                <abbr className="" title="recovered">
+                  {windowSize.width <= 850 ? "Recvrd" : "Recovered"}
+                </abbr>
+              </div>
+            </th>
+            <th>
+              <div className="heading-content">
+                <abbr className="" title="deaths">
+                  Death
+                </abbr>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {cases
+            .filter((dat) =>
+              dat.name.toLowerCase().includes(search.toLowerCase())
+            )
+            .map(({ id, ...rest }) => (
+              <MainRow key={id} {...rest} />
+            ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

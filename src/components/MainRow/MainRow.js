@@ -2,7 +2,7 @@ import React from "react";
 import ChangedIcon from "../ChangedIcon/ChangedIcon";
 const MainRow = ({ name, total, active, recovered, deaths }) => {
   return (
-    <tr className="state is-highlighted">
+    <tr className="state">
       <td>
         <div className="title-chevron">
           <span className="title-icon">
