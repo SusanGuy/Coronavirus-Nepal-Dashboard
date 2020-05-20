@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './NewBody.scss';
-import NavNew from '../NavNew/NavNew';
+import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import Tabs from '../Tabs/Tabs';
 import Search from '../Search/Search';
@@ -8,7 +8,7 @@ const NewBody = () => {
     const [ mode, setMode ] = useState(false);
     return (
         <div className={`App ${mode ? '' : 'dark-mode'}`}>
-            <NavNew setMode={setMode} mode={mode} />
+            <Nav setMode={setMode} mode={mode} />
             <div className='Home'>
                 <div className='home-left'>
                     <div className='header fadeInUp' style={{ animationDelay: '1s' }}>
