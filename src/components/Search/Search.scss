@@ -1,0 +1,339 @@
+.Search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    position: relative;
+    width: 100%;
+
+    & > * {
+        align-self: center;
+    }
+
+    label {
+        color: $gray;
+        font-family: 'archia';
+        font-size: .75rem;
+        margin-bottom: 1rem;
+    }
+
+    .line {
+        background: $gray-light;
+        height: 1rem;
+        width: 2px;
+    }
+
+    input {
+        -moz-box-shadow: 0 10px 35px rgba(0, 0, 0, .1);
+        -webkit-appearance: none !important;
+        -webkit-box-shadow: 0 10px 35px rgba(0, 0, 0, .1);
+        background: #fff;
+        border: 0;
+        border-radius: 5px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, .1);
+        color: $gray;
+        font-family: 'archia';
+        font-size: 1rem;
+        height: 2rem;
+        outline: none;
+        padding: 1rem;
+        padding-left: 3rem;
+        transition: all .2s ease-in-out;
+        width: calc(100% - 4rem);
+    }
+
+    .search-input-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .search-placeholder {
+        color: $gray-mid;
+        font-family: 'archia';
+        font-size: 1rem;
+        left: 3rem;
+        opacity: .8;
+        pointer-events: none;
+        position: absolute;
+        top: 4.3rem;
+        transition: opacity 1s;
+
+        &.disappear {
+            opacity: 0;
+        }
+    }
+
+    .search-button {
+        svg {
+            color: $gray-mid;
+            left: .75rem;
+            position: absolute;
+            top: 1.25rem;
+            transition: all .2s ease-in-out;
+        }
+
+        &.is-expand {
+            svg {
+                left: .5rem;
+            }
+        }
+    }
+
+    .close-button {
+        background: $gray-light !important;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        height: 20px;
+        justify-content: center;
+        position: absolute;
+        right: 1rem;
+        top: 1.35rem;
+        transition: all .2s ease-in-out;
+        width: 20px;
+
+        &:hover {
+            background: $gray-hover !important;
+        }
+
+        &.is-expand {
+            right: .75rem;
+        }
+
+        svg {
+            align-self: center;
+            position: absolute;
+            stroke: $gray-mid;
+            stroke-width: 3;
+            width: 12px;
+        }
+    }
+
+    .expanded {
+        display: flex;
+        flex-direction: row;
+        margin-top: 2rem;
+        padding: 1rem;
+        padding-bottom: 0;
+        width: calc(100% - 4rem);
+
+        & > * {
+            flex: 1;
+        }
+
+        h4,
+        h3 {
+            color: $gray;
+            font-weight: 600;
+            margin: 0;
+            margin-bottom: .5rem;
+        }
+
+        h3 {
+            color: $pblue;
+            margin-bottom: .75rem;
+        }
+    }
+
+    .results {
+        padding: 1rem;
+        padding-bottom: 0;
+        width: calc(100% - 2rem);
+
+        a {
+            text-decoration: none !important;
+        }
+
+        .result,
+        .essential-result {
+            align-self: flex-start;
+            border-bottom: 2px solid $gray-light;
+            color: $gray;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            font-family: 'archia';
+            font-size: .9rem;
+            justify-content: space-between;
+            min-height: 2rem;
+            padding: 1rem;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                background: $gray-light;
+            }
+
+            & > * {
+                align-self: center;
+            }
+
+            .result-name {
+                max-width: 15rem;
+            }
+
+            .result-type {
+                background: $yellow-light;
+                border-radius: 2px;
+                color: $orange;
+                display: flex;
+                flex-direction: row;
+                font-size: .75rem;
+                padding: .25rem;
+
+                svg {
+                    margin-left: .25rem;
+                    stroke: $orange-mid;
+                    stroke-width: 3px;
+                }
+
+                * {
+                    align-self: center;
+                }
+            }
+
+            .result-left {
+                display: flex;
+                flex-direction: row;
+
+                * {
+                    align-self: center;
+                }
+            }
+
+            .result-zone {
+                border-radius: 50%;
+                height: .75rem;
+                margin-left: .5rem;
+                width: .75rem;
+
+                &.is-red {
+                    background: $cherry-light;
+                    border: 2px solid $cherry-mid;
+                }
+
+                &.is-orange {
+                    background: $orange-light;
+                    border: 2px solid $orange-mid;
+                }
+
+                &.is-green {
+                    background: $green-light;
+                    border: 2px solid $green-mid;
+                }
+            }
+        }
+
+        .essential-result {
+            display: flex;
+            flex-direction: column;
+
+            .result-top {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+
+                .result-top-left {
+                    display: flex;
+                    flex-direction: column;
+
+                    .result-location {
+                        display: flex;
+                        flex-direction: row;
+                        font-size: .75rem;
+                    }
+
+                    .result-distance {
+                        color: $green;
+                        display: flex;
+                        flex-direction: row;
+                        font-size: .75rem;
+                    }
+                }
+            }
+
+            .result-category {
+                align-self: flex-start;
+                background: $pink-light;
+                border-radius: 2px;
+                color: $pink;
+                display: flex;
+                flex-direction: row;
+                font-size: .75rem;
+                height: 1rem;
+                padding: .25rem;
+                text-align: right;
+                text-transform: capitalize;
+
+                & > * {
+                    align-self: center;
+                }
+
+                svg {
+                    margin-left: .25rem;
+                    stroke-width: 3px;
+                    width: 12px;
+                }
+            }
+
+            .result-description {
+                align-self: flex-start;
+                font-size: .75rem;
+                margin-top: 1rem;
+            }
+
+            .result-contact {
+                align-self: flex-start;
+                background: $gray-light;
+                border-radius: 2px;
+                color: $gray;
+                display: flex;
+                flex-direction: row;
+                font-size: .75rem;
+                height: 1rem;
+                margin-top: .5rem;
+                padding: .25rem;
+                text-align: right;
+
+                & > * {
+                    align-self: center;
+                }
+
+                svg {
+                    margin-right: .25rem;
+                    stroke: $gray-mid;
+                    stroke-width: 3px;
+                    width: 12px;
+                }
+            }
+        }
+    }
+
+    .suggestions {
+        display: flex;
+        flex-direction: column;
+        margin-right: 1rem;
+
+        .suggestion {
+            color: $gray-mid;
+            display: flex;
+            flex-direction: row;
+            font-family: 'archia';
+
+            div {
+                padding-top: 1px;
+            }
+
+            h4 {
+                cursor: pointer;
+                margin-left: .25rem;
+                word-wrap: wrap;
+
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-thickness: 2px;
+                }
+            }
+        }
+    }
+}
