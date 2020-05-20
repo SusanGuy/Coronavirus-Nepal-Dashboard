@@ -229,7 +229,7 @@ const Charts = ({
                             .toLowerCase()
                             .includes(keyword.toLowerCase())
                         )
-                        .sort((a, b) => a.total < b.total)
+
                         .map(({ id, ...rest }) => (
                           <DataRow
                             setFavorites={setFavorites}

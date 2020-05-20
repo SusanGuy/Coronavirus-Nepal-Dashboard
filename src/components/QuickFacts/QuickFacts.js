@@ -19,8 +19,8 @@ const QuickFacts = ({ municipality, quickFacts }) => {
   const getMunicipalityData = async (position) => {
     try {
       const { data } = await axios2.post("/location", {
-        latitude: position.latitude,
-        longitude: position.longitude,
+        latitude: position.longitude,
+        longitude: position.latitude,
       });
       setMunicipal({
         cases: data,
@@ -68,23 +68,6 @@ const QuickFacts = ({ municipality, quickFacts }) => {
       );
     }
   }, [quickFacts]);
-  const handleButtonChange = () => {
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        setMunicipal({
-          ...municipal,
-          loading: true,
-        });
-        getMunicipalityData(position.coords);
-      },
-      () => {
-        setMunicipal({
-          cases: {},
-          loading: false,
-        });
-      }
-    );
-  };
 
   const {
     cases: { total, recovered, deaths, active },
@@ -122,7 +105,7 @@ const QuickFacts = ({ municipality, quickFacts }) => {
           <div className="main-stats">
             <button
               className="location-button"
-              onClick={() => handleButtonChange()}
+              onClick={() => window.location.reload()}
             >
               Allow Location Access
             </button>
