@@ -3,18 +3,21 @@ import axios from "../../axios";
 import MainRow from "../MainRow/MainRow";
 import { useWindowSize } from "react-use";
 const MainTable = ({ type, search }) => {
-  const [data, setData] = useState({
+  const [districtData, setDistrictData] = useState({
+    cases: [],
+    loading: true,
+  });
+
+  const [provinceData, setProvinceData] = useState({
     cases: [],
     loading: true,
   });
 
   useEffect(() => {
-    const getData = async () => {
+    const getDistrictData = async () => {
       try {
-        const { data } = await axios.get(
-          type === 1 ? "/districts" : "/provinces"
-        );
-        setData({
+        const { data } = await axios.get("/districts");
+        setDistrictData({
           cases: data,
           loading: false,
         });
@@ -23,10 +26,24 @@ const MainTable = ({ type, search }) => {
       }
     };
 
-    getData();
+    const getProvinceData = async () => {
+      try {
+        const { data } = await axios.get("/provinces");
+        setProvinceData({
+          cases: data,
+          loading: false,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getDistrictData();
+    getProvinceData();
   }, [type]);
 
-  const { cases } = data;
+  const { cases: districtCases } = districtData;
+  const { cases: provinceCases } = provinceData;
   const windowSize = useWindowSize();
 
   return (
@@ -79,13 +96,17 @@ const MainTable = ({ type, search }) => {
           </tr>
         </thead>
         <tbody>
-          {cases
-            .filter((dat) =>
-              dat.name.toLowerCase().includes(search.toLowerCase())
-            )
-            .map(({ id, ...rest }) => (
-              <MainRow key={id} {...rest} />
-            ))}
+          {type === 1
+            ? districtCases
+                .filter((dat) =>
+                  dat.name.toLowerCase().includes(search.toLowerCase())
+                )
+                .map(({ id, ...rest }) => <MainRow key={id} {...rest} />)
+            : provinceCases
+                .filter((dat) =>
+                  dat.name.toLowerCase().includes(search.toLowerCase())
+                )
+                .map(({ id, ...rest }) => <MainRow key={id} {...rest} />)}
         </tbody>
       </table>
     </div>

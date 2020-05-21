@@ -3,6 +3,7 @@ import axios from "../../axios";
 import District from "./District/District";
 import Province from "./Province/Province";
 import Tabs from "../Tabs/Tabs";
+import Box from "../Box/Box";
 const MapView = () => {
   const [maps, setMap] = useState(null);
   const [districtData, setDistrictData] = useState([]);
@@ -50,7 +51,7 @@ const MapView = () => {
     getProvinceData();
   }, []);
 
-  let activeData;
+  let activeData = {};
 
   if (selectType === 1) {
     if (districtData.length > 0) {
@@ -84,51 +85,15 @@ const MapView = () => {
     }
   }
 
+  const { name, ...rest } = activeData;
+
   return (
     <div className="MapExplorer fadeInUp" style={{ animationDelay: "2s" }}>
       <div className="header" style={{ marginBottom: "20px" }}>
         <h1>{activeData && activeData.name}</h1>
         <h6>Hover/Click over a District/Province for more details</h6>
       </div>
-      <div className="map-stats">
-        <div className="stats fadeInUp" style={{ animationDelay: "2s" }}>
-          <h5>Confirmed</h5>
-          <div className="stats-bottom">
-            <h1>{activeData && activeData.total}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-        <div
-          className="stats is-blue fadeInUp"
-          style={{ animationDelay: "2.1s" }}
-        >
-          <h5>Active</h5>
-          <div className="stats-bottom">
-            <h1>{activeData && activeData.active}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-        <div
-          className="stats is-green fadeInUp"
-          style={{ animationDelay: "2.2s" }}
-        >
-          <h5>Recovered</h5>
-          <div className="stats-bottom">
-            <h1>{activeData && activeData.recovered}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-        <div
-          className="stats is-gray fadeInUp"
-          style={{ animationDelay: "2.3s" }}
-        >
-          <h5>Deceased</h5>
-          <div className="stats-bottom">
-            <h1>{activeData && activeData.deaths}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-      </div>
+      <Box {...rest} />
       <Tabs setSelectType={setSelectType} selectType={selectType} />
       {maps && (
         <React.Fragment>

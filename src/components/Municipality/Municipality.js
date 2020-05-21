@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "../../axios";
+import Box from "../Box/Box";
 const Municipality = () => {
   const [municipal, setMunicipal] = useState({
     cases: {},
@@ -47,12 +48,14 @@ const Municipality = () => {
     );
   }, []);
 
-  const { cases } = municipal;
+  const {
+    cases: { name, ...rest },
+  } = municipal;
 
   return (
     <div className="MapExplorer fadeInUp" style={{ animationDelay: "1.5s" }}>
       <div className="header">
-        <h1>{cases.name && cases.name.replace("_", " ")}</h1>
+        <h1>{name && name.replace("_", " ")}</h1>
         {!locationDenied ? (
           <h6>Here are some details from your nearby municipality</h6>
         ) : (
@@ -74,45 +77,7 @@ const Municipality = () => {
         )}
       </div>
 
-      <div className="map-stats">
-        <div className="stats fadeInUp" style={{ animationDelay: "2s" }}>
-          <h5>Confirmed</h5>
-          <div className="stats-bottom">
-            <h1>{cases.total}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-        <div
-          className="stats is-blue fadeInUp"
-          style={{ animationDelay: "2.1s" }}
-        >
-          <h5>Active</h5>
-          <div className="stats-bottom">
-            <h1>{cases.active}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-        <div
-          className="stats is-green fadeInUp"
-          style={{ animationDelay: "2.2s" }}
-        >
-          <h5>Recovered</h5>
-          <div className="stats-bottom">
-            <h1>{cases.recovered}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-        <div
-          className="stats is-gray fadeInUp"
-          style={{ animationDelay: "2.3s" }}
-        >
-          <h5>Deceased</h5>
-          <div className="stats-bottom">
-            <h1>{cases.deaths}</h1>
-            <h6>&nbsp;</h6>
-          </div>
-        </div>
-      </div>
+      <Box {...rest} />
     </div>
   );
 };

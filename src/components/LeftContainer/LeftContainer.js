@@ -46,7 +46,17 @@ const LeftContainer = () => {
         <div className="actions">
           <h5>
             Updated at{" "}
-            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do, h:mm A")}
+            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do")}{" "}
+            {moment(new Date())
+              .format("HH:mm")
+              .split(":")
+              .map((element, index) => {
+                if (index === 1) {
+                  return element - 20;
+                }
+                return element;
+              })
+              .join(":")}
           </h5>
         </div>
       </div>
