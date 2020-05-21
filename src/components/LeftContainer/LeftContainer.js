@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
 import moment from "moment";
+import MapView from "../MapView/MapView";
 
-import Municipality from "../Municipality/Municipality";
 import axios from "axios";
 const LeftContainer = () => {
   const [facts, setFacts] = useState({
@@ -46,7 +46,17 @@ const LeftContainer = () => {
         <div className="actions">
           <h5>
             Updated at{" "}
-            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do, h:mm A")}
+            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do")}{" "}
+            {moment(new Date())
+              .format("HH:mm")
+              .split(":")
+              .map((element, index) => {
+                if (index === 1) {
+                  return element - 20;
+                }
+                return element;
+              })
+              .join(":")}
           </h5>
         </div>
       </div>
@@ -64,7 +74,7 @@ const LeftContainer = () => {
       >
         Compiled from Ministry of Health & Population of Nepal
       </h5>
-      <Municipality />
+      <MapView />
     </div>
   );
 };
