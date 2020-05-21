@@ -1,8 +1,8 @@
-import React from 'react';
-import MapView from '../../components/MapView/MapView';
-import FacebookFeed from '../../components/FacebookFeed/FacebookFeed';
+import React from "react";
+import FacebookFeed from "../../components/FacebookFeed/FacebookFeed";
 
 const Feed = () => {
+
     return (
         <div className={'Home'} style={{ textAlign: 'center' }}>
             <div className='about-header' style={{ marginTop: '10px' }}>
@@ -17,6 +17,7 @@ const Feed = () => {
             </div>
         </div>
     );
+
 };
 
 export default Feed;
