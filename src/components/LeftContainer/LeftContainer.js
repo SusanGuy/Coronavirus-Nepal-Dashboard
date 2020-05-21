@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
 import moment from "moment";
+
 import Municipality from "../Municipality/Municipality";
 import axios from "axios";
 const LeftContainer = () => {
@@ -38,13 +39,14 @@ const LeftContainer = () => {
     cases: { total, recovered, deaths, active },
     date,
   } = facts;
+
   return (
     <div className="home-left">
       <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
         <div className="actions">
           <h5>
-            Updated at {moment(date).format("dddd, MMMM Do YYYY")}{" "}
-            {moment(date).format("hh:mm a")}
+            Updated at{" "}
+            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do, h:mm A")}
           </h5>
         </div>
       </div>
@@ -60,7 +62,7 @@ const LeftContainer = () => {
         className="table-fineprint fadeInUp"
         style={{ animationDelay: "1.5s" }}
       >
-        Compiled from Nepal Health Ministry,
+        Compiled from Ministry of Health & Population of Nepal
       </h5>
       <Municipality />
     </div>

@@ -11,9 +11,9 @@ const Municipality = () => {
   useEffect(() => {
     const getMunicipalityData = async (position) => {
       try {
-        const { data } = await axios.post("/location", {
-          latitude: position.latitude,
-          longitude: position.longitude,
+        const { data } = await axios.post("/municipalities/location", {
+          latitude: position.longitude,
+          longitude: position.latitude,
         });
         setMunicipal({
           cases: data,
@@ -26,7 +26,7 @@ const Municipality = () => {
 
     const getHighestData = async () => {
       try {
-        const { data } = await axios.get("/highest");
+        const { data } = await axios.get("/municipalities/highest");
         setMunicipal({
           cases: data,
           loading: false,
@@ -52,7 +52,7 @@ const Municipality = () => {
   return (
     <div className="MapExplorer fadeInUp" style={{ animationDelay: "1.5s" }}>
       <div className="header">
-        <h1>{cases.name}</h1>
+        <h1>{cases.name && cases.name.replace("_", " ")}</h1>
         {!locationDenied ? (
           <h6>Here are some details from your nearby municipality</h6>
         ) : (
@@ -79,7 +79,7 @@ const Municipality = () => {
           <h5>Confirmed</h5>
           <div className="stats-bottom">
             <h1>{cases.total}</h1>
-            <h6>+395</h6>
+            <h6>&nbsp;</h6>
           </div>
         </div>
         <div
@@ -89,7 +89,7 @@ const Municipality = () => {
           <h5>Active</h5>
           <div className="stats-bottom">
             <h1>{cases.active}</h1>
-            <h6 />
+            <h6>&nbsp;</h6>
           </div>
         </div>
         <div
@@ -99,7 +99,7 @@ const Municipality = () => {
           <h5>Recovered</h5>
           <div className="stats-bottom">
             <h1>{cases.recovered}</h1>
-            <h6>+239</h6>
+            <h6>&nbsp;</h6>
           </div>
         </div>
         <div
@@ -109,7 +109,7 @@ const Municipality = () => {
           <h5>Deceased</h5>
           <div className="stats-bottom">
             <h1>{cases.deaths}</h1>
-            <h6>+25</h6>
+            <h6>&nbsp;</h6>
           </div>
         </div>
       </div>

@@ -2,8 +2,11 @@
 
 # dependencies
 /node_modules
+/.env.development
+/.env.production
 /.pnp
 .pnp.js
+
 
 # testing
 /coverage

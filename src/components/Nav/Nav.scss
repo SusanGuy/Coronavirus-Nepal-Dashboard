@@ -66,13 +66,6 @@ $dark-m-white: #e1e1e1;
 $dark-m-purple: #7ba1ea;
 $dark-m-blue: #3391ff;
 
-body {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  margin: 0;
-  padding: 0;
-}
-
 .App {
   display: flex;
   flex-direction: column;
@@ -80,6 +73,7 @@ body {
 }
 
 .Navbar {
+  font-family: "Roboto";
   display: flex;
   flex-direction: row;
   height: 3.9rem;
@@ -98,7 +92,7 @@ body {
   .LanguageSwitcher {
     .button {
       border: 0;
-      color: #6c757d;
+
       cursor: pointer;
 
       font-size: 12px;
@@ -157,7 +151,6 @@ body {
     color: $gray;
     display: flex;
     flex-direction: column;
-
     height: 100vh;
     position: absolute;
     top: 3.85rem;
@@ -201,7 +194,6 @@ body {
   .button {
     border: 2px solid $gray-light;
     border-radius: 0;
-    color: $gray;
 
     font-size: 0.75rem;
     font-weight: 600;
@@ -347,6 +339,7 @@ body {
 
 @media (max-width: 769px) {
   .Navbar {
+    background-color: $gray-light-opaque;
     .expand {
       height: calc(100vh - 3.9rem);
       overflow: auto;
@@ -361,6 +354,11 @@ body {
           display: initial;
         }
       }
+    }
+  }
+  .dark-mode {
+    .Navbar {
+      background-color: #1e1e30;
     }
   }
 
