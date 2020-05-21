@@ -1,4 +1,5 @@
 import React from "react";
+
 import ChangedIcon from "../ChangedIcon/ChangedIcon";
 const MainRow = ({ name, total, active, recovered, deaths }) => {
   return (

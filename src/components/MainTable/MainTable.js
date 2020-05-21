@@ -82,7 +82,7 @@ const MainTable = ({ type, search }) => {
             <th>
               <div className="heading-content">
                 <abbr className="" title="recovered">
-                  {windowSize.width <= 850 ? "Recovered" : "Recovered"}
+                  {windowSize.width <= 850 ? "Recovery" : "Recovered"}
                 </abbr>
               </div>
             </th>
