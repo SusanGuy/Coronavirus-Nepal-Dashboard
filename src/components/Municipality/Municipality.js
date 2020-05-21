@@ -11,7 +11,7 @@ const Municipality = () => {
   useEffect(() => {
     const getMunicipalityData = async (position) => {
       try {
-        const { data } = await axios.post("/location", {
+        const { data } = await axios.post("/municipalities/location", {
           latitude: position.longitude,
           longitude: position.latitude,
         });
@@ -26,7 +26,7 @@ const Municipality = () => {
 
     const getHighestData = async () => {
       try {
-        const { data } = await axios.get("/highest");
+        const { data } = await axios.get("/municipalities/highest");
         setMunicipal({
           cases: data,
           loading: false,

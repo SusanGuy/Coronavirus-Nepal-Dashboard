@@ -4,5 +4,5 @@ export default axios.create({
   baseURL:
     process.env.NODE_ENV === "development"
       ? "http://localhost:5000"
-      : "https://corona-nepal-api.herokuapp.com/",
+      : "https://corona-nepal-api.herokuapp.com",
 });

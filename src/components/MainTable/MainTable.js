@@ -12,7 +12,7 @@ const MainTable = ({ type, search }) => {
     const getData = async () => {
       try {
         const { data } = await axios.get(
-          type === 1 ? "/districts" : "provinces"
+          type === 1 ? "/districts" : "/provinces"
         );
         setData({
           cases: data,

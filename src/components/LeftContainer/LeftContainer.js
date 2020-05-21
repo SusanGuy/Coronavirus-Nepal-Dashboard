@@ -45,7 +45,8 @@ const LeftContainer = () => {
       <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
         <div className="actions">
           <h5>
-            Updated at {moment(date).zone(0).format("MMM Do, YYYY HH:MM")}
+            Updated at{" "}
+            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do, h:mm A")}
           </h5>
         </div>
       </div>
