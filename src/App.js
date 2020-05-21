@@ -12,10 +12,13 @@ function App() {
   useEffect(() => {
     process.env.NODE_ENV !== "development" && initGA("UA-167235016-1");
     process.env.NODE_ENV !== "development" && PageView();
+    if (localStorage.getItem("mode")) {
+      setMode(JSON.parse(localStorage.getItem("mode")));
+    }
   }, []);
   const [mode, setMode] = useState(false);
   return (
-    <div className={`App ${mode ? "" : "dark-mode"}`}>
+    <div className={`App ${!mode ? "" : "dark-mode"}`}>
       <Nav setMode={setMode} mode={mode} />
       <Switch>
         <Route path="/about-us" exact component={AboutUs} />

@@ -53,6 +53,12 @@ const Expand = ({ setExpand, mode, setMode }) => {
           <div
             className="navbar-left"
             onClick={() => {
+              if (localStorage.getItem("mode")) {
+                const localMode = JSON.parse(localStorage.getItem("mode"));
+                localStorage.setItem("mode", !localMode);
+              } else {
+                localStorage.setItem("mode", true);
+              }
               setMode(!mode);
             }}
           >

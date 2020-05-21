@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "../../axios";
 import District from "./District/District";
-
+import Province from "./Province/Province";
 import Tabs from "../Tabs/Tabs";
 const MapView = () => {
   const [maps, setMap] = useState(null);
@@ -89,7 +88,7 @@ const MapView = () => {
     <div className="MapExplorer fadeInUp" style={{ animationDelay: "2s" }}>
       <div className="header" style={{ marginBottom: "20px" }}>
         <h1>{activeData && activeData.name}</h1>
-        <h6>Hover over a district/province for more details</h6>
+        <h6>Hover/Click over a District/Province for more details</h6>
       </div>
       <div className="map-stats">
         <div className="stats fadeInUp" style={{ animationDelay: "2s" }}>
@@ -194,6 +193,18 @@ const MapView = () => {
                   setHoveredProvince={setHoveredProvince}
                   hoveredDistrict={hoveredDistrict}
                   setHoveredDistrict={setHoveredDistrict}
+                />
+              );
+            })}
+            {maps.provinces.map(({ province, val }) => {
+              console.log(province);
+              return (
+                <Province
+                  key={Math.random()}
+                  province={province}
+                  val={val}
+                  selectType={selectType}
+                  setHoveredProvince={setHoveredProvince}
                 />
               );
             })}
