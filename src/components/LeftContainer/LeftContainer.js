@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
 import moment from "moment";
+import MapView from "../MapView/MapView";
 
-import Municipality from "../Municipality/Municipality";
 import axios from "axios";
 const LeftContainer = () => {
   const [facts, setFacts] = useState({
@@ -64,7 +64,7 @@ const LeftContainer = () => {
       >
         Compiled from Ministry of Health & Population of Nepal
       </h5>
-      <Municipality />
+      <MapView />
     </div>
   );
 };
