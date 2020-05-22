@@ -10,13 +10,14 @@ import { Switch, Route } from "react-router-dom";
 import Feed from "./containers/Feed/Feed";
 function App() {
   useEffect(() => {
-    process.env.NODE_ENV !== "development" && initGA("UA-167235016-1");
+    process.env.NODE_ENV !== "development" &&
+      initGA(process.env.REACT_APP_TRACKING_ID);
     process.env.NODE_ENV !== "development" && PageView();
     if (localStorage.getItem("mode")) {
       setMode(JSON.parse(localStorage.getItem("mode")));
     }
   }, []);
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(true);
   return (
     <div className={`App ${!mode ? "" : "dark-mode"}`}>
       <Nav setMode={setMode} mode={mode} />

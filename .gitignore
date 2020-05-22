@@ -2,8 +2,8 @@
 
 # dependencies
 /node_modules
-/.env.development
-/.env.production
+/src/.env.dev
+/src/.env.prod
 /.pnp
 .pnp.js
 
