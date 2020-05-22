@@ -22,7 +22,7 @@ function App() {
       <Nav setMode={setMode} mode={mode} />
       <Switch>
         <Route path="/about-us" exact component={AboutUs} />
-        <Route path="/feed" exact component={Feed} />
+        <Route path="/feed" exact component={() => <Feed mode={mode} />} />
         <Route path="/" component={Home} />
       </Switch>
       <Footer />

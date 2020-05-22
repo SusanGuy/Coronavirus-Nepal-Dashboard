@@ -2737,3 +2737,12 @@ table {
 .is-deaths {
   color: $gray;
 }
+
+.Home {
+  iframe {
+    border: 1px solid grey !important;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
+  }
+}
