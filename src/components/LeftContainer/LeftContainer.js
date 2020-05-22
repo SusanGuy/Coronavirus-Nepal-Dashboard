@@ -4,7 +4,7 @@ import MiniGraph from "../MiniGraph/MiniGraph";
 import MapView from "../MapView/MapView";
 import moment from "moment";
 import axios from "axios";
-const LeftContainer = () => {
+const LeftContainer = ({ districtCases, provinceCases }) => {
   const [facts, setFacts] = useState({
     cases: { total: 0, active: 0, recovered: 0, deaths: 0 },
     date: "",
@@ -65,7 +65,7 @@ const LeftContainer = () => {
       >
         Compiled from Ministry of Health & Population of Nepal
       </h5>
-      <MapView />
+      <MapView districtData={districtCases} provinceData={provinceCases} />
     </div>
   );
 };

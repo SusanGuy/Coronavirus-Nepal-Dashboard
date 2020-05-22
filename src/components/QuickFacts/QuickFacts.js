@@ -14,12 +14,14 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         const { data } = await axios.get(
           "https://data.nepalcorona.info/api/v1/covid/timeline"
         );
-        const newCase = data.find((dat) => dat.date === date);
+        const { totalCases, totalRecoveries, totalDeaths } = data.find(
+          (dat) => dat.date === date
+        );
 
         setNewData({
-          newTotal: total - newCase.totalCases,
-          newRecovered: recovered - newCase.totalRecoveries,
-          newDeath: deaths - newCase.totalDeaths,
+          newTotal: total - totalCases,
+          newRecovered: recovered - totalRecoveries,
+          newDeath: deaths - totalDeaths,
         });
       } catch (error) {}
     };
