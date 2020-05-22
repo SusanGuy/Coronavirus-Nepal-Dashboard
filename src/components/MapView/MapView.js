@@ -162,7 +162,6 @@ const MapView = () => {
               );
             })}
             {maps.provinces.map(({ province, val }) => {
-              console.log(province);
               return (
                 <Province
                   key={Math.random()}

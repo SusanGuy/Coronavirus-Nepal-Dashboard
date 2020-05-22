@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
-import moment from "moment";
 import MapView from "../MapView/MapView";
-
+import moment from "moment";
 import axios from "axios";
 const LeftContainer = () => {
   const [facts, setFacts] = useState({
@@ -15,8 +14,13 @@ const LeftContainer = () => {
     const getAllFacts = async () => {
       try {
         const {
-          data: { tested_positive: total, recovered, deaths, updated_at: date },
+          data: { tested_positive: total, recovered, deaths },
         } = await axios.get("https://nepalcorona.info/api/v1/data/nepal");
+
+        const { data } = await axios.get(
+          "https://data.nepalcorona.info/api/v1/covid"
+        );
+        const date = data[data.length - 1].createdOn;
 
         setFacts({
           cases: {
@@ -44,20 +48,7 @@ const LeftContainer = () => {
     <div className="home-left">
       <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
         <div className="actions">
-          <h5>
-            Updated at{" "}
-            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do")}{" "}
-            {moment(new Date())
-              .format("HH:mm")
-              .split(":")
-              .map((element, index) => {
-                if (index === 1) {
-                  return element - 20;
-                }
-                return element;
-              })
-              .join(":")}
-          </h5>
+          <h5>Updated {moment(new Date(date)).fromNow()}</h5>
         </div>
       </div>
       <QuickFacts
