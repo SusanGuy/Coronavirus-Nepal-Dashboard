@@ -43,7 +43,7 @@ const MainRow = ({
       </td>
       <td>
         {additionalDeaths !== 0 && (
-          <ChangedIcon data={additionalDeaths} mama="is-recovered" />
+          <ChangedIcon data={additionalDeaths} mama="is-deaths" />
         )}
         <span className=" total">{deaths}</span>
       </td>

@@ -20,7 +20,12 @@ const LeftContainer = ({ districtCases, provinceCases }) => {
         const { data } = await axios.get(
           "https://data.nepalcorona.info/api/v1/covid"
         );
-        const date = data[data.length - 1].createdOn;
+        let date;
+        if (data.length !== total) {
+          date = new Date();
+        } else {
+          date = data[data.length - 1].createdOn;
+        }
 
         setFacts({
           cases: {
