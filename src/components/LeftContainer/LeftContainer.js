@@ -21,10 +21,11 @@ const LeftContainer = ({ districtCases, provinceCases }) => {
           "https://data.nepalcorona.info/api/v1/covid"
         );
         let date;
+
         if (data.length !== total) {
           date = new Date();
         } else {
-          date = data[data.length - 1].createdOn;
+          date = data[data.length - 1].modifiedOn;
         }
 
         setFacts({

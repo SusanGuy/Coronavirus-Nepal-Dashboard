@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import moment from "moment";
+import moment from "moment-timezone";
 const QuickFacts = ({ total, recovered, deaths, active }) => {
   const [newData, setNewData] = useState({
     newTotal: 0,
@@ -26,7 +26,9 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
       } catch (error) {}
     };
 
-    getYesterDayData(moment().subtract(1, "days").format("YYYY-MM-DD"));
+    getYesterDayData(
+      moment.tz("Asia/Kathmandu").subtract(1, "days").format("YYYY-MM-DD")
+    );
   }, [deaths, recovered, total]);
 
   const { newTotal, newRecovered, newDeath } = newData;
