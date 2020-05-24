@@ -3,8 +3,7 @@ import MainTable from "../MainTable/MainTable";
 import Tabs from "../Tabs/Tabs";
 import Municipality from "../Municipality/Municipality";
 import Search from "../Search/Search";
-const RightContainer = (props) => {
-  const [selectType, setSelectType] = useState(1);
+const RightContainer = ({ selectType, setSelectType, ...props }) => {
   const [searchValue, setSearchValue] = useState("");
   return (
     <div className="home-right">

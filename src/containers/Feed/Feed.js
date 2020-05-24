@@ -10,7 +10,7 @@ const Feed = ({ mode }) => {
       <div className="home-left" style={{ paddingTop: "50px" }}>
         <TwitterTimelineEmbed
           sourceType="timeline"
-          theme={!mode && "dark"}
+          theme={mode && "dark"}
           url={"https://twitter.com/mohpnep"}
           options={{ height: 600, width: 400 }}
         />
@@ -18,7 +18,7 @@ const Feed = ({ mode }) => {
 
       <div className="home-right" style={{ paddingTop: "50px" }}>
         <TwitterTimelineEmbed
-          theme={!mode && "dark"}
+          theme={mode && "dark"}
           sourceType="timeline"
           url={"https://twitter.com/RONBupdates"}
           options={{ height: 600, width: 400 }}

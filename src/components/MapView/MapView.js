@@ -4,10 +4,9 @@ import District from "./District/District";
 import Province from "./Province/Province";
 import Tabs from "../Tabs/Tabs";
 import Box from "../Box/Box";
-const MapView = ({ districtData, provinceData }) => {
+const MapView = ({ districtData, provinceData, selectType }) => {
   const [maps, setMap] = useState(null);
 
-  const [selectType, setSelectType] = useState(1);
   const [hoveredProvince, setHoveredProvince] = useState("");
   const [hoveredDistrict, setHoveredDistrict] = useState("");
 
@@ -74,7 +73,7 @@ const MapView = ({ districtData, provinceData }) => {
         <h6>Hover/Click over a District/Province for more details</h6>
       </div>
       <Box {...rest} />
-      <Tabs setSelectType={setSelectType} selectType={selectType} />
+
       {maps && (
         <React.Fragment>
           <svg id="Nepal" className="nepal-svg" viewBox="0 0 1099.919 720.688">
