@@ -15,7 +15,11 @@ const Box = ({
         <h5>Confirmed</h5>
         <div className="stats-bottom">
           <h1>{total}</h1>
-          <h6>{additionalTotal !== 0 ? `+ ${additionalTotal}` : " "}</h6>
+          <h6>
+            {additionalTotal && additionalTotal !== 0
+              ? `+ ${additionalTotal}`
+              : " "}
+          </h6>
         </div>
       </div>
       <div
@@ -35,7 +39,11 @@ const Box = ({
         <h5>Recovered</h5>
         <div className="stats-bottom">
           <h1>{recovered}</h1>
-          <h6>{additionalRecovery !== 0 ? `+ ${additionalRecovery}` : " "}</h6>
+          <h6>
+            {additionalRecovery && additionalRecovery !== 0
+              ? `+ ${additionalRecovery}`
+              : " "}
+          </h6>
         </div>
       </div>
       <div
@@ -45,7 +53,11 @@ const Box = ({
         <h5>Deceased</h5>
         <div className="stats-bottom">
           <h1>{deaths}</h1>
-          <h6>{additionalDeaths !== 0 ? `+ ${additionalDeaths}` : " "}</h6>
+          <h6>
+            {additionalDeaths && additionalDeaths !== 0
+              ? `+ ${additionalDeaths}`
+              : " "}
+          </h6>
         </div>
       </div>
     </div>

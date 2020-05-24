@@ -27,7 +27,7 @@ const MainRow = ({
         </div>
       </td>
       <td>
-        {additionalTotal !== 0 && (
+        {additionalTotal !== undefined && additionalTotal !== 0 && (
           <ChangedIcon data={additionalTotal} mama="is-confirmed" />
         )}
         <span className=" total">{total}</span>
@@ -36,13 +36,13 @@ const MainRow = ({
         <span className="is-active total">{active}</span>
       </td>
       <td>
-        {additionalRecovery !== 0 && (
+        {additionalRecovery !== undefined && additionalRecovery !== 0 && (
           <ChangedIcon data={additionalRecovery} mama="is-recovered" />
         )}
         <span className="total">{recovered}</span>
       </td>
       <td>
-        {additionalDeaths !== 0 && (
+        {additionalDeaths !== undefined && additionalDeaths !== 0 && (
           <ChangedIcon data={additionalDeaths} mama="is-deaths" />
         )}
         <span className=" total">{deaths}</span>
