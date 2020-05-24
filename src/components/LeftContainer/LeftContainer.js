@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
-import moment from "moment";
 import MapView from "../MapView/MapView";
-
+import moment from "moment";
 import axios from "axios";
-const LeftContainer = () => {
+const LeftContainer = ({ districtCases, provinceCases }) => {
   const [facts, setFacts] = useState({
     cases: { total: 0, active: 0, recovered: 0, deaths: 0 },
     date: "",
@@ -15,8 +14,19 @@ const LeftContainer = () => {
     const getAllFacts = async () => {
       try {
         const {
-          data: { tested_positive: total, recovered, deaths, updated_at: date },
+          data: { tested_positive: total, recovered, deaths },
         } = await axios.get("https://nepalcorona.info/api/v1/data/nepal");
+
+        const { data } = await axios.get(
+          "https://data.nepalcorona.info/api/v1/covid"
+        );
+        let date;
+
+        if (data.length !== total) {
+          date = new Date();
+        } else {
+          date = data[data.length - 1].modifiedOn;
+        }
 
         setFacts({
           cases: {
@@ -44,20 +54,7 @@ const LeftContainer = () => {
     <div className="home-left">
       <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
         <div className="actions">
-          <h5>
-            Updated at{" "}
-            {moment.utc(date, "YYYY-MM-DD HH").local().format("MMM Do")}{" "}
-            {moment(new Date())
-              .format("HH:mm")
-              .split(":")
-              .map((element, index) => {
-                if (index === 1) {
-                  return element - 20;
-                }
-                return element;
-              })
-              .join(":")}
-          </h5>
+          <h5>Updated {moment(new Date(date)).fromNow()}</h5>
         </div>
       </div>
       <QuickFacts
@@ -74,7 +71,7 @@ const LeftContainer = () => {
       >
         Compiled from Ministry of Health & Population of Nepal
       </h5>
-      <MapView />
+      <MapView districtData={districtCases} provinceData={provinceCases} />
     </div>
   );
 };

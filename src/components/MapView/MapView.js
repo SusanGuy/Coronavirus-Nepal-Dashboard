@@ -4,10 +4,9 @@ import District from "./District/District";
 import Province from "./Province/Province";
 import Tabs from "../Tabs/Tabs";
 import Box from "../Box/Box";
-const MapView = () => {
+const MapView = ({ districtData, provinceData }) => {
   const [maps, setMap] = useState(null);
-  const [districtData, setDistrictData] = useState([]);
-  const [provinceData, setProvinceData] = useState([]);
+
   const [selectType, setSelectType] = useState(1);
   const [hoveredProvince, setHoveredProvince] = useState("");
   const [hoveredDistrict, setHoveredDistrict] = useState("");
@@ -29,26 +28,7 @@ const MapView = () => {
       }
     };
 
-    const getDistrictData = async () => {
-      try {
-        const { data } = await axios.get("/districts");
-        setDistrictData(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const getProvinceData = async () => {
-      try {
-        const { data } = await axios.get("/provinces");
-        setProvinceData(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     getMap();
-    getDistrictData();
-    getProvinceData();
   }, []);
 
   let activeData = {};
@@ -162,7 +142,6 @@ const MapView = () => {
               );
             })}
             {maps.provinces.map(({ province, val }) => {
-              console.log(province);
               return (
                 <Province
                   key={Math.random()}

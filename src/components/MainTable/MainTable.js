@@ -1,49 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "../../axios";
+import React from "react";
+
 import MainRow from "../MainRow/MainRow";
 import { useWindowSize } from "react-use";
-const MainTable = ({ type, search }) => {
-  const [districtData, setDistrictData] = useState({
-    cases: [],
-    loading: true,
-  });
-
-  const [provinceData, setProvinceData] = useState({
-    cases: [],
-    loading: true,
-  });
-
-  useEffect(() => {
-    const getDistrictData = async () => {
-      try {
-        const { data } = await axios.get("/districts");
-        setDistrictData({
-          cases: data,
-          loading: false,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    const getProvinceData = async () => {
-      try {
-        const { data } = await axios.get("/provinces");
-        setProvinceData({
-          cases: data,
-          loading: false,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getDistrictData();
-    getProvinceData();
-  }, [type]);
-
-  const { cases: districtCases } = districtData;
-  const { cases: provinceCases } = provinceData;
+const MainTable = ({ type, search, districtCases, provinceCases }) => {
   const windowSize = useWindowSize();
 
   return (

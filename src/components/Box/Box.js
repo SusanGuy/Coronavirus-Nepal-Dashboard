@@ -1,13 +1,21 @@
 import React from "react";
 
-const Box = ({ total, active, recovered, deaths }) => {
+const Box = ({
+  total,
+  active,
+  recovered,
+  deaths,
+  additionalTotal,
+  additionalRecovery,
+  additionalDeaths,
+}) => {
   return (
     <div className="map-stats">
       <div className="stats fadeInUp" style={{ animationDelay: "2s" }}>
         <h5>Confirmed</h5>
         <div className="stats-bottom">
           <h1>{total}</h1>
-          <h6>&nbsp;</h6>
+          <h6>{additionalTotal !== 0 ? `+ ${additionalTotal}` : " "}</h6>
         </div>
       </div>
       <div
@@ -27,7 +35,7 @@ const Box = ({ total, active, recovered, deaths }) => {
         <h5>Recovered</h5>
         <div className="stats-bottom">
           <h1>{recovered}</h1>
-          <h6>&nbsp;</h6>
+          <h6>{additionalRecovery !== 0 ? `+ ${additionalRecovery}` : " "}</h6>
         </div>
       </div>
       <div
@@ -37,7 +45,7 @@ const Box = ({ total, active, recovered, deaths }) => {
         <h5>Deceased</h5>
         <div className="stats-bottom">
           <h1>{deaths}</h1>
-          <h6>&nbsp;</h6>
+          <h6>{additionalDeaths !== 0 ? `+ ${additionalDeaths}` : " "}</h6>
         </div>
       </div>
     </div>
