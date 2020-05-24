@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "../../axios";
 import District from "./District/District";
 import Province from "./Province/Province";
-import Tabs from "../Tabs/Tabs";
+
 import Box from "../Box/Box";
 const MapView = ({ districtData, provinceData, selectType }) => {
   const [maps, setMap] = useState(null);
