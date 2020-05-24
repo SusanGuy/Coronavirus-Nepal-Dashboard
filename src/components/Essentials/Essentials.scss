@@ -67,975 +67,852 @@ $dark-m-purple: #7ba1ea;
 $dark-m-blue: #3391ff;
 
 body {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    margin: 0;
-    padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  margin: 0;
+  padding: 0;
 }
 
 .Essentials {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  width: 30rem;
+
+  img {
+    margin-top: 30px;
+    width: 80%;
+    height: 100%;
+  }
+
+  img,
+  .alert {
+    align-self: center !important;
+  }
+
+  .alert {
+    margin: 0;
     margin-top: 2rem;
-    width: 30rem;
+    width: 90% !important;
+    word-wrap: break-word;
 
-    img,
-    .alert {
-        align-self: center;
+    svg {
+      margin: 0;
     }
+  }
 
-    .alert {
-        margin: 0;
-        margin-top: 2rem;
-        width: 90% !important;
-        word-wrap: break-word;
+  button {
+    align-self: center;
+    background: $yellow-light;
+    color: $orange;
+    font-weight: 400;
+    height: 5rem;
+    margin: 0;
+    text-transform: unset;
+    width: 10rem;
 
-        svg {
-            margin: 0;
-        }
+    &:hover {
+      background: $yellow-hover;
     }
+  }
 
-    button {
-        align-self: center;
-        background: $yellow-light;
-        color: $orange;
-        font-weight: 400;
-        height: 5rem;
-        margin: 0;
-        text-transform: unset;
-        width: 10rem;
-
-        &:hover {
-            background: $yellow-hover;
-        }
-    }
-
-    .address {
-        align-self: center;
-        color: $gray;
-        display: flex;
-        flex-direction: row;
-        padding: 1rem;
-
-        h3 {
-            margin-right: 1rem;
-        }
-
-        svg {
-            cursor: pointer;
-            margin-bottom: 2px;
-            stroke: $gray-mid;
-            stroke-width: 3px;
-        }
-
-        * {
-            align-self: center;
-        }
-    }
-}
-.alert {
-    background: $gray-light;
-    border-radius: 5px;
+  .address {
+    align-self: center;
     color: $gray;
     display: flex;
     flex-direction: row;
-    font-family: 'archia';
-    font-size: 10px;
-    margin-right: .5rem;
-    padding: .5rem;
-    width: 6rem;
+    padding: 1rem;
+
+    h3 {
+      margin-right: 1rem;
+    }
 
     svg {
-        color: $gray-mid;
-        margin-right: .25rem;
-        margin-top: -.25rem;
-        stroke-width: 2px;
-        width: 36px !important;
+      cursor: pointer;
+      margin-bottom: 2px;
+      stroke: $gray-mid;
+      stroke-width: 3px;
     }
 
-    .alert-right {
-        width: 10rem;
+    * {
+      align-self: center;
+    }
+  }
+}
+.alert {
+  background: $gray-light;
+  border-radius: 5px;
+  color: $gray;
+  display: flex;
+  flex-direction: row;
+  font-family: "Roboto";
+  font-size: 11px;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  width: 6rem;
 
-        a {
-            background: $gray-light;
-            color: $gray;
-            padding-left: .1rem;
-            padding-right: .1rem;
+  svg {
+    color: $gray-mid;
+    margin-right: 0.25rem;
+    margin-top: -0.25rem;
+    stroke-width: 2px;
+    width: 36px !important;
+  }
 
-            &:hover {
-                background: $gray-hover;
-            }
-        }
+  .alert-right {
+    width: 10rem;
 
-        &.is-full {
-            width: 100%;
-        }
+    a {
+      background: $gray-light;
+      color: $gray;
+      padding-left: 0.1rem;
+      padding-right: 0.1rem;
+
+      &:hover {
+        background: $gray-hover;
+      }
     }
 
-    &.is-green {
-        background: $green-light;
-        color: $green;
-
-        svg {
-            stroke: $green-mid;
-        }
+    &.is-full {
+      width: 100%;
     }
+  }
+
+  &.is-green {
+    background: $green-light;
+    color: $green;
+
+    svg {
+      stroke: $green-mid;
+    }
+  }
 }
 .Essentials .address {
-    align-self: center;
-    color: #6c757d;
-    display: flex;
-    flex-direction: row;
-    padding: 1rem;
+  align-self: center;
+  color: #6c757d;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
 }
 
 .Essentials .address h3 {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 .Essentials .address * {
-    align-self: center;
+  align-self: center;
 }
 
 @media (min-width: 769px) {
-    .Home,
-    .State {
-        padding-top: 5rem;
+  .Home,
+  .State {
+    padding-top: 5rem;
+  }
+
+  .dark-mode {
+    .Navbar,
+    .expand {
+      background: #1e1e30 !important;
     }
 
-    // .Navbar {
-    //     background: $gray-light-opaque;
-    //     flex-direction: column;
-    //     height: 100%;
-    //     justify-content: flex-start;
-    //     min-width: 5rem;
-    //     position: fixed;
-    //     z-index: 99999;
-
-    //     .navbar-left {
-    //         margin-top: auto;
-    //         order: 3;
-    //         padding-left: 0;
-    //         padding-right: 0;
-    //         text-align: center;
-    //         transition: all .2s ease-in-out;
-    //         width: 100%;
-
-    //         &:hover {
-    //             background: $gray-hover;
-    //         }
-    //     }
-
-    //     .navbar-middle {
-    //         font-size: .6rem;
-    //         order: 1;
-    //         padding-bottom: 2rem;
-    //         padding-top: 2rem;
-    //         text-align: center;
-    //         width: 2.9rem;
-    //         word-wrap: break-word;
-    //     }
-
-    //     .navbar-right {
-    //         background: $gray-light-opaque;
-    //         display: flex;
-    //         flex-direction: column;
-    //         order: 2;
-    //         padding-bottom: 0;
-    //         padding-top: 0;
-
-    //         &:hover {
-    //             background: $gray-light-opaque !important;
-    //         }
-
-    //         & > span {
-    //             display: flex;
-    //             flex-direction: row;
-    //             height: 1.5rem;
-    //             justify-content: center;
-    //             margin-bottom: 1.5rem;
-    //             margin-top: 1.5rem;
-
-    //             svg {
-    //                 stroke: $gray;
-    //             }
-    //         }
-    //     }
-
-    //     .expand {
-    //         background: $gray-light-opaque;
-    //         border-right: solid 2px $gray-light-opaque;
-    //         flex-direction: column;
-    //         padding-left: 0;
-    //         padding-top: 9.75rem;
-    //         top: 0;
-    //         width: 15rem;
-    //         z-index: -1 !important;
-
-    //         & > * {
-    //             border: 0;
-    //             border-left: 1px solid $gray-light;
-    //             color: $gray;
-    //             font-weight: 600;
-    //             height: 1.5rem;
-    //             width: 12rem;
-    //         }
-    //     }
-    // }
-
-    .dark-mode {
-        .Navbar,
-        .expand {
-            background: #1e1e30 !important;
-        }
-
-        .navbar-right {
-            background: #1e1e30 !important;
-        }
+    .navbar-right {
+      background: #1e1e30 !important;
     }
+  }
 }
 
 @media (max-width: 769px) {
-    table,
-    .header,
-    .Level,
-    .TimeSeriesExplorer,
-    .Links,
-    .Minigraph,
-    .Summary,
-    .FAQ,
-    .MapExplorer,
-    .filters,
-    .updates,
-    .map-switcher,
-    .updates-header,
-    .StateMeta,
-    .Essentials {
-        width: calc(100% - 2rem);
+  table,
+  .header,
+  .Level,
+  .TimeSeriesExplorer,
+  .Links,
+  .Minigraph,
+  .Summary,
+  .FAQ,
+  .MapExplorer,
+  .filters,
+  .updates,
+  .map-switcher,
+  .updates-header,
+  .StateMeta,
+  .Essentials {
+    width: calc(100% - 2rem);
+  }
+
+  .Home,
+  .State {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+
+    .home-left,
+    .home-right,
+    .state-left,
+    .state-right {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .Level {
+    h1 {
+      font-size: 5vw !important;
     }
 
-    .Home,
-    .State {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-
-        .home-left,
-        .home-right,
-        .state-left,
-        .state-right {
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            width: 100%;
-        }
+    h5 {
+      font-size: 2.75vw !important;
     }
 
-    .Level {
-        h1 {
-            font-size: 5vw !important;
-        }
+    h4 {
+      font-size: 3vw !important;
+    }
+  }
 
-        h5 {
-            font-size: 2.75vw !important;
-        }
-
-        h4 {
-            font-size: 3vw !important;
-        }
+  .MapExplorer {
+    .svg-parent {
+      width: 100%;
     }
 
-    .MapExplorer {
-        .svg-parent {
-            width: 100%;
-        }
+    .header {
+      margin-top: 2rem;
+    }
+  }
 
-        .header {
-            margin-top: 2rem;
-        }
+  .link,
+  .faq {
+    width: calc(100% - 2rem);
+  }
+
+  .TimeSeries {
+    .svg-parent {
+      width: 100%;
+    }
+  }
+
+  .Minigraph {
+    .svg-parent {
+      padding: 0;
+    }
+  }
+
+  .map-stats {
+    .stats {
+      .timestamp {
+        width: 4.5rem;
+      }
+    }
+  }
+
+  a {
+    &.button {
+      display: flex;
+      flex: row;
+      justify-content: center;
+      width: 10rem;
+
+      & > * {
+        align-self: center;
+      }
+
+      svg {
+        width: 38px;
+      }
+    }
+  }
+
+  .Banner {
+    height: 7rem;
+
+    .snippet {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      width: 100%;
+    }
+  }
+
+  table {
+    td {
+      max-width: 6.75rem;
+    }
+  }
+
+  .cards-container {
+    padding: 0.5rem;
+
+    .cards {
+      .card {
+        flex: 0 1 100%;
+        height: 25rem;
+        margin-bottom: 0;
+      }
+
+      .chart-title {
+        padding: 20px 0 10px;
+      }
+
+      .card-big {
+        height: 30rem;
+      }
+    }
+  }
+
+  .Demographics {
+    margin-left: 0;
+    width: 100%;
+
+    .select {
+      .react-date-picker__calendar {
+        position: fixed;
+        top: 2.3rem !important;
+      }
     }
 
-    .link,
-    .faq {
-        width: calc(100% - 2rem);
+    .header {
+      margin: 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      width: calc(100% - 2rem);
     }
 
-    .TimeSeries {
-        .svg-parent {
-            width: 100%;
-        }
+    .reminder {
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+      width: calc(100% - 4rem);
     }
 
-    .Minigraph {
-        .svg-parent {
-            padding: 0;
-        }
+    .Patients {
+      width: calc(100% - 2rem);
     }
 
-    .map-stats {
-        .stats {
-            .timestamp {
-                width: 4.5rem;
-            }
+    .modal {
+      .modal-content {
+        width: calc(100% - 5rem);
+
+        .meta {
+          height: 20rem;
         }
+      }
     }
 
-    a {
-        &.button {
-            display: flex;
-            flex: row;
-            justify-content: center;
-            width: 10rem;
-
-            & > * {
-                align-self: center;
-            }
-
-            svg {
-                width: 38px;
-            }
-        }
+    .filters-left {
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
-    .Banner {
-        height: 7rem;
+    .filters {
+      align-self: center;
+      height: auto;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+  }
 
-        .snippet {
-            margin-left: 1rem;
-            margin-right: 1rem;
-            width: 100%;
+  .table-fineprint {
+    margin-right: 1.25rem;
+  }
+
+  .patients-summary {
+    width: calc(100% - 2rem);
+
+    .modal {
+      .modal-content {
+        width: calc(100% - 5rem);
+
+        .meta {
+          height: 20rem;
         }
+      }
+    }
+  }
+
+  .patientdb-wrapper {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+
+    .Patients {
+      width: 100%;
     }
 
-    table {
-        td {
-            max-width: 6.75rem;
-        }
+    .day {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  &.nationality {
+    margin-bottom: 0.5rem;
+  }
+
+  .Navbar {
+    .expand {
+      height: calc(100vh - 3.9rem);
+      overflow: auto;
+      transform: none !important;
     }
 
-    .cards-container {
-        padding: .5rem;
+    .navbar-right {
+      & > span {
+        display: none;
 
-        .cards {
-            .card {
-                flex: 0 1 100%;
-                height: 25rem;
-                margin-bottom: 0;
-            }
-
-            .chart-title {
-                padding: 20px 0 10px;
-            }
-
-            .card-big {
-                height: 30rem;
-            }
+        &:first-child {
+          display: initial;
         }
+      }
+    }
+  }
+
+  .Search {
+    .result-name {
+      max-width: 10rem !important;
+    }
+  }
+
+  .State {
+    .district-bar,
+    .to-essentials {
+      width: calc(100% - 3rem);
+
+      h1 {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .StateMeta {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: repeat(auto-fit, minmax(5rem));
+    margin-bottom: 1rem;
+
+    .meta-item {
+      min-width: 1rem;
+    }
+  }
+
+  .LanguageSwitcher {
+    .select-menu-modal {
+      background: transparent;
+      width: auto;
+
+      div {
+        background: none;
+      }
     }
 
-    .Demographics {
-        margin-left: 0;
-        width: 100%;
-
-        .select {
-            .react-date-picker__calendar {
-                position: fixed;
-                top: 2.3rem !important;
-            }
-        }
-
-        .header {
-            margin: 0;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            width: calc(100% - 2rem);
-        }
-
-        .reminder {
-            padding-bottom: 1rem;
-            padding-top: 1rem;
-            width: calc(100% - 4rem);
-        }
-
-        .Patients {
-            width: calc(100% - 2rem);
-        }
-
-        .modal {
-            .modal-content {
-                width: calc(100% - 5rem);
-
-                .meta {
-                    height: 20rem;
-                }
-            }
-        }
-
-        .filters-left {
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .filters {
-            align-self: center;
-            height: auto;
-            justify-content: center;
-            padding: .5rem;
-        }
+    .select-menu-list {
+      align-self: center;
     }
 
-    .table-fineprint {
-        margin-right: 1.25rem;
+    .select-menu-item {
+      width: 10rem !important;
     }
+  }
 
-    .patients-summary {
-        width: calc(100% - 2rem);
-
-        .modal {
-            .modal-content {
-                width: calc(100% - 5rem);
-
-                .meta {
-                    height: 20rem;
-                }
-            }
-        }
+  .Essentials {
+    .alert {
+      width: 15rem !important;
     }
-
-    .patientdb-wrapper {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-
-        .Patients {
-            width: 100%;
-        }
-
-        .day {
-            justify-content: center;
-            width: 100%;
-        }
-    }
-
-    &.nationality {
-        margin-bottom: .5rem;
-    }
-
-    .Navbar {
-        .expand {
-            height: calc(100vh - 3.9rem);
-            overflow: auto;
-            transform: none !important;
-        }
-
-        .navbar-right {
-            & > span {
-                display: none;
-
-                &:first-child {
-                    display: initial;
-                }
-            }
-        }
-    }
-
-    .Search {
-        .result-name {
-            max-width: 10rem !important;
-        }
-    }
-
-    .State {
-        .district-bar,
-        .to-essentials {
-            width: calc(100% - 3rem);
-
-            h1 {
-                padding-left: 0;
-            }
-        }
-    }
-
-    .StateMeta {
-        display: grid;
-        grid-gap: 1rem;
-        grid-template-rows: repeat(auto-fit, minmax(5rem));
-        margin-bottom: 1rem;
-
-        .meta-item {
-            min-width: 1rem;
-        }
-    }
-
-    .LanguageSwitcher {
-        .select-menu-modal {
-            background: transparent;
-            width: auto;
-
-            div {
-                background: none;
-            }
-        }
-
-        .select-menu-list {
-            align-self: center;
-        }
-
-        .select-menu-item {
-            width: 10rem !important;
-        }
-    }
-
-    .Essentials {
-        .alert {
-            width: 15rem !important;
-        }
-    }
+  }
 }
 
 // Dark Mode
 
 .dark-mode {
+  background: #161625 !important;
+  color: #bdbdbd;
+  transition: background-color 0.2s ease-out !important;
+
+  .switch-wrapper > div {
     background: #161625 !important;
-    color: #bdbdbd;
-    transition: background-color .2s ease-out !important;
+  }
 
-    .switch-wrapper > div {
-        background: #161625 !important;
+  .expand {
+    background: #1e1e30 !important;
+  }
+
+  .Navbar,
+  .expand {
+    border-right: 0;
+
+    .navbar-middle {
+      color: #bdbdbd;
     }
 
-    .expand {
+    .navbar-right {
+      background: #1e1e30 !important;
+    }
+  }
+
+  table {
+    th {
+      background: #1e1e30 !important;
+    }
+
+    .is-odd {
+      background: #1e1e30 !important;
+    }
+
+    .state-page-link {
+      background: #161625 !important;
+    }
+
+    .heading-content {
+      color: #bdbdbd !important;
+    }
+
+    .spacer {
+      background: #161625 !important;
+    }
+  }
+
+  .Search {
+    input {
+      background: #1e1e30 !important;
+    }
+  }
+
+  .State {
+    .header-right {
+      h5 {
+        color: #9673b9bb !important;
+      }
+
+      h2 {
+        color: #9673b9 !important;
+      }
+
+      a {
+        background: #40008050 !important;
+      }
+    }
+
+    .breadcrumb {
+      ul {
         background: #1e1e30 !important;
+
+        &::after {
+          border-bottom-color: #1e1e30 !important;
+        }
+
+        li {
+          a {
+            color: $gray !important;
+
+            &:hover {
+              color: $white !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .MapExplorer {
+    #chart,
+    #legend {
+      &.zone {
+        filter: none;
+      }
+
+      &:not(.zone) {
+        filter: invert(1) hue-rotate(180deg) saturate(1.5) url("#balance-color");
+      }
     }
 
-    .Navbar,
-    .expand {
-        border-right: 0;
-
-        .navbar-middle {
-            color: #bdbdbd;
-        }
-
-        .navbar-right {
-            background: #1e1e30 !important;
-        }
+    .maplegend {
+      background: #161625 !important;
     }
 
-    table {
-        th {
-            background: #1e1e30 !important;
-        }
-
-        .is-odd {
-            background: #1e1e30 !important;
-        }
-
-        .state-page-link {
-            background: #161625 !important;
-        }
-
-        .heading-content {
-            color: #bdbdbd !important;
-        }
-
-        .spacer {
-            background: #161625 !important;
-        }
-    }
-
-    .Search {
-        input {
-            background: #1e1e30 !important;
-        }
-    }
-
-    .State {
-        .header-right {
-            h5 {
-                color: #9673b9bb !important;
-            }
-
-            h2 {
-                color: #9673b9 !important;
-            }
-
-            a {
-                background: #40008050 !important;
-            }
-        }
-
-        .breadcrumb {
-            ul {
-                background: #1e1e30 !important;
-
-                &::after {
-                    border-bottom-color: #1e1e30 !important;
-                }
-
-                li {
-                    a {
-                        color: $gray !important;
-
-                        &:hover {
-                            color: $white !important;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .MapExplorer {
-        #chart,
-        #legend {
-            &.zone {
-                filter: none;
-            }
-
-            &:not(.zone) {
-                filter: invert(1) hue-rotate(180deg) saturate(1.5) url('#balance-color');
-            }
-        }
-
-        .maplegend {
-            background: #161625 !important;
-        }
-
-        .stats {
-            &.is-purple {
-                background: #40008050 !important;
-
-                h1 {
-                    color: #9673b9 !important;
-                }
-
-                h5,
-                h6 {
-                    color: #9673b9bb !important;
-                }
-
-                svg {
-                    stroke: #9673b9bb !important;
-
-                    &:hover {
-                        stroke: #9673b9 !important;
-                    }
-                }
-            }
-        }
-
-        .disclaimer {
-            color: $gray-light-opaque;
-        }
-    }
-
-    .TimeSeries,
-    .Minigraph {
-        .stats {
-            &.is-purple {
-                h5 {
-                    color: #9673b9bb !important;
-
-                    &.title {
-                        color: #9673b9 !important;
-                    }
-                }
-
-                h2,
-                h6 {
-                    color: #9673b9 !important;
-                }
-            }
-        }
-
-        .svg-parent {
-            &.is-purple {
-                background: #40008050 !important;
-
-                svg {
-                    .dot,
-                    .focus,
-                    .domain,
-                    .tick {
-                        stroke: #9673b9 !important;
-                    }
-
-                    .dot,
-                    .focus {
-                        fill: #9673b9 !important;
-                    }
-
-                    .trend,
-                    line {
-                        stroke: #9673b999 !important;
-                    }
-
-                    text {
-                        color: #9673b9bb !important;
-                        stroke: transparent;
-                    }
-                }
-            }
-        }
-    }
-
-    .tpm {
+    .stats {
+      &.is-purple {
         background: #40008050 !important;
 
-        h3,
-        h5,
-        svg,
-        p {
-            color: #9673b9bb !important;
-        }
-
         h1 {
+          color: #9673b9 !important;
+        }
+
+        h5,
+        h6 {
+          color: #9673b9bb !important;
+        }
+
+        svg {
+          stroke: #9673b9bb !important;
+
+          &:hover {
+            stroke: #9673b9 !important;
+          }
+        }
+      }
+    }
+
+    .disclaimer {
+      color: $gray-light-opaque;
+    }
+  }
+
+  .TimeSeries,
+  .Minigraph {
+    .stats {
+      &.is-purple {
+        h5 {
+          color: #9673b9bb !important;
+
+          &.title {
             color: #9673b9 !important;
+          }
         }
+
+        h2,
+        h6 {
+          color: #9673b9 !important;
+        }
+      }
     }
 
-    .tab {
-        &.focused {
-            background: #1e1e30 !important;
-            color: #bdbdbd !important;
+    .svg-parent {
+      &.is-purple {
+        background: #40008050 !important;
+
+        svg {
+          .dot,
+          .focus,
+          .domain,
+          .tick {
+            stroke: #9673b9 !important;
+          }
+
+          .dot,
+          .focus {
+            fill: #9673b9 !important;
+          }
+
+          .trend,
+          line {
+            stroke: #9673b999 !important;
+          }
+
+          text {
+            color: #9673b9bb !important;
+            stroke: transparent;
+          }
         }
+      }
+    }
+  }
+
+  .tpm {
+    background: #40008050 !important;
+
+    h3,
+    h5,
+    svg,
+    p {
+      color: #9673b9bb !important;
     }
 
-    .pills {
-        button {
-            &.selected {
-                background: #{$yellow}50;
-            }
-        }
+    h1 {
+      color: #9673b9 !important;
     }
+  }
 
-    .trends-state-name,
-    .select {
-        select {
-            background: #1e1e30;
-            background-image: linear-gradient(45deg, transparent 50%, $gray 50%),
-                linear-gradient(135deg, $gray 50%, transparent 50%);
-            background-position: calc(100% - 13px) 50%, calc(100% - 8px) 50%;
-            background-repeat: no-repeat;
-            background-size: 5px 5px, 5px 5px;
-            border-color: #9494941a;
-        }
+  .tab {
+    &.focused {
+      background: #1e1e30 !important;
+      color: #bdbdbd !important;
     }
+  }
 
+  .pills {
+    button {
+      &.selected {
+        background: #{$yellow}50;
+      }
+    }
+  }
+
+  .trends-state-name,
+  .select {
+    select {
+      background: #1e1e30;
+      background-image: linear-gradient(45deg, transparent 50%, $gray 50%),
+        linear-gradient(135deg, $gray 50%, transparent 50%);
+      background-position: calc(100% - 13px) 50%, calc(100% - 8px) 50%;
+      background-repeat: no-repeat;
+      background-size: 5px 5px, 5px 5px;
+      border-color: #9494941a;
+    }
+  }
+
+  input {
+    &.switch {
+      background-color: #161625 !important;
+      border: 2px solid $gray-mid !important;
+
+      &:checked {
+        background-color: #6c757d99 !important;
+
+        &::after {
+          background-color: #cfcfcf !important;
+        }
+      }
+
+      &::after {
+        background-color: #cfcfcf !important;
+      }
+    }
+  }
+
+  .disabled {
     input {
-        &.switch {
-            background-color: #161625 !important;
-            border: 2px solid $gray-mid !important;
+      &.switch {
+        background: $dark !important;
+        border: $gray-light 2px solid !important;
+        opacity: 0.7;
 
-            &:checked {
-                background-color: #6c757d99 !important;
-
-                &::after {
-                    background-color: #cfcfcf !important;
-                }
-            }
-
-            &::after {
-                background-color: #cfcfcf !important;
-            }
+        &::after {
+          background: $gray !important;
         }
+      }
+    }
+  }
+
+  .button {
+    &.github {
+      color: #bdbdbd !important;
+
+      svg {
+        stroke: #bdbdbd !important;
+      }
+    }
+  }
+
+  .FAQ {
+    .question {
+      color: $gray !important;
+    }
+  }
+
+  .Demographics {
+    .filters {
+      background: #1e1e30 !important;
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #1e1e30;
     }
 
-    .disabled {
-        input {
-            &.switch {
-                background: $dark !important;
-                border: $gray-light 2px solid !important;
-                opacity: .7;
+    .legend {
+      background: #1e1e30 !important;
+    }
 
-                &::after {
-                    background: $gray !important;
-                }
-            }
-        }
+    .react-date-picker {
+      background: #1e1e30;
+      border-color: #9494941a !important;
+    }
+
+    .modal-content {
+      background: #1e1e30 !important;
+    }
+
+    .modal {
+      background: #1e1e30bb !important;
+    }
+  }
+
+  .LanguageSwitcher {
+    summary {
+      box-shadow: none;
     }
 
     .button {
-        &.github {
-            color: #bdbdbd !important;
-
-            svg {
-                stroke: #bdbdbd !important;
-            }
-        }
+      background: #1e1e30;
     }
 
-    .FAQ {
-        .question {
-            color: $gray !important;
-        }
+    .select-menu-list {
+      background: transparent;
+      border: 0;
     }
 
-    .Demographics {
-        .filters {
-            background: #1e1e30 !important;
-            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .12), inset 0 -1px 0 0 #1e1e30;
-        }
+    .select-menu-modal {
+      background: transparent;
+      height: 100%;
 
-        .legend {
-            background: #1e1e30 !important;
-        }
-
-        .react-date-picker {
-            background: #1e1e30;
-            border-color: #9494941a !important;
-        }
-
-        .modal-content {
-            background: #1e1e30 !important;
-        }
-
-        .modal {
-            background: #1e1e30bb !important;
-        }
+      div {
+        background: none;
+        border: 1px solid #1e1e30bb;
+      }
     }
 
-    .LanguageSwitcher {
-        summary {
-            box-shadow: none;
-        }
-
-        .button {
-            background: #1e1e30;
-        }
-
-        .select-menu-list {
-            background: transparent;
-            border: 0;
-        }
-
-        .select-menu-modal {
-            background: transparent;
-            height: 100%;
-
-            div {
-                background: none;
-                border: 1px solid #1e1e30bb;
-            }
-        }
-
-        a {
-            &.select-menu-item {
-                background: #161625 !important;
-                border: 1px solid #1e1e30bb;
-            }
-        }
+    a {
+      &.select-menu-item {
+        background: #161625 !important;
+        border: 1px solid #1e1e30bb;
+      }
     }
+  }
 }
 
 // Animation Support
 
 .fadeInUp {
-    animation-duration: .45s;
-    animation-fill-mode: both;
-    animation-name: fadeInUp;
+  animation-duration: 0.45s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
 }
 
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .rotateDownRight {
-    animation-duration: .25s;
-    animation-fill-mode: both;
-    animation-name: rotateDownRight;
+  animation-duration: 0.25s;
+  animation-fill-mode: both;
+  animation-name: rotateDownRight;
 }
 
 @keyframes rotateDownRight {
-    100% {
-        transform: rotate(-90deg);
-    }
+  100% {
+    transform: rotate(-90deg);
+  }
 }
 
 .rotateRightDown {
-    animation-duration: .25s;
-    animation-fill-mode: both;
-    animation-name: rotateRightDown;
+  animation-duration: 0.25s;
+  animation-fill-mode: both;
+  animation-name: rotateRightDown;
 }
 
 @keyframes rotateRightDown {
-    0% {
-        transform: rotate(-90deg);
-    }
+  0% {
+    transform: rotate(-90deg);
+  }
 }
 
 .fadeOutDown {
-    animation-duration: .45s;
-    animation-fill-mode: both;
-    animation-name: fadeOutDown;
+  animation-duration: 0.45s;
+  animation-fill-mode: both;
+  animation-name: fadeOutDown;
 }
 
 @keyframes fadeOutDown {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    100% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }
-
-// .alert {
-//     background: $gray-light;
-//     border-radius: 5px;
-//     color: $gray;
-//     display: flex;
-//     flex-direction: row;
-//     font-family: 'archia';
-//     font-size: 10px;
-//     margin-right: .5rem;
-//     padding: .5rem;
-//     width: 6rem;
-
-//     svg {
-//         color: $gray-mid;
-//         margin-right: .25rem;
-//         margin-top: -.25rem;
-//         stroke-width: 2px;
-//         width: 36px !important;
-//     }
-
-//     .alert-right {
-//         width: 10rem;
-
-//         a {
-//             background: $gray-light;
-//             color: $gray;
-//             padding-left: .1rem;
-//             padding-right: .1rem;
-
-//             &:hover {
-//                 background: $gray-hover;
-//             }
-//         }
-
-//         &.is-full {
-//             width: 100%;
-//         }
-//     }
-
-//     &.is-green {
-//         background: $green-light;
-//         color: $green;
-
-//         svg {
-//             stroke: $green-mid;
-//         }
-//     }
-// }

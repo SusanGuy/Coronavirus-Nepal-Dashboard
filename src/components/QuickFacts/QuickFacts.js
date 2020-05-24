@@ -23,7 +23,7 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         });
       } catch (error) {}
     };
-    console.log(moment().subtract(1, "days"));
+
     getYesterDayData(moment().subtract(1, "days").format("YYYY-MM-DD"));
   }, [deaths, recovered, total]);
 
