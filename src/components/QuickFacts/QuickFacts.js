@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import moment from "moment-timezone";
+import moment from "moment";
 const QuickFacts = ({ total, recovered, deaths, active }) => {
   const [newData, setNewData] = useState({
     newTotal: 0,
