@@ -8,6 +8,7 @@ import { initGA, PageView } from "./analytics";
 import "./App.scss";
 import { Switch, Route } from "react-router-dom";
 import Feed from "./containers/Feed/Feed";
+import EssentialsContainer from "./containers/Essentials/Essentials";
 function App() {
   useEffect(() => {
     process.env.NODE_ENV !== "development" && initGA("UA-167235016-1");
@@ -23,6 +24,7 @@ function App() {
       <Switch>
         <Route path="/about-us" exact component={AboutUs} />
         <Route path="/feed" exact component={Feed} />
+        <Route path="/hospitals" exact component={EssentialsContainer} />
         <Route path="/" component={Home} />
       </Switch>
       <Footer />

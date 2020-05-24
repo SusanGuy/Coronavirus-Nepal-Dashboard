@@ -75,6 +75,11 @@ const Nav = ({ mode, setMode }) => {
                 <Icon.Facebook />
               </Link>
             </span>
+            <span>
+              <Link to="/hospitals">
+                <Icon.Heart />
+              </Link>
+            </span>
           </React.Fragment>
         )}
       </div>
