@@ -19,7 +19,7 @@ function App() {
   }, []);
   const [mode, setMode] = useState(false);
   return (
-    <div className={`App ${!mode ? "" : "dark-mode"}`}>
+    <div className={`App ${mode ? "" : "dark-mode"}`}>
       <Nav setMode={setMode} mode={mode} />
       <Switch>
         <Route path="/about-us" exact component={AboutUs} />
