@@ -26,9 +26,7 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
       } catch (error) {}
     };
 
-    getYesterDayData(
-      moment.tz("Asia/Kathmandu").subtract(1, "days").format("YYYY-MM-DD")
-    );
+    getYesterDayData(moment().subtract(1, "days").format("YYYY-MM-DD"));
   }, [deaths, recovered, total]);
 
   const { newTotal, newRecovered, newDeath } = newData;
@@ -40,7 +38,7 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         style={{ animationDelay: "1s" }}
       >
         <h5>Confirmed</h5>
-        {newTotal > 0 ? <h4>[+{newTotal}]</h4> : <h4>&nbsp;</h4>}
+        {newTotal && newTotal > 0 ? <h4>[+{newTotal}]</h4> : <h4>&nbsp;</h4>}
         <h1>{total}</h1>
       </div>
       <div
@@ -56,7 +54,11 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         style={{ animationDelay: "1.2s" }}
       >
         <h5 className="heading">Recovered</h5>
-        {newRecovered > 0 ? <h4>[+{newRecovered}]</h4> : <h4>&nbsp;</h4>}
+        {newRecovered && newRecovered > 0 ? (
+          <h4>[+{newRecovered}]</h4>
+        ) : (
+          <h4>&nbsp;</h4>
+        )}
         <h1 className="title has-text-success">{recovered}</h1>
       </div>
       <div
@@ -64,7 +66,7 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         style={{ animationDelay: "1.3s" }}
       >
         <h5 className="heading">Deceased</h5>
-        {newDeath > 0 ? <h4>[+{newDeath}]</h4> : <h4>&nbsp;</h4>}
+        {newDeath && newDeath > 0 ? <h4>[+{newDeath}]</h4> : <h4>&nbsp;</h4>}
         <h1 className="title has-text-grey">{deaths}</h1>
       </div>
     </div>
