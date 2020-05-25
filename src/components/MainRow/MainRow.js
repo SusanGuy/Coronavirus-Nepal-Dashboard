@@ -10,9 +10,10 @@ const MainRow = ({
   additionalTotal,
   additionalDeaths,
   additionalRecovery,
+  mama,
 }) => {
   return (
-    <tr className="state">
+    <tr className={`state ${mama && "is-total"}`}>
       <td>
         <div className="title-chevron">
           <span className="title-icon">

@@ -5,6 +5,21 @@ import { useWindowSize } from "react-use";
 const MainTable = ({ type, search, districtCases, provinceCases }) => {
   const windowSize = useWindowSize();
 
+
+  const districtBody = {
+    total: 0,
+    active: 0,
+    recovered: 0,
+    deaths: 0,
+  };
+
+  districtCases.forEach((dist) => {
+    districtBody.total = districtBody.total + dist.total;
+    districtBody.recovered = districtBody.recovered + dist.recovered;
+    districtBody.deaths = districtBody.deaths + dist.deaths;
+    districtBody.active = districtBody.active + dist.active;
+  });
+
   return (
     <div
       className="scrollable-table"
@@ -66,6 +81,9 @@ const MainTable = ({ type, search, districtCases, provinceCases }) => {
                   dat.name.toLowerCase().includes(search.toLowerCase())
                 )
                 .map(({ id, ...rest }) => <MainRow key={id} {...rest} />)}
+        </tbody>
+        <tbody>
+          <MainRow name="Total" mama="is-total" {...districtBody} />
         </tbody>
       </table>
     </div>

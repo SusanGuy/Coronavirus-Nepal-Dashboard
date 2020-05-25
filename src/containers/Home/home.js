@@ -5,46 +5,108 @@ import axios from "../../axios";
 import RightContainer from "../../components/RightContainer/RightContainer";
 import LeftContainer from "../../components/LeftContainer/LeftContainer";
 const Home = () => {
-  const [districtCases, setDistrictCases] = useState([]);
-  const [provinceCases, setProvinceCases] = useState([]);
+  const [totalCases, setTotalCases] = useState([]);
+
   const [selectType, setSelectType] = useState(1);
 
   useEffect(() => {
-    const getDistrictData = async () => {
+    const getTotalData = async () => {
       try {
-        const { data } = await axios.get("/districts");
-        setDistrictCases(data);
+        const { data } = await axios.get("/");
+        setTotalCases(data);
       } catch (error) {
         console.log(error);
       }
     };
 
-    const getProvinceData = async () => {
-      try {
-        const { data } = await axios.get("/provinces");
-        setProvinceCases(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getDistrictData();
-    getProvinceData();
+    getTotalData();
   }, []);
+
+  const districtCases = totalCases.map(
+    ({
+      name,
+      id,
+      total,
+      deaths,
+      recovered,
+      additionalDeaths,
+      additionalRecovery,
+      active,
+      additionalTotal,
+    }) => {
+      return {
+        name,
+        id,
+        total,
+        deaths,
+        recovered,
+        additionalDeaths,
+        additionalRecovery,
+        additionalTotal,
+        active,
+      };
+    }
+  );
+
+  let provinceCases = [];
+
+  if (totalCases.length === 0) {
+    provinceCases = [];
+  } else {
+    for (let i = 1; i < 8; i++) {
+      const totalDistrictData = totalCases.filter(
+        (dist) => dist.provinceId === i
+      );
+      provinceCases.push({
+        id: i,
+        name: totalDistrictData.find((dist) => dist.provinceId === i)
+          .provinceName,
+        total: totalDistrictData.reduce(
+          (init, current) => init + current.total,
+          0
+        ),
+        active: totalDistrictData.reduce(
+          (init, current) => init + current.active,
+          0
+        ),
+        recovered: totalDistrictData.reduce(
+          (init, current) => init + current.recovered,
+          0
+        ),
+        deaths: totalDistrictData.reduce(
+          (init, current) => init + current.deaths,
+          0
+        ),
+        additionalTotal: totalDistrictData.reduce(
+          (init, current) => init + current.additionalTotal,
+          0
+        ),
+        additionalRecovery: totalDistrictData.reduce(
+          (init, current) => init + current.additionalRecovery,
+          0
+        ),
+        additionalDeaths: totalDistrictData.reduce(
+          (init, current) => init + current.additionalDeaths,
+          0
+        ),
+      });
+    }
+  }
 
   return (
     <div className="Home">
       <LeftContainer
+        provinceCases={provinceCases}
+        districtCases={districtCases}
         selectType={selectType}
         setSelectType={setSelectType}
-        districtCases={districtCases}
-        provinceCases={provinceCases}
       />
       <RightContainer
         selectType={selectType}
         setSelectType={setSelectType}
-        districtCases={districtCases}
+        totalData={totalCases}
         provinceCases={provinceCases}
+        districtCases={districtCases}
       />
     </div>
   );

@@ -4,12 +4,7 @@ import MiniGraph from "../MiniGraph/MiniGraph";
 import MapView from "../MapView/MapView";
 import moment from "moment";
 import axios from "axios";
-const LeftContainer = ({
-  districtCases,
-  provinceCases,
-  selectType,
-  setSelectType,
-}) => {
+const LeftContainer = ({ districtCases, provinceCases, selectType }) => {
   const [facts, setFacts] = useState({
     cases: { total: 0, active: 0, recovered: 0, deaths: 0 },
     date: "",
