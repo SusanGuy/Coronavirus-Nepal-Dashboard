@@ -1,51 +1,146 @@
-import React, { useEffect, useState } from "react";
-
+import React, { Fragment, useEffect, useState } from "react";
+import _ from "lodash";
+import moment from "moment";
 import axios from "../../axios";
-
+import ContentLoader from "../../components/ContentLoader/ContentLoader";
 import RightContainer from "../../components/RightContainer/RightContainer";
 import LeftContainer from "../../components/LeftContainer/LeftContainer";
 const Home = () => {
-  const [districtCases, setDistrictCases] = useState([]);
-  const [provinceCases, setProvinceCases] = useState([]);
-  const [selectType, setSelectType] = useState(1);
+  const [mainCases, setTotalCases] = useState({
+    totalCases: [],
+    loading: true,
+  });
+
+  const [selectType, setSelectType] = useState(2);
+  const [covidData, setCovidData] = useState([]);
 
   useEffect(() => {
-    const getDistrictData = async () => {
+    const getTotalData = async () => {
       try {
-        const { data } = await axios.get("/districts");
-        setDistrictCases(data);
+        const { data } = await axios.get("/");
+        setTotalCases({ totalCases: data, loading: false });
+      } catch (error) {
+        setTotalCases({ totalCases: [], loading: false });
+        console.log(error);
+      }
+    };
+    const getAllFacts = async () => {
+      try {
+        const { data } = await axios.get(
+          "https://data.nepalcorona.info/api/v1/covid"
+        );
+
+        setCovidData(data);
       } catch (error) {
         console.log(error);
       }
     };
 
-    const getProvinceData = async () => {
-      try {
-        const { data } = await axios.get("/provinces");
-        setProvinceCases(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getDistrictData();
-    getProvinceData();
+    getTotalData();
+    getAllFacts();
   }, []);
+
+  const calculateAdditional = (arr, field) => {
+    return arr.reduce((init, current) => init + current[field], 0);
+  };
+
+  const { totalCases, loading } = mainCases;
+
+  let districtCases = [];
+  let provinceCases = [];
+  if (totalCases.length !== 0) {
+    totalCases.forEach(({ id, name, districts }) => {
+      provinceCases.push({
+        id,
+        name,
+        total: calculateAdditional(districts, "total"),
+        recovered: calculateAdditional(districts, "recovered"),
+        deaths: calculateAdditional(districts, "deaths"),
+        active: calculateAdditional(districts, "active"),
+        additionalTotal: calculateAdditional(districts, "additionalTotal"),
+        additionalRecovery: calculateAdditional(
+          districts,
+          "additionalRecovery"
+        ),
+        additionalDeaths: calculateAdditional(districts, "additionalDeaths"),
+        additionalActive: calculateAdditional(districts, "additionalActive"),
+      });
+      districtCases.push(...districts);
+    });
+  }
+
+  const facts = {
+    total: districtCases.reduce((init, current) => init + current.total, 0),
+    recovered: districtCases.reduce(
+      (init, current) => init + current.recovered,
+      0
+    ),
+    active: districtCases.reduce((init, current) => init + current.active, 0),
+    deaths: districtCases.reduce((init, current) => init + current.deaths, 0),
+    newTotal: districtCases.reduce(
+      (init, current) => init + current.additionalTotal,
+      0
+    ),
+    newRecovered: districtCases.reduce(
+      (init, current) => init + current.additionalRecovery,
+      0
+    ),
+    newDeath: districtCases.reduce(
+      (init, current) => init + current.additionalDeaths,
+      0
+    ),
+    newActive: districtCases.reduce(
+      (init, current) => init + current.additionalActive,
+      0
+    ),
+  };
+
+  let groupedTimeline = _.mapValues(
+    _.groupBy(
+      covidData.map((dat) => {
+        return {
+          ...dat,
+          createdOn: moment(new Date(dat.createdOn)).format("YYYY-MM-DD"),
+        };
+      }),
+      "province"
+    ),
+    (clist) => clist.map((data) => _.omit(data, "province"))
+  );
 
   return (
     <div className="Home">
-      <LeftContainer
-        selectType={selectType}
-        setSelectType={setSelectType}
-        districtCases={districtCases}
-        provinceCases={provinceCases}
-      />
-      <RightContainer
-        selectType={selectType}
-        setSelectType={setSelectType}
-        districtCases={districtCases}
-        provinceCases={provinceCases}
-      />
+      {loading ? (
+        <ContentLoader />
+      ) : (
+        <Fragment>
+          <LeftContainer
+            {...facts}
+            date={
+              covidData.length !== facts.total
+                ? new Date()
+                : covidData[covidData.length - 1].modifiedOn
+            }
+            provinceCases={provinceCases}
+            totalData={totalCases}
+          />
+          <RightContainer
+            {...facts}
+            selectType={selectType}
+            setSelectType={setSelectType}
+            provinceCases={provinceCases}
+            districtCases={districtCases.sort((a, b) => {
+              if (a.total < b.total) {
+                return 1;
+              } else if (a.total > b.total) {
+                return -1;
+              } else {
+                return 0;
+              }
+            })}
+          />
+        </Fragment>
+      )}
     </div>
   );
 };

@@ -1,16 +1,21 @@
-import React, { useState } from "react";
-import MainTable from "../MainTable/MainTable";
+import React from "react";
 import Tabs from "../Tabs/Tabs";
-import Municipality from "../Municipality/Municipality";
-import Search from "../Search/Search";
-const RightContainer = ({ selectType, setSelectType, ...props }) => {
-  const [searchValue, setSearchValue] = useState("");
+
+import MapView from "../MapView/MapView";
+const RightContainer = ({
+  selectType,
+  setSelectType,
+  districtCases,
+  provinceCases,
+}) => {
   return (
     <div className="home-right">
+      <MapView
+        selectType={selectType}
+        districtData={districtCases}
+        provinceData={provinceCases}
+      />
       <Tabs selectType={selectType} setSelectType={setSelectType} />
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      <MainTable {...props} search={searchValue} type={selectType} />
-      <Municipality />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "../../axios";
 import District from "./District/District";
 import Province from "./Province/Province";
+import invert from 'invert-color'
 
 import Box from "../Box/Box";
 const MapView = ({ districtData, provinceData, selectType }) => {
@@ -9,14 +10,16 @@ const MapView = ({ districtData, provinceData, selectType }) => {
 
   const [hoveredProvince, setHoveredProvince] = useState("");
   const [hoveredDistrict, setHoveredDistrict] = useState("");
+  const mode = 'dark'
 
-  const colorRange = [
-    "#3c0912",
-    "#64111b",
-    "#8e141d",
-    "#b12b1b",
-    "#c0573f",
-  ].reverse();
+
+  let colorRange = [
+
+    "#E8FFAA",
+    "#FFD666",
+    "#FF9144",
+    "#FF073A"
+  ]
   useEffect(() => {
     const getMap = async () => {
       try {
@@ -64,6 +67,22 @@ const MapView = ({ districtData, provinceData, selectType }) => {
     }
   }
 
+  if (mode === 'dark') {
+    // for (let i = 0; i < colorRange.length; i++) {
+    //   const element = colorRange[i];
+    //   colorRange[i] = invert(element)
+
+    // }
+    colorRange = [
+      "#2A0021",
+      // "#56002C",
+      "#800021",
+      "#AA0000",
+      "#CB3E3E",
+
+    ]
+  }
+
   const { name, ...rest } = activeData;
 
   return (
@@ -102,6 +121,8 @@ const MapView = ({ districtData, provinceData, selectType }) => {
                 }).total;
               }
 
+              // h = Math.random() * 100
+
               if (selectType === 1) {
                 if (h === 0) {
                   color = colorRange[0];
@@ -113,11 +134,11 @@ const MapView = ({ districtData, provinceData, selectType }) => {
                   color = colorRange[3];
                 }
               } else {
-                if (h === 0) {
+                if (h < 25) {
                   color = colorRange[0];
-                } else if (h < 40) {
+                } else if (h < 50) {
                   color = colorRange[1];
-                } else if (h < 80) {
+                } else if (h < 100) {
                   color = colorRange[2];
                 } else {
                   color = colorRange[3];

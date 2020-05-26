@@ -1433,194 +1433,223 @@ table {
         h3 {
             margin: 0;
         }
-
-        h3 {
-            color: $gray-mid;
-            font-weight: 900;
+        .unknown {
+            svg {
+                color: $gray-mid;
+                height: 12px;
+                padding-left: 2px;
+                stroke-width: 3;
+                vertical-align: -1.5px;
+                width: 12px;
+            }
         }
 
-        .stats {
-            background: $cherry-light;
-            border-radius: 5px;
-            color: $cherry-mid;
+        .dropdown {
+            background: rgba(108, 117, 125, 0.0627451);
+            border-radius: 50%;
             cursor: pointer;
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            margin-bottom: 1rem;
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
-            padding: 0.25rem;
-            position: relative;
-            transition: all 0.1s ease-in-out;
+            height: 13px;
+            left: -0.95rem;
+            position: absolute;
+            top: 0.125rem;
+            transition: background 0.2s ease-in-out;
+            width: 13px;
 
-            .stats-bottom {
+            h3 {
+                color: $gray-mid;
+                font-weight: 900;
+            }
+
+            .stats {
+                background: $cherry-light;
+                border-radius: 5px;
+                color: $cherry-mid;
+                cursor: pointer;
                 display: flex;
+                flex: 1;
                 flex-direction: column;
+                margin-bottom: 1rem;
+                margin-left: 0.25rem;
+                margin-right: 0.25rem;
+                padding: 0.25rem;
+                position: relative;
+                transition: all 0.1s ease-in-out;
 
-                h6 {
+                .stats-bottom {
+                    display: flex;
+                    flex-direction: column;
+
+                    h6 {
+                        font-weight: 900;
+                        margin-bottom: 0.25rem;
+                        margin-top: auto;
+                    }
+                }
+
+                h1 {
+                    color: $cherry;
+                    font-size: 1em !important;
+                    font-weight: 600;
+                }
+                svg {
+                    left: 1px;
+                    position: absolute;
+                    stroke-width: 3;
+                    top: -0.35rem;
+                    width: 11px;
+                }
+            }
+        }
+
+        &.is-green {
+            background: $green-light;
+
+            h5,
+            h6 {
+                color: $green-mid;
+            }
+
+            h1 {
+                color: $green;
+            }
+        }
+
+        &.is-blue {
+            background: $blue-light;
+
+            h5,
+            h6 {
+                color: $blue-mid;
+            }
+
+            h1 {
+                color: $blue;
+            }
+        }
+
+        &.is-gray {
+            background: $gray-light;
+
+            h5,
+            h6 {
+                color: $gray-mid;
+            }
+
+            h1 {
+                color: $gray;
+            }
+        }
+
+        &.is-yellow {
+            background: $yellow;
+
+            h5,
+            h6 {
+                color: $white;
+            }
+
+            h1 {
+                color: $white;
+            }
+        }
+
+        &.is-purple {
+            background: $purple-light;
+            padding-right: 1rem;
+
+            h5,
+            h6 {
+                color: $purple-mid;
+
+                &.timestamp {
                     font-weight: 900;
-                    margin-bottom: 0.25rem;
-                    margin-top: auto;
+                    margin: 0;
                 }
             }
 
             h1 {
-                color: $cherry;
-                font-size: 1em !important;
-                font-weight: 600;
+                color: $purple;
             }
 
-            &.is-green {
-                background: $green-light;
+            svg {
+                cursor: pointer;
+                position: absolute;
+                right: 0.35rem;
+                stroke: $purple-mid;
+                stroke-width: 3;
+                top: 0;
+                transition: stroke 0.2s ease-in-out;
+                width: 12px;
 
-                h5,
-                h6 {
-                    color: $green-mid;
-                }
-
-                h1 {
-                    color: $green;
-                }
-            }
-
-            &.is-blue {
-                background: $blue-light;
-
-                h5,
-                h6 {
-                    color: $blue-mid;
-                }
-
-                h1 {
-                    color: $blue;
+                &:hover {
+                    stroke: $purple;
                 }
             }
 
-            &.is-gray {
-                background: $gray-light;
-
-                h5,
-                h6 {
-                    color: $gray-mid;
-                }
-
-                h1 {
-                    color: $gray;
-                }
-            }
-
-            &.is-yellow {
-                background: $yellow;
-
-                h5,
-                h6 {
-                    color: $white;
-                }
-
-                h1 {
-                    color: $white;
-                }
-            }
-
-            &.is-purple {
-                background: $purple-light;
-                padding-right: 1rem;
-
-                h5,
-                h6 {
-                    color: $purple-mid;
-
-                    &.timestamp {
-                        font-weight: 900;
-                        margin: 0;
-                    }
-                }
-
-                h1 {
-                    color: $purple;
-                }
-
+            .tooltip-tested {
                 svg {
-                    cursor: pointer;
-                    position: absolute;
-                    right: 0.35rem;
-                    stroke: $purple-mid;
-                    stroke-width: 3;
-                    top: 0;
-                    transition: stroke 0.2s ease-in-out;
-                    width: 12px;
-
-                    &:hover {
-                        stroke: $purple;
-                    }
-                }
-
-                .tooltip-tested {
-                    svg {
-                        bottom: 0.3rem;
-                        top: auto;
-                    }
+                    bottom: 0.3rem;
+                    top: auto;
                 }
             }
+        }
 
-            &.focused {
-                margin-bottom: 0.5rem;
-                margin-top: -0.5rem;
-                padding-bottom: 0.75rem;
-                padding-top: 0.75rem;
-            }
+        &.focused {
+            margin-bottom: 0.5rem;
+            margin-top: -0.5rem;
+            padding-bottom: 0.75rem;
+            padding-top: 0.75rem;
+        }
 
-            &:first-child {
-                margin-left: 0;
-            }
+        &:first-child {
+            margin-left: 0;
+        }
 
-            &:last-child {
-                margin-right: 0;
-            }
+        &:last-child {
+            margin-right: 0;
         }
     }
+}
 
-    #chart,
-    #legend {
-        filter: saturate(1.5);
+#chart,
+#legend {
+    filter: saturate(1.5);
+}
+
+.disclaimer {
+    backdrop-filter: saturate(180%) blur(20px);
+    background: $gray-light;
+    border-radius: 5px;
+    bottom: 50%;
+    color: $gray-dark;
+    display: flex;
+    flex-direction: row;
+    font-family: "Roboto";
+    font-size: 12px;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5rem;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    width: 14rem;
+    z-index: 99;
+
+    svg {
+        margin-right: 0.25rem;
+        margin-top: -0.9rem;
+        stroke-width: 2px;
+        width: 20px !important;
     }
+}
 
-    .disclaimer {
-        backdrop-filter: saturate(180%) blur(20px);
-        background: $gray-light;
-        border-radius: 5px;
-        bottom: 50%;
-        color: $gray-dark;
-        display: flex;
-        flex-direction: row;
-        font-family: "Roboto";
-        font-size: 12px;
-        left: 0;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0.5rem;
-        pointer-events: none;
-        position: absolute;
-        right: 0;
-        width: 14rem;
-        z-index: 99;
-
-        svg {
-            margin-right: 0.25rem;
-            margin-top: -0.9rem;
-            stroke-width: 2px;
-            width: 20px !important;
-        }
-    }
-
-    .footnote {
-        &.table-fineprint {
-            margin-bottom: 0;
-            margin-top: 1em;
-            text-align: left;
-            z-index: 1;
-        }
+.footnote {
+    &.table-fineprint {
+        margin-bottom: 0;
+        margin-top: 1em;
+        text-align: left;
+        z-index: 1;
     }
 }
 
@@ -2450,203 +2479,221 @@ table {
         }
     }
 
-    .TimeSeries,
-    .Minigraph {
-        .stats {
-            &.is-purple {
-                h5 {
-                    color: #9673b9bb !important;
+    @media (max-width: 769px) {
+        .header,
+        .table,
+        .Level,
+        .TimeSeriesExplorer,
+        .Links,
+        .Minigraph,
+        .Summary,
+        .FAQ,
+        .MapExplorer,
+        .filters,
+        .updates,
+        .map-switcher,
+        .updates-header,
+        .StateMeta,
+        .Essentials {
+            width: calc(100% - 2rem);
+        }
 
-                    &.title {
-                        color: #9673b9 !important;
-                    }
-                }
+        .Home,
+        .State {
+            display: flex;
+            flex-direction: column;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
 
-                h2,
-                h6 {
-                    color: #9673b9 !important;
-                }
+            &.title {
+                color: #9673b9 !important;
             }
         }
 
-        .svg-parent {
-            &.is-purple {
-                background: #40008050 !important;
-
-                svg {
-                    .dot,
-                    .focus,
-                    .domain,
-                    .tick {
-                        stroke: #9673b9 !important;
-                    }
-
-                    .dot,
-                    .focus {
-                        fill: #9673b9 !important;
-                    }
-
-                    .trend,
-                    line {
-                        stroke: #9673b999 !important;
-                    }
-
-                    text {
-                        color: #9673b9bb !important;
-                        stroke: transparent;
-                    }
-                }
-            }
-        }
-    }
-
-    .tpm {
-        background: #40008050 !important;
-
-        h3,
-        h5,
-        svg,
-        p {
-            color: #9673b9bb !important;
-        }
-
-        h1 {
+        h2,
+        h6 {
             color: #9673b9 !important;
         }
     }
+}
 
-    .tab {
-        &.focused {
-            background: #1e1e30 !important;
-            color: #bdbdbd !important;
-        }
-    }
+.svg-parent {
+    &.is-purple {
+        background: #40008050 !important;
 
-    .pills {
-        button {
-            &.selected {
-                background: #{$yellow}50;
+        svg {
+            .dot,
+            .focus,
+            .domain,
+            .tick {
+                stroke: #9673b9 !important;
+            }
+
+            .dot,
+            .focus {
+                fill: #9673b9 !important;
+            }
+
+            .trend,
+            line {
+                stroke: #9673b999 !important;
+            }
+
+            text {
+                color: #9673b9bb !important;
+                stroke: transparent;
             }
         }
     }
+}
 
-    .trends-state-name,
-    .select {
-        select {
-            background: #1e1e30;
-            background-image: linear-gradient(45deg, transparent 50%, $gray 50%),
-                linear-gradient(135deg, $gray 50%, transparent 50%);
-            background-position: calc(100% - 13px) 50%, calc(100% - 8px) 50%;
-            background-repeat: no-repeat;
-            background-size: 5px 5px, 5px 5px;
-            border-color: #9494941a;
-        }
+.tpm {
+    background: #40008050 !important;
+
+    h3,
+    h5,
+    svg,
+    p {
+        color: #9673b9bb !important;
     }
 
-    input {
-        &.switch {
-            background-color: #161625 !important;
-            border: 2px solid $gray-mid !important;
+    h1 {
+        color: #9673b9 !important;
+    }
+}
 
-            &:checked {
-                background-color: #6c757d99 !important;
+.tab {
+    &.focused {
+        background: #1e1e30 !important;
+        color: #bdbdbd !important;
+    }
+}
 
-                &::after {
-                    background-color: #cfcfcf !important;
-                }
-            }
+.pills {
+    button {
+        &.selected {
+            background: #{$yellow}50;
+        }
+    }
+}
+
+.trends-state-name,
+.select {
+    select {
+        background: #1e1e30;
+        background-image: linear-gradient(45deg, transparent 50%, $gray 50%),
+            linear-gradient(135deg, $gray 50%, transparent 50%);
+        background-position: calc(100% - 13px) 50%, calc(100% - 8px) 50%;
+        background-repeat: no-repeat;
+        background-size: 5px 5px, 5px 5px;
+        border-color: #9494941a;
+    }
+}
+
+input {
+    &.switch {
+        background-color: #161625 !important;
+        border: 2px solid $gray-mid !important;
+
+        &:checked {
+            background-color: #6c757d99 !important;
 
             &::after {
                 background-color: #cfcfcf !important;
             }
         }
+
+        &::after {
+            background-color: #cfcfcf !important;
+        }
     }
+}
 
-    .disabled {
-        input {
-            &.switch {
-                background: $dark !important;
-                border: $gray-light 2px solid !important;
-                opacity: 0.7;
+.disabled {
+    input {
+        &.switch {
+            background: $dark !important;
+            border: $gray-light 2px solid !important;
+            opacity: 0.7;
 
-                &::after {
-                    background: $gray !important;
-                }
+            &::after {
+                background: $gray !important;
             }
         }
     }
+}
 
-    .button {
-        &.github {
-            color: #bdbdbd !important;
+.button {
+    &.github {
+        color: #bdbdbd !important;
 
-            svg {
-                stroke: #bdbdbd !important;
-            }
+        svg {
+            stroke: #bdbdbd !important;
+        }
+    }
+}
+
+.FAQ {
+    .question {
+        color: $gray !important;
+    }
+}
+
+.Demographics {
+    .filters {
+        background: #1e1e30 !important;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #1e1e30;
+    }
+
+    .legend {
+        background: #1e1e30 !important;
+    }
+
+    .react-date-picker {
+        background: #1e1e30;
+        border-color: #9494941a !important;
+    }
+
+    .modal-content {
+        background: #1e1e30 !important;
+    }
+
+    .modal {
+        background: #1e1e30bb !important;
+    }
+}
+
+.Clusters {
+    canvas {
+        filter: invert(1) hue-rotate(180deg) saturate(5);
+    }
+}
+
+.LanguageSwitcher {
+    summary {
+        box-shadow: none;
+    }
+
+    .select-menu-list {
+        background: transparent;
+        border: 0;
+    }
+
+    .select-menu-modal {
+        background: transparent;
+        height: 100%;
+
+        div {
+            background: none;
+            border: 1px solid #1e1e30bb;
         }
     }
 
-    .FAQ {
-        .question {
-            color: $gray !important;
-        }
-    }
-
-    .Demographics {
-        .filters {
-            background: #1e1e30 !important;
-            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #1e1e30;
-        }
-
-        .legend {
-            background: #1e1e30 !important;
-        }
-
-        .react-date-picker {
-            background: #1e1e30;
-            border-color: #9494941a !important;
-        }
-
-        .modal-content {
-            background: #1e1e30 !important;
-        }
-
-        .modal {
-            background: #1e1e30bb !important;
-        }
-    }
-
-    .Clusters {
-        canvas {
-            filter: invert(1) hue-rotate(180deg) saturate(5);
-        }
-    }
-
-    .LanguageSwitcher {
-        summary {
-            box-shadow: none;
-        }
-
-        .select-menu-list {
-            background: transparent;
-            border: 0;
-        }
-
-        .select-menu-modal {
-            background: transparent;
-            height: 100%;
-
-            div {
-                background: none;
-                border: 1px solid #1e1e30bb;
-            }
-        }
-
-        a {
-            &.select-menu-item {
-                background: #161625 !important;
-                border: 1px solid #1e1e30bb;
-            }
+    a {
+        &.select-menu-item {
+            background: #161625 !important;
+            border: 1px solid #1e1e30bb;
         }
     }
 }

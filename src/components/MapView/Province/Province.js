@@ -9,8 +9,8 @@ const Province = ({ province, val }) => {
       id="path4045"
       clipRule="evenodd"
       strokeLinejoin="round"
-      strokeWidth="1.9843"
-      stroke="#646464"
+      strokeWidth="2"
+      stroke="#000"
       fillRule="evenodd"
       fill="none"
     />
