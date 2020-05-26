@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import axios from "../../axios";
-
+import ContentLoader from "../../components/ContentLoader/ContentLoader";
 import RightContainer from "../../components/RightContainer/RightContainer";
 import LeftContainer from "../../components/LeftContainer/LeftContainer";
 const Home = () => {
-  const [totalCases, setTotalCases] = useState([]);
+  const [mainCases, setTotalCases] = useState({
+    totalCases: [],
+    loading: true,
+  });
 
   const [selectType, setSelectType] = useState(2);
 
@@ -13,8 +16,9 @@ const Home = () => {
     const getTotalData = async () => {
       try {
         const { data } = await axios.get("/");
-        setTotalCases(data);
+        setTotalCases({ totalCases: data, loading: false });
       } catch (error) {
+        setTotalCases({ totalCases: [], loading: false });
         console.log(error);
       }
     };
@@ -25,6 +29,8 @@ const Home = () => {
   const calculateAdditional = (arr, field) => {
     return arr.reduce((init, current) => init + current[field], 0);
   };
+
+  const { totalCases, loading } = mainCases;
 
   let districtCases = [];
   let provinceCases = [];
@@ -57,27 +63,34 @@ const Home = () => {
     active: districtCases.reduce((init, current) => init + current.active, 0),
     deaths: districtCases.reduce((init, current) => init + current.deaths, 0),
   };
+
   return (
     <div className="Home">
-      <LeftContainer
-        {...facts}
-        provinceCases={provinceCases}
-        totalData={totalCases}
-      />
-      <RightContainer
-        selectType={selectType}
-        setSelectType={setSelectType}
-        provinceCases={provinceCases}
-        districtCases={districtCases.sort((a, b) => {
-          if (a.total < b.total) {
-            return 1;
-          } else if (a.total > b.total) {
-            return -1;
-          } else {
-            return 0;
-          }
-        })}
-      />
+      {loading ? (
+        <ContentLoader />
+      ) : (
+        <Fragment>
+          <LeftContainer
+            {...facts}
+            provinceCases={provinceCases}
+            totalData={totalCases}
+          />
+          <RightContainer
+            selectType={selectType}
+            setSelectType={setSelectType}
+            provinceCases={provinceCases}
+            districtCases={districtCases.sort((a, b) => {
+              if (a.total < b.total) {
+                return 1;
+              } else if (a.total > b.total) {
+                return -1;
+              } else {
+                return 0;
+              }
+            })}
+          />
+        </Fragment>
+      )}
     </div>
   );
 };

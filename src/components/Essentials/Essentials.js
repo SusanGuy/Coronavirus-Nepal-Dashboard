@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import * as Icon from "react-feather";
 import { Phone } from "react-feather";
 import "./Essentials.scss";
+import ContentLoader from "../ContentLoader/ContentLoader";
 import axios from "../../axios";
-import ContentLoader from "react-content-loader";
 const Essentials = () => {
   const [location, setLocation] = useState(null);
   const [hospitals, setHospitals] = useState(null);
@@ -36,71 +36,49 @@ const Essentials = () => {
     } catch (e) {}
   };
 
-  if (loading) {
-    return (
-      <ContentLoader
-        speed={1.5}
-        width={700}
-        height={325}
-        viewBox={`0 0 ${700} 325`}
-        position="absolute"
-        className="fadeInUp"
-      >
-        <rect x={700 / 2 - 60} y="10" rx="5" ry="5" width="120" height="32" />
-        <rect
-          x={700 / 2 + 70}
-          y="18"
-          rx="100"
-          ry="100"
-          width="15"
-          height="15"
-        />
-        <rect x="10" y="80" rx="5" ry="5" width="85" height="32" />
-        <rect x="100" y="80" rx="5" ry="5" width="65" height="32" />
-        <rect x="10" y="130" rx="5" ry="5" width={700 - 20} height="172" />
-      </ContentLoader>
-    );
-  }
-
   return (
     <React.Fragment>
       <img
         src="/essentials_2.svg"
         alt="essentials woman pushing cart"
-        class="fadeInUp"
+        className="fadeInUp"
       />
-      {!hospitals && (
-        <React.Fragment>
-          <button
-            className="button fadeInUp"
-            style={{ animationDelay: "0.6s" }}
-            onClick={() => {
-              getLocation();
-            }}
-          >
-            <span>View Nearby Hospitals</span>
-            <Icon.Compass size={16} />
-          </button>
-          <div className="alert fadeInUp" style={{ animationDelay: "0.7s" }}>
-            <Icon.AlertOctagon size={16} />
-            <div className="alert-right is-full">
-              {`We do not collect any location data; they're all stored
+      {loading ? (
+        <ContentLoader />
+      ) : (
+        !hospitals && (
+          <React.Fragment>
+            <button
+              className="button fadeInUp"
+              style={{ animationDelay: "0.6s" }}
+              onClick={() => {
+                getLocation();
+              }}
+            >
+              <span>View Nearby Hospitals</span>
+              <Icon.Compass size={16} />
+            </button>
+            <div className="alert fadeInUp" style={{ animationDelay: "0.7s" }}>
+              <Icon.AlertOctagon size={16} />
+              <div className="alert-right is-full">
+                {`We do not collect any location data; they're all stored
               inside your browser and are inaccessible to us.`}
+              </div>
             </div>
-          </div>
-          <div className="alert fadeInUp" style={{ animationDelay: "0.8s" }}>
-            <Icon.AlertOctagon size={16} />
-            <div className="alert-right is-full">
-              {`We are a community sourced listing platform and are not associated
-              with any of the organizations listed below. Although we verify all
-              our listings, we request you to follow all the guidelines and take
-              the necessary precautions. We encourage you to report any error or
-              suspicious activity so that we can take immediate action.`}
+            <div className="alert fadeInUp" style={{ animationDelay: "0.8s" }}>
+              <Icon.AlertOctagon size={16} />
+              <div className="alert-right is-full">
+                We are a community sourced listing platform and are not
+                associated with any of the organizations listed below. Although
+                we verify all our listings, we request you to follow all the
+                guidelines and take the necessary precautions. We encourage you
+                to report any error or suspicious activity so that we can take
+                immediate action.
+              </div>
             </div>
-          </div>
-        </React.Fragment>
+          </React.Fragment>
+        )
       )}
-
       {hospitals && (
         <React.Fragment>
           <div className="address fadeInUp" style={{ marginTop: 50 }}>
@@ -118,7 +96,7 @@ const Essentials = () => {
               style={{ animationDelay: "0.5s" }}
             >
               {hospitals.map((a) => (
-                <div className="essential-result">
+                <div key={a.id} className="essential-result">
                   <div className="result-top">
                     <div className="result-top-left">
                       <div className="result-name">{a.name}</div>
@@ -143,6 +121,7 @@ const Essentials = () => {
           </div>
         </React.Fragment>
       )}
+      }
     </React.Fragment>
   );
 };
