@@ -1,26 +1,27 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import * as Icon from "react-feather";
-import ChangedIcon from "../ChangedIcon/ChangedIcon";
 import DropDown from "../DropDown/DropDown";
-const MainRow = ({
-  name,
-  total,
-  active,
-  recovered,
-  deaths,
-  additionalTotal,
-  additionalDeaths,
-  additionalRecovery,
-  mama,
-}) => {
+import RowData from "../RowData/RowData";
+const MainRow = ({ name, districts, mama, ...rest }) => {
+  const [showDistricts, setShowDistricts] = useState(false);
+
   return (
     <Fragment>
-      <tr className={`state ${mama && "is-total"}`}>
+      <tr
+        onClick={() => !mama && setShowDistricts(!showDistricts)}
+        className={`state ${mama && "is-total"}`}
+      >
         <td>
           <div className="title-chevron">
-            <span className="dropdown rotateDownRight">
-              <Icon.ChevronDown />
-            </span>
+            {!mama && (
+              <span
+                className={`dropdown ${
+                  showDistricts ? "rotateRightDown" : "rotateDownRight"
+                }`}
+              >
+                <Icon.ChevronDown />
+              </span>
+            )}
             <span className="title-icon">
               {name}
               <span
@@ -32,28 +33,9 @@ const MainRow = ({
             </span>
           </div>
         </td>
-        <td>
-          {additionalTotal !== undefined && additionalTotal !== 0 && (
-            <ChangedIcon data={additionalTotal} mama="is-confirmed" />
-          )}
-          <span className="total">{total}</span>
-        </td>
-        <td>
-          <span className="total">{active}</span>
-        </td>
-        <td>
-          {additionalRecovery !== undefined && additionalRecovery !== 0 && (
-            <ChangedIcon data={additionalRecovery} mama="is-recovered" />
-          )}
-          <span className="total">{recovered}</span>
-        </td>
-        <td>
-          {additionalDeaths !== undefined && additionalDeaths !== 0 && (
-            <ChangedIcon data={additionalDeaths} mama="is-deaths" />
-          )}
-          <span className=" total">{deaths}</span>
-        </td>
+        <RowData {...rest} />
       </tr>
+      {showDistricts && <DropDown districts={districts} name={name} />}
     </Fragment>
   );
 };

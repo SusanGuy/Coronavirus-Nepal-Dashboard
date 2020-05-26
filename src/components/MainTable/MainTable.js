@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MainRow from "../MainRow/MainRow";
 import Header from "../TableHeader/Header";
 const MainTable = ({ totalData, provinceCases }) => {
@@ -7,6 +7,24 @@ const MainTable = ({ totalData, provinceCases }) => {
     active: 0,
     recovered: 0,
     deaths: 0,
+  };
+  const [sortData, setSortData] = useState({
+    sortColumn: "total",
+    isAscending: false,
+  });
+
+  const { sortColumn, isAscending } = sortData;
+
+  const handleSort = (arr) => {
+    return arr.sort((a, b) => {
+      if (a[sortColumn] > b[sortColumn]) {
+        return isAscending ? 1 : -1;
+      } else if (a[sortColumn] < b[sortColumn]) {
+        return isAscending ? -1 : 1;
+      } else {
+        return 0;
+      }
+    });
   };
 
   provinceCases.forEach((dist) => {
@@ -20,12 +38,16 @@ const MainTable = ({ totalData, provinceCases }) => {
     <table className="table fadeInUp" style={{ animationDelay: "1.8s" }}>
       <thead>
         <tr>
-          <Header state />
+          <Header {...sortData} setSortData={setSortData} state />
         </tr>
       </thead>
       <tbody>
-        {provinceCases.map(({ id, ...rest }) => (
-          <MainRow key={id} {...rest} />
+        {handleSort(provinceCases).map(({ id, ...rest }) => (
+          <MainRow
+            districts={totalData.find((dat) => dat.id === id).districts}
+            key={id}
+            {...rest}
+          />
         ))}
       </tbody>
       <tbody>
