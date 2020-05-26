@@ -107,6 +107,46 @@ const Home = () => {
     ),
     (clist) => clist.map((data) => _.omit(data, "province"))
   );
+  const handleMerge = (arr) => {
+    const khali = {};
+    arr.forEach((arr) => {
+      if (khali[arr.createdOn]) {
+        let total = khali[arr.createdOn].total;
+        let recovered = khali[arr.createdOn].recovered;
+        let deaths = khali[arr.createdOn].deaths;
+
+        khali[arr.createdOn].total = total + 1;
+        khali[arr.createdOn].recovered =
+          arr.recoveredOn !== null ? recovered + 1 : recovered;
+        khali[arr.createdOn].deaths =
+          arr.deathOn !== null ? deaths + 1 : deaths;
+        khali[arr.createdOn].active = total - recovered - deaths;
+      } else {
+        let total = 1;
+        let recovered = arr.recoveredOn !== null ? 1 : 0;
+        let deaths = arr.deathOn !== null ? 1 : 0;
+        khali[arr.createdOn] = {
+          total,
+          recovered,
+          deaths,
+          active: total - recovered - deaths,
+        };
+      }
+    });
+    return khali;
+  };
+
+  Object.keys(groupedTimeline).forEach((element) => {
+    const merged = handleMerge(groupedTimeline[element]);
+    groupedTimeline[element] = Object.keys(merged).map((val) => {
+      return {
+        date: val,
+
+        ...merged[val],
+      };
+    });
+  });
+  console.log(groupedTimeline);
 
   return (
     <div className="Home">
