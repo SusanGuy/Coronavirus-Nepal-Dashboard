@@ -1,6 +1,6 @@
 import React from "react";
 import Tabs from "../Tabs/Tabs";
-import Municipality from "../Municipality/Municipality";
+
 import MapView from "../MapView/MapView";
 const RightContainer = ({
   selectType,
@@ -16,7 +16,7 @@ const RightContainer = ({
         provinceData={provinceCases}
       />
       <Tabs selectType={selectType} setSelectType={setSelectType} />
-      <Municipality />
+
     </div>
   );
 };

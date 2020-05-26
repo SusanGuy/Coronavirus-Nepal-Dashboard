@@ -7,7 +7,7 @@ import LeftContainer from "../../components/LeftContainer/LeftContainer";
 const Home = () => {
   const [totalCases, setTotalCases] = useState([]);
 
-  const [selectType, setSelectType] = useState(1);
+  const [selectType, setSelectType] = useState(2);
 
   useEffect(() => {
     const getTotalData = async () => {
@@ -55,7 +55,15 @@ const Home = () => {
         selectType={selectType}
         setSelectType={setSelectType}
         provinceCases={provinceCases}
-        districtCases={districtCases}
+        districtCases={districtCases.sort((a, b) => {
+          if (a.total < b.total) {
+            return 1;
+          } else if (a.total > b.total) {
+            return -1;
+          } else {
+            return 0;
+          }
+        })}
       />
     </div>
   );

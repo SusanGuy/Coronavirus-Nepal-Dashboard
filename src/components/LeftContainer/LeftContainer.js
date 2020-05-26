@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
 import MainTable from "../MainTable/MainTable";
+import Municipality from "../Municipality/Municipality";
 import moment from "moment";
 import axios from "axios";
 const LeftContainer = (props) => {
@@ -72,6 +73,7 @@ const LeftContainer = (props) => {
         Compiled from Ministry of Health & Population of Nepal
       </h5>
       <MainTable {...props} />
+      <Municipality />
     </div>
   );
 };
