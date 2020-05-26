@@ -22,89 +22,38 @@ const Home = () => {
     getTotalData();
   }, []);
 
-  const districtCases = totalCases.map(
-    ({
-      name,
-      id,
-      total,
-      deaths,
-      recovered,
-      additionalDeaths,
-      additionalRecovery,
-      active,
-      additionalTotal,
-    }) => {
-      return {
-        name,
-        id,
-        total,
-        deaths,
-        recovered,
-        additionalDeaths,
-        additionalRecovery,
-        additionalTotal,
-        active,
-      };
-    }
-  );
+  const calculateAdditional = (arr, field) => {
+    return arr.reduce((init, current) => init + current[field], 0);
+  };
 
+  let districtCases = [];
   let provinceCases = [];
-
-  if (totalCases.length === 0) {
-    provinceCases = [];
-  } else {
-    for (let i = 1; i < 8; i++) {
-      const totalDistrictData = totalCases.filter(
-        (dist) => dist.provinceId === i
-      );
+  if (totalCases.length !== 0) {
+    totalCases.forEach(({ id, name, districts }) => {
       provinceCases.push({
-        id: i,
-        name: totalDistrictData.find((dist) => dist.provinceId === i)
-          .provinceName,
-        total: totalDistrictData.reduce(
-          (init, current) => init + current.total,
-          0
+        id,
+        name,
+        total: calculateAdditional(districts, "total"),
+        recovered: calculateAdditional(districts, "recovered"),
+        deaths: calculateAdditional(districts, "deaths"),
+        active: calculateAdditional(districts, "active"),
+        additionalTotal: calculateAdditional(districts, "additionalTotal"),
+        additionalRecovery: calculateAdditional(
+          districts,
+          "additionalRecovery"
         ),
-        active: totalDistrictData.reduce(
-          (init, current) => init + current.active,
-          0
-        ),
-        recovered: totalDistrictData.reduce(
-          (init, current) => init + current.recovered,
-          0
-        ),
-        deaths: totalDistrictData.reduce(
-          (init, current) => init + current.deaths,
-          0
-        ),
-        additionalTotal: totalDistrictData.reduce(
-          (init, current) => init + current.additionalTotal,
-          0
-        ),
-        additionalRecovery: totalDistrictData.reduce(
-          (init, current) => init + current.additionalRecovery,
-          0
-        ),
-        additionalDeaths: totalDistrictData.reduce(
-          (init, current) => init + current.additionalDeaths,
-          0
-        ),
+        additionalDeaths: calculateAdditional(districts, "additionalDeaths"),
       });
-    }
+      districtCases.push(...districts);
+    });
   }
 
   return (
     <div className="Home">
-      <LeftContainer
-        provinceCases={provinceCases}
-        districtCases={districtCases}
-        selectType={selectType}
-        setSelectType={setSelectType}
-      />
+      <LeftContainer provinceCases={provinceCases} totalData={totalCases} />
       <RightContainer
         selectType={selectType}
         setSelectType={setSelectType}
-        totalData={totalCases}
         provinceCases={provinceCases}
         districtCases={districtCases}
       />

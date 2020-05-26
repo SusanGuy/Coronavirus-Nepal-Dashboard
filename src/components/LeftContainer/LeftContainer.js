@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
-import MapView from "../MapView/MapView";
+import MainTable from "../MainTable/MainTable";
 import moment from "moment";
 import axios from "axios";
-const LeftContainer = ({ districtCases, provinceCases, selectType }) => {
+const LeftContainer = (props) => {
   const [facts, setFacts] = useState({
     cases: { total: 0, active: 0, recovered: 0, deaths: 0 },
     date: "",
@@ -71,11 +71,7 @@ const LeftContainer = ({ districtCases, provinceCases, selectType }) => {
       >
         Compiled from Ministry of Health & Population of Nepal
       </h5>
-      <MapView
-        selectType={selectType}
-        districtData={districtCases}
-        provinceData={provinceCases}
-      />
+      <MainTable {...props} />
     </div>
   );
 };
