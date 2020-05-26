@@ -67,13 +67,12 @@ const Box = ({
         <h5>Deceased</h5>
         <div className="stats-bottom">
           <h1>{deaths}</h1>
-          <h6>
-            {additionalDeaths && additionalDeaths !== 0 && !bug ? (
-              <h6>+ {additionalDeaths}</h6>
-            ) : (
-              <h6>&nbsp;</h6>
-            )}
-          </h6>
+
+          {additionalDeaths && additionalDeaths !== 0 && !bug ? (
+            <h6>+ {additionalDeaths}</h6>
+          ) : (
+            <h6>&nbsp;</h6>
+          )}
         </div>
       </div>
     </div>

@@ -146,7 +146,6 @@ const Home = () => {
       };
     });
   });
-  console.log(groupedTimeline);
 
   return (
     <div className="Home">
