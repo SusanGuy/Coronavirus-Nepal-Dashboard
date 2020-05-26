@@ -13,6 +13,7 @@ const LeftContainer = ({
   newTotal,
   newRecovered,
   newDeath,
+  newActive,
   date,
   ...props
 }) => {
@@ -32,6 +33,7 @@ const LeftContainer = ({
         newTotal={newTotal}
         newRecovered={newRecovered}
         newDeath={newDeath}
+        newActive={newActive}
       />
       <MiniGraph />
       <h5
@@ -48,6 +50,7 @@ const LeftContainer = ({
         additionalTotal={newTotal}
         additionalRecovery={newRecovered}
         additionalDeaths={newDeath}
+        additionalActive={newActive}
         {...props}
       />
       <Municipality />

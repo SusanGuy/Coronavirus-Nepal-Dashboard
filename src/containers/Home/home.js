@@ -63,6 +63,7 @@ const Home = () => {
           "additionalRecovery"
         ),
         additionalDeaths: calculateAdditional(districts, "additionalDeaths"),
+        additionalActive: calculateAdditional(districts, "additionalActive"),
       });
       districtCases.push(...districts);
     });
@@ -88,6 +89,10 @@ const Home = () => {
       (init, current) => init + current.additionalDeaths,
       0
     ),
+    newActive: districtCases.reduce(
+      (init, current) => init + current.additionalActive,
+      0
+    ),
   };
 
   let groupedTimeline = _.mapValues(
@@ -102,7 +107,6 @@ const Home = () => {
     ),
     (clist) => clist.map((data) => _.omit(data, "province"))
   );
-  console.log(groupedTimeline);
 
   return (
     <div className="Home">

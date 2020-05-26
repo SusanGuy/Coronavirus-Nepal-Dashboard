@@ -8,11 +8,13 @@ const Box = ({
   additionalTotal,
   additionalRecovery,
   additionalDeaths,
+  additionalActive,
 }) => {
   const bug =
     additionalTotal === total &&
     additionalRecovery === recovered &&
     additionalDeaths === deaths;
+
   return (
     <div className="map-stats">
       <div className="stats fadeInUp" style={{ animationDelay: "2s" }}>
@@ -33,7 +35,15 @@ const Box = ({
         <h5>Active</h5>
         <div className="stats-bottom">
           <h1>{active}</h1>
-          <h6>&nbsp;</h6>
+          <h6>
+            {additionalActive && additionalActive !== 0 && !bug
+              ? `${
+                  additionalActive < 0
+                    ? `- ${additionalActive * -1}`
+                    : `+${additionalActive}`
+                }`
+              : " "}
+          </h6>
         </div>
       </div>
       <div

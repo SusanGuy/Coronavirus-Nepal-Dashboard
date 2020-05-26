@@ -8,6 +8,7 @@ const RowData = ({
   additionalTotal,
   additionalDeaths,
   additionalRecovery,
+  additionalActive,
 }) => {
   const bug =
     additionalTotal === total &&
@@ -23,6 +24,9 @@ const RowData = ({
         <span className="total">{total}</span>
       </td>
       <td>
+        {additionalActive !== undefined && additionalActive !== 0 && !bug && (
+          <ChangedIcon data={additionalActive} mama="is-active" />
+        )}
         <span className="total">{active}</span>
       </td>
       <td>
