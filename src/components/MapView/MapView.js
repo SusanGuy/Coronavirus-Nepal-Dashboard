@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "../../axios";
 import District from "./District/District";
 import Province from "./Province/Province";
-import invert from 'invert-color'
 
 import Box from "../Box/Box";
 const MapView = ({ districtData, provinceData, selectType }) => {
@@ -10,16 +9,9 @@ const MapView = ({ districtData, provinceData, selectType }) => {
 
   const [hoveredProvince, setHoveredProvince] = useState("");
   const [hoveredDistrict, setHoveredDistrict] = useState("");
-  const mode = 'dark'
+  const mode = "dark";
 
-
-  let colorRange = [
-
-    "#E8FFAA",
-    "#FFD666",
-    "#FF9144",
-    "#FF073A"
-  ]
+  let colorRange = ["#E8FFAA", "#FFD666", "#FF9144", "#FF073A"];
   useEffect(() => {
     const getMap = async () => {
       try {
@@ -67,7 +59,7 @@ const MapView = ({ districtData, provinceData, selectType }) => {
     }
   }
 
-  if (mode === 'dark') {
+  if (mode === "dark") {
     // for (let i = 0; i < colorRange.length; i++) {
     //   const element = colorRange[i];
     //   colorRange[i] = invert(element)
@@ -79,8 +71,7 @@ const MapView = ({ districtData, provinceData, selectType }) => {
       "#800021",
       "#AA0000",
       "#CB3E3E",
-
-    ]
+    ];
   }
 
   const { name, ...rest } = activeData;
