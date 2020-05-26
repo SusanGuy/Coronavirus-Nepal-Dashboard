@@ -4,12 +4,12 @@ import District from "./District/District";
 import Province from "./Province/Province";
 
 import Box from "../Box/Box";
-const MapView = ({ districtData, provinceData, selectType }) => {
+const MapView = ({ districtData, provinceData, selectType, mode }) => {
   const [maps, setMap] = useState(null);
 
   const [hoveredProvince, setHoveredProvince] = useState("");
   const [hoveredDistrict, setHoveredDistrict] = useState("");
-  const mode = "dark";
+
 
   let colorRange = ["#E8FFAA", "#FFD666", "#FF9144", "#FF073A"];
   useEffect(() => {
@@ -59,7 +59,7 @@ const MapView = ({ districtData, provinceData, selectType }) => {
     }
   }
 
-  if (mode === "dark") {
+  if (mode === true) {
     // for (let i = 0; i < colorRange.length; i++) {
     //   const element = colorRange[i];
     //   colorRange[i] = invert(element)

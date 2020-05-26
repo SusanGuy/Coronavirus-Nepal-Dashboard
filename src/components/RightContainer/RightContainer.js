@@ -7,6 +7,7 @@ const RightContainer = ({
   setSelectType,
   districtCases,
   provinceCases,
+  mode
 }) => {
   return (
     <div className="home-right">
@@ -14,6 +15,7 @@ const RightContainer = ({
         selectType={selectType}
         districtData={districtCases}
         provinceData={provinceCases}
+        mode={mode}
       />
       <Tabs selectType={selectType} setSelectType={setSelectType} />
     </div>

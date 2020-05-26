@@ -5,7 +5,7 @@ import axios from "../../axios";
 import ContentLoader from "../../components/ContentLoader/ContentLoader";
 import RightContainer from "../../components/RightContainer/RightContainer";
 import LeftContainer from "../../components/LeftContainer/LeftContainer";
-const Home = () => {
+const Home = ({ mode }) => {
   const [mainCases, setTotalCases] = useState({
     totalCases: [],
     loading: true,
@@ -152,34 +152,35 @@ const Home = () => {
       {loading ? (
         <ContentLoader />
       ) : (
-        <Fragment>
-          <LeftContainer
-            {...facts}
-            date={
-              covidData.length !== facts.total
-                ? new Date()
-                : covidData[covidData.length - 1].modifiedOn
-            }
-            provinceCases={provinceCases}
-            totalData={totalCases}
-          />
-          <RightContainer
-            {...facts}
-            selectType={selectType}
-            setSelectType={setSelectType}
-            provinceCases={provinceCases}
-            districtCases={districtCases.sort((a, b) => {
-              if (a.total < b.total) {
-                return 1;
-              } else if (a.total > b.total) {
-                return -1;
-              } else {
-                return 0;
+          <Fragment>
+            <LeftContainer
+              {...facts}
+              date={
+                covidData.length !== facts.total
+                  ? new Date()
+                  : covidData[covidData.length - 1].modifiedOn
               }
-            })}
-          />
-        </Fragment>
-      )}
+              provinceCases={provinceCases}
+              totalData={totalCases}
+            />
+            <RightContainer
+              {...facts}
+              mode={mode}
+              selectType={selectType}
+              setSelectType={setSelectType}
+              provinceCases={provinceCases}
+              districtCases={districtCases.sort((a, b) => {
+                if (a.total < b.total) {
+                  return 1;
+                } else if (a.total > b.total) {
+                  return -1;
+                } else {
+                  return 0;
+                }
+              })}
+            />
+          </Fragment>
+        )}
     </div>
   );
 };

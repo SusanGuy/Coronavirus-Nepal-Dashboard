@@ -26,7 +26,7 @@ const App = () => {
         <Route path="/about-us" exact component={AboutUs} />
         <Route path="/feed" exact component={() => <Feed mode={mode} />} />
         <Route path="/hospitals" exact component={EssentialsContainer} />
-        <Route path="/" component={Home} />
+        <Route path="/" component={() => <Home mode={mode}></Home>} />
       </Switch>
       <Footer />
     </div>
