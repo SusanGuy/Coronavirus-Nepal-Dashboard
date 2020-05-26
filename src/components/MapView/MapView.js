@@ -10,7 +10,6 @@ const MapView = ({ districtData, provinceData, selectType, mode }) => {
   const [hoveredProvince, setHoveredProvince] = useState("");
   const [hoveredDistrict, setHoveredDistrict] = useState("");
 
-
   let colorRange = ["#E8FFAA", "#FFD666", "#FF9144", "#FF073A"];
   useEffect(() => {
     const getMap = async () => {
@@ -60,18 +59,7 @@ const MapView = ({ districtData, provinceData, selectType, mode }) => {
   }
 
   if (mode === true) {
-    // for (let i = 0; i < colorRange.length; i++) {
-    //   const element = colorRange[i];
-    //   colorRange[i] = invert(element)
-
-    // }
-    colorRange = [
-      "#2A0021",
-      // "#56002C",
-      "#800021",
-      "#AA0000",
-      "#CB3E3E",
-    ];
+    colorRange = ["#2A0021", "#800021", "#AA0000", "#CB3E3E"];
   }
 
   const { name, ...rest } = activeData;
