@@ -9,10 +9,15 @@ const RowData = ({
   additionalDeaths,
   additionalRecovery,
 }) => {
+  const bug =
+    additionalTotal === total &&
+    additionalRecovery === recovered &&
+    additionalDeaths === deaths;
+
   return (
     <Fragment>
       <td>
-        {additionalTotal !== undefined && additionalTotal !== 0 && (
+        {additionalTotal !== undefined && additionalTotal !== 0 && !bug && (
           <ChangedIcon data={additionalTotal} mama="is-confirmed" />
         )}
         <span className="total">{total}</span>
@@ -21,13 +26,13 @@ const RowData = ({
         <span className="total">{active}</span>
       </td>
       <td>
-        {additionalRecovery !== undefined && additionalRecovery !== 0 && (
-          <ChangedIcon data={additionalRecovery} mama="is-recovered" />
-        )}
+        {additionalRecovery !== undefined &&
+          additionalRecovery !== 0 &&
+          !bug && <ChangedIcon data={additionalRecovery} mama="is-recovered" />}
         <span className="total">{recovered}</span>
       </td>
       <td>
-        {additionalDeaths !== undefined && additionalDeaths !== 0 && (
+        {additionalDeaths !== undefined && additionalDeaths !== 0 && !bug && (
           <ChangedIcon data={additionalDeaths} mama="is-deaths" />
         )}
         <span className=" total">{deaths}</span>

@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-
+import _ from "lodash";
+import moment from "moment";
 import axios from "../../axios";
 import ContentLoader from "../../components/ContentLoader/ContentLoader";
 import RightContainer from "../../components/RightContainer/RightContainer";
@@ -11,6 +12,7 @@ const Home = () => {
   });
 
   const [selectType, setSelectType] = useState(2);
+  const [covidData, setCovidData] = useState([]);
 
   useEffect(() => {
     const getTotalData = async () => {
@@ -22,8 +24,20 @@ const Home = () => {
         console.log(error);
       }
     };
+    const getAllFacts = async () => {
+      try {
+        const { data } = await axios.get(
+          "https://data.nepalcorona.info/api/v1/covid"
+        );
+
+        setCovidData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     getTotalData();
+    getAllFacts();
   }, []);
 
   const calculateAdditional = (arr, field) => {
@@ -62,7 +76,33 @@ const Home = () => {
     ),
     active: districtCases.reduce((init, current) => init + current.active, 0),
     deaths: districtCases.reduce((init, current) => init + current.deaths, 0),
+    newTotal: districtCases.reduce(
+      (init, current) => init + current.additionalTotal,
+      0
+    ),
+    newRecovered: districtCases.reduce(
+      (init, current) => init + current.additionalRecovery,
+      0
+    ),
+    newDeath: districtCases.reduce(
+      (init, current) => init + current.additionalDeaths,
+      0
+    ),
   };
+
+  let groupedTimeline = _.mapValues(
+    _.groupBy(
+      covidData.map((dat) => {
+        return {
+          ...dat,
+          createdOn: moment(new Date(dat.createdOn)).format("YYYY-MM-DD"),
+        };
+      }),
+      "province"
+    ),
+    (clist) => clist.map((data) => _.omit(data, "province"))
+  );
+  console.log(groupedTimeline);
 
   return (
     <div className="Home">
@@ -72,10 +112,16 @@ const Home = () => {
         <Fragment>
           <LeftContainer
             {...facts}
+            date={
+              covidData.length !== facts.total
+                ? new Date()
+                : covidData[covidData.length - 1].modifiedOn
+            }
             provinceCases={provinceCases}
             totalData={totalCases}
           />
           <RightContainer
+            {...facts}
             selectType={selectType}
             setSelectType={setSelectType}
             provinceCases={provinceCases}

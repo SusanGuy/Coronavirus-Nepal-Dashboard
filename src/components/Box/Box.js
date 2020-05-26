@@ -9,6 +9,10 @@ const Box = ({
   additionalRecovery,
   additionalDeaths,
 }) => {
+  const bug =
+    additionalTotal === total &&
+    additionalRecovery === recovered &&
+    additionalDeaths === deaths;
   return (
     <div className="map-stats">
       <div className="stats fadeInUp" style={{ animationDelay: "2s" }}>
@@ -16,7 +20,7 @@ const Box = ({
         <div className="stats-bottom">
           <h1>{total}</h1>
           <h6>
-            {additionalTotal && additionalTotal !== 0
+            {additionalTotal && additionalTotal !== 0 && !bug
               ? `+ ${additionalTotal}`
               : " "}
           </h6>
@@ -40,7 +44,7 @@ const Box = ({
         <div className="stats-bottom">
           <h1>{recovered}</h1>
           <h6>
-            {additionalRecovery && additionalRecovery !== 0
+            {additionalRecovery && additionalRecovery !== 0 && !bug
               ? `+ ${additionalRecovery}`
               : " "}
           </h6>
@@ -54,7 +58,7 @@ const Box = ({
         <div className="stats-bottom">
           <h1>{deaths}</h1>
           <h6>
-            {additionalDeaths && additionalDeaths !== 0
+            {additionalDeaths && additionalDeaths !== 0 && !bug
               ? `+ ${additionalDeaths}`
               : " "}
           </h6>

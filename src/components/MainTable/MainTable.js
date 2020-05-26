@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MainRow from "../MainRow/MainRow";
 import Header from "../TableHeader/Header";
-const MainTable = ({ totalData, provinceCases }) => {
+const MainTable = ({ totalData, provinceCases, ...rest }) => {
   const districtBody = {
     total: 0,
     active: 0,
@@ -51,7 +51,7 @@ const MainTable = ({ totalData, provinceCases }) => {
         ))}
       </tbody>
       <tbody>
-        <MainRow name="Total" mama="is-total" {...districtBody} />
+        <MainRow {...rest} name="Total" mama="is-total" {...districtBody} />
       </tbody>
     </table>
   );

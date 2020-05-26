@@ -16,7 +16,6 @@ const RightContainer = ({
         provinceData={provinceCases}
       />
       <Tabs selectType={selectType} setSelectType={setSelectType} />
-
     </div>
   );
 };

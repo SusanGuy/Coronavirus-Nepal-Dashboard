@@ -1,36 +1,16 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import moment from "moment";
-const QuickFacts = ({ total, recovered, deaths, active }) => {
-  const [newData, setNewData] = useState({
-    newTotal: 0,
-    newRecovered: 0,
-    newDeath: 0,
-  });
+import React from "react";
 
-  useEffect(() => {
-    const getYesterDayData = async (date) => {
-      try {
-        const { data } = await axios.get(
-          "https://data.nepalcorona.info/api/v1/covid/timeline"
-        );
-        const { totalCases, totalRecoveries, totalDeaths } = data.find(
-          (dat) => dat.date === date
-        );
-
-        setNewData({
-          newTotal: total - totalCases,
-          newRecovered: recovered - totalRecoveries,
-          newDeath: deaths - totalDeaths,
-        });
-      } catch (error) {}
-    };
-
-    getYesterDayData(moment().subtract(1, "days").format("YYYY-MM-DD"));
-  }, [deaths, recovered, total]);
-
-  const { newTotal, newRecovered, newDeath } = newData;
-
+const QuickFacts = ({
+  total,
+  newTotal,
+  newRecovered,
+  newDeath,
+  recovered,
+  deaths,
+  active,
+}) => {
+  const bug =
+    newTotal === total && newRecovered === recovered && newDeath === deaths;
   return (
     <div className="Level">
       <div
@@ -38,7 +18,11 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         style={{ animationDelay: "1s" }}
       >
         <h5>Confirmed</h5>
-        {newTotal && newTotal > 0 ? <h4>[+{newTotal}]</h4> : <h4>&nbsp;</h4>}
+        {newTotal && newTotal > 0 && !bug ? (
+          <h4>[+{newTotal}]</h4>
+        ) : (
+          <h4>&nbsp;</h4>
+        )}
         <h1>{total}</h1>
       </div>
       <div
@@ -54,7 +38,7 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         style={{ animationDelay: "1.2s" }}
       >
         <h5 className="heading">Recovered</h5>
-        {newRecovered && newRecovered > 0 ? (
+        {newRecovered && newRecovered > 0 && !bug ? (
           <h4>[+{newRecovered}]</h4>
         ) : (
           <h4>&nbsp;</h4>
@@ -66,7 +50,11 @@ const QuickFacts = ({ total, recovered, deaths, active }) => {
         style={{ animationDelay: "1.3s" }}
       >
         <h5 className="heading">Deceased</h5>
-        {newDeath && newDeath > 0 ? <h4>[+{newDeath}]</h4> : <h4>&nbsp;</h4>}
+        {newDeath && newDeath > 0 && !bug ? (
+          <h4>[+{newDeath}]</h4>
+        ) : (
+          <h4>&nbsp;</h4>
+        )}
         <h1 className="title has-text-grey">{deaths}</h1>
       </div>
     </div>

@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import QuickFacts from "../QuickFacts/QuickFacts";
 import MiniGraph from "../MiniGraph/MiniGraph";
 import MainTable from "../MainTable/MainTable";
 import Municipality from "../Municipality/Municipality";
 import moment from "moment";
-import axios from "axios";
-const LeftContainer = ({ total, active, recovered, deaths, ...props }) => {
-  const [date, setDate] = useState("");
-  useEffect(() => {
-    const getAllFacts = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://data.nepalcorona.info/api/v1/covid"
-        );
-        let date;
 
-        if (data.length !== total) {
-          date = new Date();
-        } else {
-          date = data[data.length - 1].modifiedOn;
-        }
-
-        setDate(date);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getAllFacts();
-  }, [total]);
-
+const LeftContainer = ({
+  total,
+  active,
+  recovered,
+  deaths,
+  newTotal,
+  newRecovered,
+  newDeath,
+  date,
+  ...props
+}) => {
   return (
     <div className="home-left">
       <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
@@ -43,6 +29,9 @@ const LeftContainer = ({ total, active, recovered, deaths, ...props }) => {
         deaths={deaths}
         active={active}
         date={date}
+        newTotal={newTotal}
+        newRecovered={newRecovered}
+        newDeath={newDeath}
       />
       <MiniGraph />
       <h5
@@ -51,7 +40,16 @@ const LeftContainer = ({ total, active, recovered, deaths, ...props }) => {
       >
         Compiled from Ministry of Health & Population of Nepal
       </h5>
-      <MainTable {...props} />
+      <MainTable
+        total={total}
+        recovered={recovered}
+        deaths={deaths}
+        active={active}
+        additionalTotal={newTotal}
+        additionalRecovery={newRecovered}
+        additionalDeaths={newDeath}
+        {...props}
+      />
       <Municipality />
     </div>
   );
