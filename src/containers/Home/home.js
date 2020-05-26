@@ -48,9 +48,22 @@ const Home = () => {
     });
   }
 
+  const facts = {
+    total: districtCases.reduce((init, current) => init + current.total, 0),
+    recovered: districtCases.reduce(
+      (init, current) => init + current.recovered,
+      0
+    ),
+    active: districtCases.reduce((init, current) => init + current.active, 0),
+    deaths: districtCases.reduce((init, current) => init + current.deaths, 0),
+  };
   return (
     <div className="Home">
-      <LeftContainer provinceCases={provinceCases} totalData={totalCases} />
+      <LeftContainer
+        {...facts}
+        provinceCases={provinceCases}
+        totalData={totalCases}
+      />
       <RightContainer
         selectType={selectType}
         setSelectType={setSelectType}

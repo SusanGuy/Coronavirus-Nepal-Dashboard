@@ -5,19 +5,11 @@ import MainTable from "../MainTable/MainTable";
 import Municipality from "../Municipality/Municipality";
 import moment from "moment";
 import axios from "axios";
-const LeftContainer = (props) => {
-  const [facts, setFacts] = useState({
-    cases: { total: 0, active: 0, recovered: 0, deaths: 0 },
-    date: "",
-  });
-
+const LeftContainer = ({ total, active, recovered, deaths, ...props }) => {
+  const [date, setDate] = useState("");
   useEffect(() => {
     const getAllFacts = async () => {
       try {
-        const {
-          data: { tested_positive: total, recovered, deaths },
-        } = await axios.get("https://nepalcorona.info/api/v1/data/nepal");
-
         const { data } = await axios.get(
           "https://data.nepalcorona.info/api/v1/covid"
         );
@@ -29,27 +21,14 @@ const LeftContainer = (props) => {
           date = data[data.length - 1].modifiedOn;
         }
 
-        setFacts({
-          cases: {
-            total,
-            recovered,
-            deaths,
-            active: total - recovered - deaths,
-          },
-          date,
-        });
+        setDate(date);
       } catch (error) {
         console.log(error);
       }
     };
 
     getAllFacts();
-  }, []);
-
-  const {
-    cases: { total, recovered, deaths, active },
-    date,
-  } = facts;
+  }, [total]);
 
   return (
     <div className="home-left">
