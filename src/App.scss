@@ -1176,11 +1176,13 @@ table {
   }
 
   .dropdown {
-    background: $gray-light;
+    background: rgba(108, 117, 125, 0.0627451);
     border-radius: 50%;
     cursor: pointer;
     height: 13px;
-    margin-right: 8px;
+    left: -0.95rem;
+    position: absolute;
+    top: 0.125rem;
     transition: background 0.2s ease-in-out;
     width: 13px;
 
@@ -1189,9 +1191,10 @@ table {
     }
 
     svg {
+      left: 1px;
       position: absolute;
       stroke-width: 3;
-
+      top: -0.35rem;
       width: 11px;
     }
   }
@@ -2026,11 +2029,8 @@ table {
 }
 
 @media (max-width: 769px) {
-  table {
-    width: 100%;
-  }
-
   .header,
+  .table,
   .Level,
   .TimeSeriesExplorer,
   .Links,
