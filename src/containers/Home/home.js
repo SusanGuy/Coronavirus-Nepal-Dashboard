@@ -200,7 +200,6 @@ const Home = ({ mode }) => {
       groupedTimeline[e][i]["totalrecovered"] = recovered;
     });
   });
-  console.log(groupedTimeline);
 
 
 

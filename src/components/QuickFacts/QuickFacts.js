@@ -32,7 +32,7 @@ const QuickFacts = ({
         style={{ animationDelay: "1.1s" }}
       >
         <h5 className="heading">Active</h5>
-        {newActive && newActive > 0 && !bug ? (
+        {newActive && !bug ? (
           <h4>
             [{newActive > 0 ? "+" : "-"}
             {newActive > 0 ? newActive : newActive * -1}]
