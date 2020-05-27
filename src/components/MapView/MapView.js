@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "../../axios";
 import District from "./District/District";
 import Province from "./Province/Province";
-
+import Tabs from "../Tabs/Tabs";
 import Box from "../Box/Box";
-const MapView = ({ districtData, provinceData, selectType, mode }) => {
+const MapView = ({
+  setSelectType,
+  districtData,
+  provinceData,
+  selectType,
+  mode,
+}) => {
   const [maps, setMap] = useState(null);
 
   const [hoveredProvince, setHoveredProvince] = useState("");
@@ -71,6 +77,7 @@ const MapView = ({ districtData, provinceData, selectType, mode }) => {
         <h6>Hover/Click over a District/Province for more details</h6>
       </div>
       <Box {...rest} />
+      <Tabs selectType={selectType} setSelectType={setSelectType} />
 
       {maps && (
         <React.Fragment>
