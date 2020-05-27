@@ -15,10 +15,13 @@ const Home = ({ mode }) => {
   const [covidData, setCovidData] = useState([]);
 
   useEffect(() => {
+    let unmounted = false;
     const getTotalData = async () => {
       try {
         const { data } = await axios.get("/");
-        setTotalCases({ totalCases: data, loading: false });
+        if (!unmounted) {
+          setTotalCases({ totalCases: data, loading: false });
+        }
       } catch (error) {
         setTotalCases({ totalCases: [], loading: false });
         console.log(error);
@@ -29,15 +32,20 @@ const Home = ({ mode }) => {
         const { data } = await axios.get(
           "https://data.nepalcorona.info/api/v1/covid"
         );
-
-        setCovidData(data);
+        if (!unmounted) {
+          setCovidData(data);
+        }
       } catch (error) {
         console.log(error);
       }
     };
 
-    getTotalData();
     getAllFacts();
+    getTotalData();
+
+    return () => {
+      unmounted = true;
+    };
   }, []);
 
   const calculateAdditional = (arr, field) => {
@@ -207,35 +215,35 @@ const Home = ({ mode }) => {
       {loading ? (
         <ContentLoader />
       ) : (
-          <Fragment>
-            <LeftContainer
-              {...facts}
-              date={
-                covidData.length !== facts.total
-                  ? new Date()
-                  : covidData[covidData.length - 1].modifiedOn
+        <Fragment>
+          <LeftContainer
+            {...facts}
+            date={
+              covidData.length !== facts.total
+                ? new Date()
+                : covidData[covidData.length - 1].modifiedOn
+            }
+            provinceCases={provinceCases}
+            totalData={totalCases}
+          />
+          <RightContainer
+            {...facts}
+            mode={mode}
+            selectType={selectType}
+            setSelectType={setSelectType}
+            provinceCases={provinceCases}
+            districtCases={districtCases.sort((a, b) => {
+              if (a.total < b.total) {
+                return 1;
+              } else if (a.total > b.total) {
+                return -1;
+              } else {
+                return 0;
               }
-              provinceCases={provinceCases}
-              totalData={totalCases}
-            />
-            <RightContainer
-              {...facts}
-              mode={mode}
-              selectType={selectType}
-              setSelectType={setSelectType}
-              provinceCases={provinceCases}
-              districtCases={districtCases.sort((a, b) => {
-                if (a.total < b.total) {
-                  return 1;
-                } else if (a.total > b.total) {
-                  return -1;
-                } else {
-                  return 0;
-                }
-              })}
-            />
-          </Fragment>
-        )}
+            })}
+          />
+        </Fragment>
+      )}
     </div>
   );
 };

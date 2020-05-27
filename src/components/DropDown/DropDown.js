@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from "react";
 import Header from "../TableHeader/Header";
 import RowData from "../RowData/RowData";
-const DropDown = ({ districts, name }) => {
+import moment from "moment";
+const DropDown = ({ districts, name, date }) => {
   const total = districts.reduce((init, current) => init + current.total, 0);
   const isRed = (data) => (data / total) * 100 > 10;
   const isOrange = (data) =>
@@ -36,9 +37,14 @@ const DropDown = ({ districts, name }) => {
       <tr className="state-last-update">
         <td colSpan="3" style={{ paddingBottom: "0px" }}>
           <p className="spacer"></p>
-          <p>Last updated 2 mins ago</p>
+          <p>Last updated {moment(date).fromNow()}</p>
         </td>
-        <td className="state-page-link" colSpan="2" align="center">
+        <td
+          style={{ display: "none" }}
+          className="state-page-link"
+          colSpan="2"
+          align="center"
+        >
           View {name}'s Page
         </td>
       </tr>

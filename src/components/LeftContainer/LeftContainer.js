@@ -43,6 +43,7 @@ const LeftContainer = ({
         Compiled from Ministry of Health & Population of Nepal
       </h5>
       <MainTable
+        date={date}
         total={total}
         recovered={recovered}
         deaths={deaths}
