@@ -67,7 +67,7 @@ function Charts() {
     return (
         <div className="cards-container">
 
-            <section className="cards">
+            <section className="cards" style={{ marginTop: '100px' }}>
                 <div className="card fadeInUp" style={{ animationDelay: '0.7s' }}>
                     <TotalConfirmedChart title="Total Cases" timeseries={timeseries} />
                 </div>
