@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import * as Icon from "react-feather";
 import DropDown from "../DropDown/DropDown";
 import RowData from "../RowData/RowData";
-const MainRow = ({ name, districts, mama, ...rest }) => {
+const MainRow = ({ name, districts, mama, date, ...rest }) => {
   const [showDistricts, setShowDistricts] = useState(false);
 
   return (
@@ -35,7 +35,9 @@ const MainRow = ({ name, districts, mama, ...rest }) => {
         </td>
         <RowData {...rest} />
       </tr>
-      {showDistricts && <DropDown districts={districts} name={name} />}
+      {showDistricts && (
+        <DropDown date={date} districts={districts} name={name} />
+      )}
     </Fragment>
   );
 };
