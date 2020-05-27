@@ -9,23 +9,18 @@ import { useLocalStorage } from 'react-use';
 const isEqual = (prevProps, currProps) => {
     if (!currProps.isIntersecting) return true;
     if (!prevProps.isIntersecting) return false;
-    if (!equal(currProps.activeStateCode, prevProps.activeStateCode)) {
-        return false;
-    }
-    if (!equal(currProps.anchor, prevProps.anchor)) {
-        return false;
-    }
+    // if (!equal(currProps.activeStateCode, prevProps.activeStateCode)) {
+    //     return false;
+    // }
+
     return true;
 };
 
 function TimeSeriesExplorer({
     timeseries,
-    activeStateCode,
-    onHighlightState,
+    activeState,
     states,
-    anchor,
-    setAnchor,
-    isIntersecting,
+    setActiveState
 }) {
     const [chartType, setChartType] = useLocalStorage('timeseriesChartType', 1);
 
@@ -41,25 +36,12 @@ function TimeSeriesExplorer({
 
     return (
         <div
-            className={`TimeSeriesExplorer ${
-                anchor === 'timeseries' ? 'stickied' : ''
-                }`}
-            style={{ display: anchor === 'mapexplorer' ? 'none' : '' }}
+            className={`TimeSeriesExplorer `}
         >
             <div
                 className="timeseries-header fadeInUp"
                 style={{ animationDelay: '2.5s' }}
             >
-                {window.innerWidth > 769 && anchor !== undefined && (
-                    <div
-                        className={`anchor ${anchor === 'timeseries' ? 'stickied' : ''}`}
-                        onClick={() => {
-                            setAnchor(anchor === 'timeseries' ? null : 'timeseries');
-                        }}
-                    >
-                        <Icon.Anchor />
-                    </div>
-                )}
 
                 <h1>{t('Spread Trends')}</h1>
                 <div className="tabs">
@@ -118,15 +100,16 @@ function TimeSeriesExplorer({
                 {states && (
                     <div className="trends-state-name">
                         <select
-                            value={activeStateCode}
+                            value={activeState}
                             onChange={({ target }) => {
-                                const selectedState = target.selectedOptions[0].getAttribute(
-                                    'statedata'
-                                );
-                                onHighlightState(JSON.parse(selectedState));
+                                console.log(JSON.stringify(target.value));
+                                setActiveState(JSON.stringify(target.value))
+                                console.log(activeState);
                             }}
                         >
                             {states.map((s) => {
+                                console.log(s.statecode);
+
                                 return (
                                     <option
                                         value={s.statecode}
@@ -142,16 +125,18 @@ function TimeSeriesExplorer({
                 )}
             </div>
 
-            {timeseries && (
-                <TimeSeries
-                    timeseriesProp={timeseries}
-                    chartType={chartType}
-                    mode={timeseriesMode}
-                    logMode={timeseriesLogMode}
-                    isTotal={activeStateCode === 'TT'}
-                />
-            )}
-        </div>
+            {
+                timeseries && (
+                    <TimeSeries
+                        timeseriesProp={timeseries}
+                        chartType={chartType}
+                        mode={timeseriesMode}
+                        logMode={timeseriesLogMode}
+                        isTotal={activeState === 'TT'}
+                    />
+                )
+            }
+        </div >
     );
 }
 

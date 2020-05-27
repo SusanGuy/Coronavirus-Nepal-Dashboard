@@ -202,40 +202,43 @@ const Home = ({ mode }) => {
   });
   console.log(groupedTimeline);
 
+
+
   return (
     <div className="Home">
       {loading ? (
         <ContentLoader />
       ) : (
-        <Fragment>
-          <LeftContainer
-            {...facts}
-            date={
-              covidData.length !== facts.total
-                ? new Date()
-                : covidData[covidData.length - 1].modifiedOn
-            }
-            provinceCases={provinceCases}
-            totalData={totalCases}
-          />
-          <RightContainer
-            {...facts}
-            mode={mode}
-            selectType={selectType}
-            setSelectType={setSelectType}
-            provinceCases={provinceCases}
-            districtCases={districtCases.sort((a, b) => {
-              if (a.total < b.total) {
-                return 1;
-              } else if (a.total > b.total) {
-                return -1;
-              } else {
-                return 0;
+          <Fragment>
+            <LeftContainer
+              {...facts}
+              date={
+                covidData.length !== facts.total
+                  ? new Date()
+                  : covidData[covidData.length - 1].modifiedOn
               }
-            })}
-          />
-        </Fragment>
-      )}
+              provinceCases={provinceCases}
+              totalData={totalCases}
+            />
+            <RightContainer
+              {...facts}
+              mode={mode}
+              selectType={selectType}
+              setSelectType={setSelectType}
+              provinceCases={provinceCases}
+              groupedTimeline={groupedTimeline}
+              districtCases={districtCases.sort((a, b) => {
+                if (a.total < b.total) {
+                  return 1;
+                } else if (a.total > b.total) {
+                  return -1;
+                } else {
+                  return 0;
+                }
+              })}
+            />
+          </Fragment>
+        )}
     </div>
   );
 };
