@@ -2117,7 +2117,25 @@ table {
             }
         }
     }
+    .cards-container {
+        padding: .5rem;
 
+        .cards {
+            .card {
+                flex: 0 1 100%;
+                height: 25rem;
+                margin-bottom: 0;
+            }
+
+            .chart-title {
+                padding: 20px 0 10px;
+            }
+
+            .card-big {
+                height: 30rem;
+            }
+        }
+    }
     .Banner {
         height: 7rem;
 
@@ -2964,5 +2982,57 @@ input {
                 transition: all 300ms ease-in-out;
             }
         }
+    }
+}
+
+.cards-container {
+    margin-left: 5rem;
+    padding: 2rem;
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .card {
+            flex: 0 1 calc(33% - 1em);
+            height: 30rem;
+            margin-bottom: 2em;
+
+            .charts-header {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                justify-content: flex-start;
+
+                .chart-title {
+                    color: #6c757d;
+                    font-family: 'archia';
+                    font-size: 1.5rem !important;
+                    font-weight: 900;
+                    padding: 20px 0;
+                    text-transform: uppercase;
+                }
+
+                .chart-content {
+                    height: 100%;
+                    width: 100%;
+                }
+
+                .chart-note {
+                    color: $gray;
+                    font-family: 'archia';
+                    font-size: .8rem;
+                    height: 50px;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 769px) {
+        margin-left: unset;
+        padding: 1rem;
     }
 }
