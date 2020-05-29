@@ -7,7 +7,7 @@ import { useResizeObserver } from "../../utils/hooks";
 import * as d3 from "d3";
 import { addDays, subDays, format } from "date-fns";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import * as Icon from "react-feather";
+
 import { useTranslation } from "react-i18next";
 
 function TimeSeries({ timeseriesProp, chartType, mode, logMode, isTotal }) {
@@ -500,13 +500,6 @@ function TimeSeries({ timeseriesProp, chartType, mode, logMode, isTotal }) {
         >
           {`2 ${t("Weeks")}`}
         </button>
-      </div>
-
-      <div className="alert">
-        <Icon.AlertOctagon />
-        <div className="alert-right">
-          {t("Tested chart is independent of uniform scaling")}
-        </div>
       </div>
     </React.Fragment>
   );
