@@ -121,7 +121,6 @@ const Essentials = () => {
           </div>
         </React.Fragment>
       )}
-      }
     </React.Fragment>
   );
 };

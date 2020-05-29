@@ -115,29 +115,30 @@ const Home = ({ mode }) => {
     ),
     (clist) => clist.map((data) => _.omit(data, "province"))
   );
+
   const handleMerge = (arr) => {
     const khali = {};
     arr.forEach((arr) => {
       if (khali[arr.createdOn]) {
-        let total = khali[arr.createdOn].total;
-        let recovered = khali[arr.createdOn].recovered;
-        let deaths = khali[arr.createdOn].deaths;
+        let total = khali[arr.createdOn].dailyconfirmed;
+        let recovered = khali[arr.createdOn].dailyrecovered;
+        let deaths = khali[arr.createdOn].dailydeceased;
 
-        khali[arr.createdOn].total = total + 1;
-        khali[arr.createdOn].recovered =
+        khali[arr.createdOn].dailyconfirmed = total + 1;
+        khali[arr.createdOn].dailyrecovered =
           arr.recoveredOn !== null ? recovered + 1 : recovered;
-        khali[arr.createdOn].deaths =
+        khali[arr.createdOn].dailydeceased =
           arr.deathOn !== null ? deaths + 1 : deaths;
-        khali[arr.createdOn].active = total - recovered - deaths;
+        khali[arr.createdOn].dailyactive = total - recovered - deaths;
       } else {
         let total = 1;
         let recovered = arr.recoveredOn !== null ? 1 : 0;
         let deaths = arr.deathOn !== null ? 1 : 0;
         khali[arr.createdOn] = {
-          total,
-          recovered,
-          deaths,
-          active: total - recovered - deaths,
+          dailyconfirmed: total,
+          dailyrecovered: recovered,
+          dailydeceased: deaths,
+          dailyactive: total - recovered - deaths,
         };
       }
     });
@@ -148,10 +149,55 @@ const Home = ({ mode }) => {
     const merged = handleMerge(groupedTimeline[element]);
     groupedTimeline[element] = Object.keys(merged).map((val) => {
       return {
-        date: val,
+        date: new Date(val).setHours(0, 0, 0),
 
         ...merged[val],
       };
+    });
+  });
+
+  Object.keys(groupedTimeline).forEach((e) => {
+    const element = groupedTimeline[e];
+    for (var m = moment("2020-01-01"); m.isBefore(moment()); m.add(1, "days")) {
+      const hero = {
+        dailyconfirmed: 0,
+        dailyrecovered: 0,
+        dailydeceased: 0,
+        dailyactive: 0,
+        date: m.toDate().setHours(0, 0, 0),
+      };
+
+      if (!element.find((estoElement) => moment(estoElement.date).isSame(m))) {
+        element.push(hero);
+      }
+    }
+
+    groupedTimeline[e] = element;
+  });
+
+  Object.keys(groupedTimeline).forEach((e) => {
+    let total = 0;
+    let recovered = 0;
+    let deaths = 0;
+    let active = 0;
+    const sortedVai = groupedTimeline[e].sort((a, b) => {
+      if (moment(a.date) < moment(b.date)) {
+        return -1;
+      } else if (moment(a.date) > moment(b.date)) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    sortedVai.forEach((l, i) => {
+      total = total + l.dailyconfirmed;
+      deaths = deaths + l.dailydeceased;
+      recovered = recovered + l.dailyrecovered;
+      active = active + l.dailyactive;
+      groupedTimeline[e][i]["totalconfirmed"] = total;
+      groupedTimeline[e][i]["totalactive"] = active;
+      groupedTimeline[e][i]["totaldeceased"] = deaths;
+      groupedTimeline[e][i]["totalrecovered"] = recovered;
     });
   });
 
@@ -177,6 +223,7 @@ const Home = ({ mode }) => {
             selectType={selectType}
             setSelectType={setSelectType}
             provinceCases={provinceCases}
+            groupedTimeline={groupedTimeline}
             districtCases={districtCases.sort((a, b) => {
               if (a.total < b.total) {
                 return 1;

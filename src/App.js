@@ -8,6 +8,7 @@ import EssentialsContainer from "./containers/Essentials/Essentials";
 import "./App.scss";
 import { Switch, Route } from "react-router-dom";
 import Feed from "./containers/Feed/Feed";
+import Charts from "./containers/Charts/Charts";
 const App = () => {
   useEffect(() => {
     process.env.NODE_ENV !== "development" &&
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/about-us" exact component={AboutUs} />
         <Route path="/feed" exact component={() => <Feed mode={mode} />} />
         <Route path="/hospitals" exact component={EssentialsContainer} />
+        <Route path="/charts" exact component={Charts}></Route>
         <Route path="/" component={() => <Home mode={mode}></Home>} />
       </Switch>
       <Footer />

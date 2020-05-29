@@ -12,7 +12,7 @@ const Expand = ({ setExpand, mode, setMode }) => {
             targets: expandElement.current,
             translateX: '10.5rem',
             easing: 'easeOutExpo',
-            duration: 250
+            duration: 250,
         });
     });
 
@@ -20,7 +20,8 @@ const Expand = ({ setExpand, mode, setMode }) => {
         Home: '/',
         'About Us': '/about-us',
         Feed: '/feed',
-        Hospitals: '/hospitals'
+        Hospitals: '/hospitals',
+        Charts: '/charts'
     };
 
     return (
@@ -46,7 +47,7 @@ const Expand = ({ setExpand, mode, setMode }) => {
             })}
 
             {window.innerWidth < 768 && (
-                <div className='fadeInUp' style={{ animationDelay: '0.9s' }} onClick={() => {}}>
+                <div className='fadeInUp' style={{ animationDelay: '0.9s' }} onClick={() => { }}>
                     <div
                         className='navbar-left'
                         onClick={() => {
