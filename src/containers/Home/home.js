@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import _ from "lodash";
+import Footer from "../../components/Footer/Footer";
 import moment from "moment";
 import axios from "../../axios";
 import ContentLoader from "../../components/ContentLoader/ContentLoader";
@@ -202,41 +203,44 @@ const Home = ({ mode }) => {
   });
 
   return (
-    <div className="Home">
-      {loading ? (
-        <ContentLoader />
-      ) : (
-        <Fragment>
-          <LeftContainer
-            {...facts}
-            date={
-              covidData.length !== facts.total
-                ? new Date()
-                : covidData[covidData.length - 1].modifiedOn
-            }
-            provinceCases={provinceCases}
-            totalData={totalCases}
-          />
-          <RightContainer
-            {...facts}
-            mode={mode}
-            selectType={selectType}
-            setSelectType={setSelectType}
-            provinceCases={provinceCases}
-            groupedTimeline={groupedTimeline}
-            districtCases={districtCases.sort((a, b) => {
-              if (a.total < b.total) {
-                return 1;
-              } else if (a.total > b.total) {
-                return -1;
-              } else {
-                return 0;
+    <Fragment>
+      <div className="Home">
+        {loading ? (
+          <ContentLoader />
+        ) : (
+          <Fragment>
+            <LeftContainer
+              {...facts}
+              date={
+                covidData.length !== facts.total
+                  ? new Date()
+                  : covidData[covidData.length - 1].modifiedOn
               }
-            })}
-          />
-        </Fragment>
-      )}
-    </div>
+              provinceCases={provinceCases}
+              totalData={totalCases}
+            />
+            <RightContainer
+              {...facts}
+              mode={mode}
+              selectType={selectType}
+              setSelectType={setSelectType}
+              provinceCases={provinceCases}
+              groupedTimeline={groupedTimeline}
+              districtCases={districtCases.sort((a, b) => {
+                if (a.total < b.total) {
+                  return 1;
+                } else if (a.total > b.total) {
+                  return -1;
+                } else {
+                  return 0;
+                }
+              })}
+            />
+          </Fragment>
+        )}
+      </div>
+      <Footer />
+    </Fragment>
   );
 };
 

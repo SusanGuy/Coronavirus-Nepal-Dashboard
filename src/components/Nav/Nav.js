@@ -67,11 +67,7 @@ const Nav = ({ mode, setMode }) => {
                 <Icon.Home />
               </Link>
             </span>
-            <span>
-              <Link to="/about-us">
-                <Icon.Users />
-              </Link>
-            </span>
+
             <span>
               <Link to="/feed">
                 <Icon.Twitter />
@@ -79,12 +75,17 @@ const Nav = ({ mode, setMode }) => {
             </span>
             <span>
               <Link to="/hospitals">
-                <Icon.Heart />
+                <Icon.Package />
               </Link>
             </span>
             <span>
               <Link to="/charts">
                 <Icon.BarChart2 />
+              </Link>
+            </span>
+            <span>
+              <Link to="/about-us">
+                <Icon.Users />
               </Link>
             </span>
           </React.Fragment>
