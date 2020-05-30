@@ -70,4 +70,4 @@ const QuickFacts = ({
   );
 };
 
-export default QuickFacts;
+export default React.memo(QuickFacts);

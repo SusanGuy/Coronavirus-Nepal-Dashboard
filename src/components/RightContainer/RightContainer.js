@@ -25,4 +25,4 @@ const RightContainer = ({
   );
 };
 
-export default RightContainer;
+export default React.memo(RightContainer);

@@ -116,4 +116,4 @@ function TimeSeriesExplorer({
   );
 }
 
-export default TimeSeriesExplorer;
+export default React.memo(TimeSeriesExplorer);

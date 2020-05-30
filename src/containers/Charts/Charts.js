@@ -81,4 +81,4 @@ function Charts() {
   );
 }
 
-export default Charts;
+export default React.memo(Charts);

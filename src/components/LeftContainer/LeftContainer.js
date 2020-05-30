@@ -59,4 +59,4 @@ const LeftContainer = ({
   );
 };
 
-export default LeftContainer;
+export default React.memo(LeftContainer);

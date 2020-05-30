@@ -54,4 +54,4 @@ function Dome({ groupedTimeline }) {
     )
   );
 }
-export default Dome;
+export default React.memo(Dome);
