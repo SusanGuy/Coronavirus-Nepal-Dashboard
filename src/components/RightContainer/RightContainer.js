@@ -3,6 +3,7 @@ import React from "react";
 import Dome from "../../Dome";
 import MapView from "../MapView/MapView";
 const RightContainer = ({
+  ownData,
   selectType,
   setSelectType,
   districtCases,
@@ -20,7 +21,7 @@ const RightContainer = ({
         mode={mode}
       />
 
-      <Dome groupedTimeline={groupedTimeline}></Dome>
+      <Dome ownData={ownData} groupedTimeline={groupedTimeline}></Dome>
     </div>
   );
 };

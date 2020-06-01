@@ -9,40 +9,40 @@ import LeftContainer from "../../components/LeftContainer/LeftContainer";
 const Home = ({ mode }) => {
   const [mainCases, setTotalCases] = useState({
     totalCases: [],
-    loading: true,
   });
 
   const [selectType, setSelectType] = useState(2);
   const [covidData, setCovidData] = useState([]);
+  const [totalData, setTotalData] = useState(null);
+  const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
     let unmounted = false;
-    const getTotalData = async () => {
+
+    const getStates = async () => {
       try {
-        const { data } = await axios.get("/");
+        const [
+          { data: totalData },
+          { data },
+          { data: ownData },
+        ] = await Promise.all([
+          axios.get("/"),
+          axios.get("https://data.nepalcorona.info/api/v1/covid"),
+          axios.get("/chart"),
+        ]);
+
         if (!unmounted) {
-          setTotalCases({ totalCases: data, loading: false });
-        }
-      } catch (error) {
-        setTotalCases({ totalCases: [], loading: false });
-        console.log(error);
-      }
-    };
-    const getAllFacts = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://data.nepalcorona.info/api/v1/covid"
-        );
-        if (!unmounted) {
+          setTotalCases({ totalCases: totalData });
           setCovidData(data);
+          setTotalData(ownData);
+          setFetched(true);
         }
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
     };
 
-    getAllFacts();
-    getTotalData();
+    getStates();
 
     return () => {
       unmounted = true;
@@ -53,7 +53,7 @@ const Home = ({ mode }) => {
     return arr.reduce((init, current) => init + current[field], 0);
   };
 
-  const { totalCases, loading } = mainCases;
+  const { totalCases } = mainCases;
 
   let districtCases = [];
   let provinceCases = [];
@@ -205,7 +205,7 @@ const Home = ({ mode }) => {
   return (
     <Fragment>
       <div className="Home">
-        {loading ? (
+        {!fetched ? (
           <ContentLoader />
         ) : (
           <Fragment>
@@ -218,9 +218,11 @@ const Home = ({ mode }) => {
               }
               provinceCases={provinceCases}
               totalData={totalCases}
+              ownData={totalData}
             />
             <RightContainer
               {...facts}
+              ownData={totalData}
               mode={mode}
               selectType={selectType}
               setSelectType={setSelectType}
@@ -239,6 +241,7 @@ const Home = ({ mode }) => {
           </Fragment>
         )}
       </div>
+
       <Footer />
     </Fragment>
   );
