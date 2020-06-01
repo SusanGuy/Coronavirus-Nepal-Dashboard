@@ -6,16 +6,16 @@ import Tabs from "../Tabs/Tabs";
 import Box from "../Box/Box";
 
 const MapView = ({
-  setSelectType,
   districtData,
   provinceData,
-  selectType,
+
   mode,
 }) => {
   const [maps, setMap] = useState(null);
 
   const [hoveredProvince, setHoveredProvince] = useState("");
   const [hoveredDistrict, setHoveredDistrict] = useState("");
+  const [selectType, setSelectType] = useState(2);
 
   let colorRange = ["#E8FFAA", "#FFD666", "#FF9144", "#FF073A"];
   useEffect(() => {

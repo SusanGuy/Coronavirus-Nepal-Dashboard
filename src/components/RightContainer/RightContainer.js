@@ -14,8 +14,6 @@ const RightContainer = ({
   return (
     <div className="home-right">
       <MapView
-        selectType={selectType}
-        setSelectType={setSelectType}
         districtData={districtCases}
         provinceData={provinceCases}
         mode={mode}
