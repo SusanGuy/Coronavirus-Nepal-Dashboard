@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav/Nav";
 import Home from "./containers/Home/home";
 import AboutUs from "./containers/AboutUs/AboutUs";
-import Footer from "./components/Footer/Footer";
+
 import { initGA, PageView } from "./analytics";
 import EssentialsContainer from "./containers/Essentials/Essentials";
 import "./App.scss";
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/charts" exact component={Charts}></Route>
         <Route path="/" component={() => <Home mode={mode}></Home>} />
       </Switch>
-      <Footer />
+     
     </div>
   );
 };

@@ -15,6 +15,7 @@ const LeftContainer = ({
   newDeath,
   newActive,
   date,
+  ownData,
   ...props
 }) => {
   return (
@@ -35,7 +36,7 @@ const LeftContainer = ({
         newDeath={newDeath}
         newActive={newActive}
       />
-      <MiniGraph />
+      <MiniGraph timeseries={ownData} />
       <h5
         className="table-fineprint fadeInUp"
         style={{ animationDelay: "1.5s" }}

@@ -1,8 +1,8 @@
 import AgeChart from "../../components/Charts/ageChart";
-
+import AllStatesChart from "../../components/Charts/allStates";
 import DailyConfirmedChart from "../../components/Charts/dailyconfirmedchart";
 import GenderChart from "../../components/Charts/genderchart";
-
+import GrowthTrendChart from "../../components/Charts/growthTrendChart";
 import TotalConfirmedChart from "../../components/Charts/totalconfirmedChart";
 
 import axios from "axios";
@@ -15,6 +15,7 @@ function Charts() {
   const [fetched, setFetched] = useState(false);
   const [timeseries, setTimeseries] = useState([]);
   const [rawData, setRawData] = useState([]);
+  const [statesTimeSeries, setStatesTimeSeries] = useState([]);
 
   useEffect(() => {
     if (fetched === false) {
@@ -24,9 +25,14 @@ function Charts() {
 
   const getStates = async () => {
     try {
-      const [{ data: summaryData }, { data: ownData }] = await Promise.all([
+      const [
+        { data: summaryData },
+        { data: ownData },
+        stateDailyResponse,
+      ] = await Promise.all([
         axios.get("https://data.nepalcorona.info/api/v1/covid/summary"),
         ownaxios.get("/chart"),
+        axios.get("https://api.nepalcovid19.org/states_daily.json"),
       ]);
 
       ownData.forEach((l, i) => {
@@ -51,7 +57,7 @@ function Charts() {
       });
 
       setTimeseries(ownData);
-
+      setStatesTimeSeries(stateDailyResponse.data.states_daily);
       setRawData(summaryData);
       setFetched(true);
     } catch (err) {
@@ -68,6 +74,22 @@ function Charts() {
 
         <div className="card fadeInUp" style={{ animationDelay: "0.7s" }}>
           <DailyConfirmedChart title="Daily Cases" timeseries={timeseries} />
+        </div>
+        <div
+          className="card card-big fadeInUp"
+          style={{ animationDelay: "0.7s" }}
+        >
+          <AllStatesChart
+            title="Total Cases by State"
+            data={statesTimeSeries}
+          />
+        </div>
+
+        <div className="card fadeInUp" style={{ animationDelay: "0.7s" }}>
+          <GrowthTrendChart
+            title="States - Growth Trend"
+            data={statesTimeSeries}
+          />
         </div>
         <div className="card fadeInUp" style={{ animationDelay: "0.7s" }}>
           <GenderChart title="Patient Gender" data={rawData} />
