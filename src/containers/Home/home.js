@@ -2,17 +2,21 @@ import React, { Fragment, useEffect, useState } from "react";
 import _ from "lodash";
 import Footer from "../../components/Footer/Footer";
 import moment from "moment";
+import QuickFacts from "../../components/QuickFacts/QuickFacts";
+import MiniGraph from "../../components/MiniGraph/MiniGraph";
+import MainTable from "../../components/MainTable/MainTable";
+import Municipality from "../../components/Municipality/Municipality";
 import axios from "../../axios";
+import MapViewer from "../../MapViewer";
+import Dome from "../../Dome";
 import {
   handleMerge,
   calculateAdditional,
   caclulateTimeSeries,
   getTotalDiff,
 } from "../../utils";
-import ContentLoader from "../../components/ContentLoader/ContentLoader";
-import RightContainer from "../../components/RightContainer/RightContainer";
-import LeftContainer from "../../components/LeftContainer/LeftContainer";
-const Home = ({ mode }) => {
+
+const Home = () => {
   const [mainCases, setTotalCases] = useState({
     totalCases: [],
   });
@@ -198,45 +202,54 @@ const Home = ({ mode }) => {
     groupedTimeline = caclulateTimeSeries(groupedTimeline);
   }
 
+  const date =
+    covidData.length !== facts.total
+      ? new Date()
+      : covidData[covidData.length - 1].modifiedOn;
+
   return (
     <Fragment>
       <div className="Home">
-        {!fetched ? (
-          <ContentLoader />
-        ) : (
-          <Fragment>
-            <LeftContainer
+        <div className="home-left">
+          <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
+            <div className="actions">
+              {covidData.length !== 0 && (
+                <h5>Updated {moment(new Date(date)).fromNow()}</h5>
+              )}
+            </div>
+          </div>
+          {covidData.length !== 0 && <QuickFacts date={date} {...facts} />}
+          {totalData && <MiniGraph timeseries={totalData} />}
+          <h5
+            className="table-fineprint fadeInUp"
+            style={{ animationDelay: "1.5s" }}
+          >
+            Compiled from Ministry of Health & Population of Nepal
+          </h5>
+          {fetched && (
+            <MainTable
+              date={date}
               {...facts}
-              date={
-                covidData.length !== facts.total
-                  ? new Date()
-                  : covidData[covidData.length - 1].modifiedOn
-              }
               provinceCases={provinceCases}
               totalData={daiCases}
-              ownData={totalData}
             />
-            <RightContainer
+          )}
+          <Municipality />
+        </div>
+        <div className="home-right">
+          {fetched && (
+            <MapViewer
+              prov={provinceCases}
+              dist={districtCases}
               {...facts}
-              date={covidData[covidData.length - 1].modifiedOn}
-              ownData={totalData}
-              mode={mode}
-              provinceCases={provinceCases}
-              groupedTimeline={groupedTimeline}
-              districtCases={districtCases.sort((a, b) => {
-                if (a.total < b.total) {
-                  return 1;
-                } else if (a.total > b.total) {
-                  return -1;
-                } else {
-                  return 0;
-                }
-              })}
-            />
-          </Fragment>
-        )}
+              date={date}
+            ></MapViewer>
+          )}
+          {totalData && (
+            <Dome ownData={totalData} groupedTimeline={groupedTimeline}></Dome>
+          )}{" "}
+        </div>
       </div>
-
       <Footer />
     </Fragment>
   );
