@@ -23,7 +23,7 @@ function Legend(
             .create('svg')
             .attr('width', width)
             .attr('height', height)
-            .attr('viewBox', [ 0, 0, width, height ])
+            .attr('viewBox', [0, 0, width, height])
             .style('overflow', 'visible')
             .style('display', 'block');
 
@@ -57,7 +57,7 @@ function Legend(
 
         x = Object.assign(color.copy().interpolator(d3.interpolateRound(marginLeft, width - marginRight)), {
             range() {
-                return [ marginLeft, width - marginRight ];
+                return [marginLeft, width - marginRight];
             }
         });
 
@@ -88,13 +88,13 @@ function Legend(
         const thresholds = color.thresholds
             ? color.thresholds() // scaleQuantize
             : color.quantiles
-              ? color.quantiles() // scaleQuantile
-              : color.domain(); // scaleThreshold
+                ? color.quantiles() // scaleQuantile
+                : color.domain(); // scaleThreshold
 
         const thresholdFormat =
             tickFormat === undefined ? (d) => d : typeof tickFormat === 'string' ? d3.format(tickFormat) : tickFormat;
 
-        x = d3.scaleLinear().domain([ -1, color.range().length - 1 ]).rangeRound([ marginLeft, width - marginRight ]);
+        x = d3.scaleLinear().domain([-1, color.range().length - 1]).rangeRound([marginLeft, width - marginRight]);
 
         svg
             .append('g')
@@ -118,7 +118,7 @@ function Legend(
         // Ordinal
         svg.select('.ramp').transition(t).attr('opacity', 0).attr('xlink:href', null);
         if (!ordinalWeights) {
-            x = d3.scaleBand().domain(color.domain()).rangeRound([ marginLeft, width - marginRight ]);
+            x = d3.scaleBand().domain(color.domain()).rangeRound([marginLeft, width - marginRight]);
             svg
                 .selectAll('rect')
                 .data(color.domain())
@@ -131,8 +131,8 @@ function Legend(
         } else {
             const widthScale = d3
                 .scaleLinear()
-                .domain([ 0, ordinalWeights.reduce((a, b) => a + b) ])
-                .rangeRound([ 0, width - marginLeft - marginRight ]);
+                .domain([0, ordinalWeights.reduce((a, b) => a + b)])
+                .rangeRound([0, width - marginLeft - marginRight]);
 
             const xPos = ordinalWeights.map((w, i) =>
                 ordinalWeights.slice(0, i).reduce((acc, w) => acc + widthScale(w), marginLeft)
@@ -155,7 +155,7 @@ function Legend(
                 .attr('opacity', 1);
         }
 
-        tickAdjust = () => {};
+        tickAdjust = () => { };
     }
 
     svg

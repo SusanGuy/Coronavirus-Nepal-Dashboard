@@ -7,9 +7,9 @@ export const MAP_TYPES = {
 export const MAPS_DIR = '/maps';
 export const DATA_DIR = '/data';
 
-export const STATE_ROW_STATISTICS = [ 'confirmed', 'active', 'recovered', 'deaths' ];
+export const STATE_ROW_STATISTICS = ['confirmed', 'active', 'recovered', 'deaths'];
 
-export const DISTRICT_ROW_STATISTICS = [ 'confirmed', 'active', 'recovered', 'deceased' ];
+export const DISTRICT_ROW_STATISTICS = ['confirmed', 'active', 'recovered', 'deceased'];
 
 export const MAP_STATISTICS = {
     TOTAL: 0,
@@ -104,7 +104,7 @@ export const DISTRICTS_ARRAY = [
         state: 'Province 1'
     },
     {
-        district: 'Illam',
+        district: 'Ilam',
         othernamesspellings: '',
         state: 'Province 1'
     },
@@ -159,7 +159,7 @@ export const DISTRICTS_ARRAY = [
         state: 'Province 1'
     },
     {
-        district: 'Okhaldunga',
+        district: 'Okhaldhunga',
         othernamesspellings: '',
         state: 'Province 1'
     },
@@ -259,7 +259,7 @@ export const DISTRICTS_ARRAY = [
         state: 'Bagmati Province'
     },
     {
-        district: 'Sindhupalchowk',
+        district: 'Sindhupalchok',
         othernamesspellings: '',
         state: 'Bagmati Province'
     },
@@ -344,7 +344,7 @@ export const DISTRICTS_ARRAY = [
         state: 'Province 5'
     },
     {
-        district: 'Argakhanchi',
+        district: 'Arghakhanchi',
         othernamesspellings: '',
         state: 'Province 5'
     },
