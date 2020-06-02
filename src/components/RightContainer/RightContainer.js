@@ -1,7 +1,7 @@
 import React from "react";
-import MapViewer from '../../MapViewer'
+import MapViewer from "../../MapViewer";
 import Dome from "../../Dome";
-import MapView from "../MapView/MapView";
+
 const RightContainer = ({
   total,
   active,
@@ -13,9 +13,9 @@ const RightContainer = ({
   date,
   districtCases,
   provinceCases,
-  mode,
+
   groupedTimeline,
-  ownData
+  ownData,
 }) => {
   const facts = {
     total,
@@ -24,15 +24,21 @@ const RightContainer = ({
     deaths,
     newTotal,
     newRecovered,
-    newDeath, date
-  }
+    newDeath,
+    date,
+  };
   return (
     <div className="home-right">
-
-      {facts && <MapViewer dist={districtCases} {...facts}></MapViewer>}
+      {facts && (
+        <MapViewer
+          prov={provinceCases}
+          dist={districtCases}
+          {...facts}
+        ></MapViewer>
+      )}
 
       <Dome ownData={ownData} groupedTimeline={groupedTimeline}></Dome>
-    </div >
+    </div>
   );
 };
 

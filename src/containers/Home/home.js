@@ -204,37 +204,37 @@ const Home = ({ mode }) => {
         {!fetched ? (
           <ContentLoader />
         ) : (
-            <Fragment>
-              <LeftContainer
-                {...facts}
-                date={
-                  covidData.length !== facts.total
-                    ? new Date()
-                    : covidData[covidData.length - 1].modifiedOn
+          <Fragment>
+            <LeftContainer
+              {...facts}
+              date={
+                covidData.length !== facts.total
+                  ? new Date()
+                  : covidData[covidData.length - 1].modifiedOn
+              }
+              provinceCases={provinceCases}
+              totalData={daiCases}
+              ownData={totalData}
+            />
+            <RightContainer
+              {...facts}
+              date={covidData[covidData.length - 1].modifiedOn}
+              ownData={totalData}
+              mode={mode}
+              provinceCases={provinceCases}
+              groupedTimeline={groupedTimeline}
+              districtCases={districtCases.sort((a, b) => {
+                if (a.total < b.total) {
+                  return 1;
+                } else if (a.total > b.total) {
+                  return -1;
+                } else {
+                  return 0;
                 }
-                provinceCases={provinceCases}
-                totalData={daiCases}
-                ownData={totalData}
-              />
-              <RightContainer
-                {...facts}
-                date={covidData[covidData.length - 1].modifiedOn}
-                ownData={totalData}
-                mode={mode}
-                provinceCases={provinceCases}
-                groupedTimeline={groupedTimeline}
-                districtCases={districtCases.sort((a, b) => {
-                  if (a.total < b.total) {
-                    return 1;
-                  } else if (a.total > b.total) {
-                    return -1;
-                  } else {
-                    return 0;
-                  }
-                })}
-              />
-            </Fragment>
-          )}
+              })}
+            />
+          </Fragment>
+        )}
       </div>
 
       <Footer />
