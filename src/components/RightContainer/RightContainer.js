@@ -11,12 +11,11 @@ const RightContainer = ({
   newRecovered,
   newDeath,
   date,
-  selectType,
-  setSelectType,
   districtCases,
   provinceCases,
   mode,
   groupedTimeline,
+  ownData
 }) => {
   const facts = {
     total,
@@ -29,18 +28,10 @@ const RightContainer = ({
   }
   return (
     <div className="home-right">
-      {//<MapView
-        //   selectType={selectType}
-        //   setSelectType={setSelectType}
-        //   districtData={districtCases}
-        //   provinceData={provinceCases}
-        //   mode={mode}
-        // />
-      }
 
       {facts && <MapViewer dist={districtCases} {...facts}></MapViewer>}
 
-      <Dome facts={facts} date={date} groupedTimeline={groupedTimeline}></Dome>
+      <Dome ownData={ownData} groupedTimeline={groupedTimeline}></Dome>
     </div >
   );
 };

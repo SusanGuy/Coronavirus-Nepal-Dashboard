@@ -1,6 +1,6 @@
 import React from "react";
 import * as Icon from "react-feather";
-import "./Footer.scss";
+import "./footer.scss";
 const Footer = () => {
   return (
     <div>
