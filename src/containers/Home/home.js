@@ -218,6 +218,7 @@ const Home = ({ mode }) => {
             />
             <RightContainer
               {...facts}
+              date={covidData[covidData.length - 1].modifiedOn}
               ownData={totalData}
               mode={mode}
               provinceCases={provinceCases}

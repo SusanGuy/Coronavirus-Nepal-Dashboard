@@ -1,6 +1,8 @@
 import React from "react";
 
 const Box = ({
+  mapOption,
+  setMapOption,
   total,
   active,
   recovered,
@@ -17,7 +19,13 @@ const Box = ({
 
   return (
     <div className="map-stats">
-      <div className="stats fadeInUp" style={{ animationDelay: "2s" }}>
+      <div
+        className={`stats fadeInUp ${
+          mapOption && mapOption === "confirmed" ? "focused" : ""
+        }`}
+        onClick={() => mapOption && setMapOption("confirmed")}
+        style={{ animationDelay: "2s" }}
+      >
         <h5>Confirmed</h5>
         <div className="stats-bottom">
           <h1>{total}</h1>
@@ -29,7 +37,10 @@ const Box = ({
         </div>
       </div>
       <div
-        className="stats is-blue fadeInUp"
+        onClick={() => mapOption && setMapOption("active")}
+        className={`stats is-blue fadeInUp ${
+          mapOption && mapOption === "active" ? "focused" : ""
+        }`}
         style={{ animationDelay: "2.1s" }}
       >
         <h5>Active</h5>
@@ -47,7 +58,10 @@ const Box = ({
         </div>
       </div>
       <div
-        className="stats is-green fadeInUp"
+        onClick={() => mapOption && setMapOption("recovered")}
+        className={`stats is-green fadeInUp ${
+          mapOption && mapOption === "recovered" ? "focused" : ""
+        }`}
         style={{ animationDelay: "2.2s" }}
       >
         <h5>Recovered</h5>
@@ -61,7 +75,10 @@ const Box = ({
         </div>
       </div>
       <div
-        className="stats is-gray fadeInUp"
+        onClick={() => setMapOption("deceased")}
+        className={`stats is-gray fadeInUp ${
+          mapOption && mapOption === "deceased" ? "focused" : ""
+        }`}
         style={{ animationDelay: "2.3s" }}
       >
         <h5>Deceased</h5>
