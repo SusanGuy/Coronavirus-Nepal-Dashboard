@@ -17,11 +17,9 @@ import {
 } from "../../utils";
 
 const Home = () => {
-  const [mainCases, setTotalCases] = useState({
-    totalCases: [],
-  });
+  const [totalCases, setTotalCases] = useState(null);
 
-  const [covidData, setCovidData] = useState([]);
+  const [covidData, setCovidData] = useState(null);
   const [totalData, setTotalData] = useState(null);
   const [fetched, setFetched] = useState(false);
 
@@ -41,7 +39,7 @@ const Home = () => {
         ]);
 
         if (!unmounted) {
-          setTotalCases({ totalCases: totalData });
+          setTotalCases(totalData);
           setCovidData(data);
           setTotalData(ownData);
           setFetched(true);
@@ -58,7 +56,6 @@ const Home = () => {
     };
   }, []);
 
-  const { totalCases } = mainCases;
   let sahiCases = [];
   let districtCases = [];
   const provinceCases = [];
@@ -202,10 +199,11 @@ const Home = () => {
     groupedTimeline = caclulateTimeSeries(groupedTimeline);
   }
 
-  const date =
-    covidData.length !== facts.total
-      ? new Date()
-      : covidData[covidData.length - 1].modifiedOn;
+  let date = new Date();
+
+  if (covidData && covidData.length === facts.total) {
+    date = covidData[covidData.length - 1].modifiedOn;
+  }
 
   return (
     <Fragment>
@@ -213,12 +211,10 @@ const Home = () => {
         <div className="home-left">
           <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
             <div className="actions">
-              {covidData.length !== 0 && (
-                <h5>Updated {moment(new Date(date)).fromNow()}</h5>
-              )}
+              {covidData && <h5>Updated {moment(new Date(date)).fromNow()}</h5>}
             </div>
           </div>
-          {covidData.length !== 0 && <QuickFacts date={date} {...facts} />}
+          {covidData && <QuickFacts date={date} {...facts} />}
           {totalData && <MiniGraph timeseries={totalData} />}
           <h5
             className="table-fineprint fadeInUp"
@@ -234,7 +230,7 @@ const Home = () => {
               totalData={daiCases}
             />
           )}
-          <Municipality />
+          {fetched && <Municipality />}
         </div>
         <div className="home-right">
           {fetched && (
@@ -247,7 +243,7 @@ const Home = () => {
           )}
           {totalData && (
             <Dome ownData={totalData} groupedTimeline={groupedTimeline}></Dome>
-          )}{" "}
+          )}
         </div>
       </div>
       <Footer />
