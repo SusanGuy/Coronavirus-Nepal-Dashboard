@@ -3382,9 +3382,9 @@ table {
   }
 }
 
-.TimeSeries{
+.TimeSeriesExplorer{
     margin:auto;
-}
+
 
 .timeseries-header {
   align-self: center;
@@ -3430,6 +3430,7 @@ table {
       align-self: center;
     }
   }
+}
 
   .timeseries-mode,
   .timeseries-logmode {
