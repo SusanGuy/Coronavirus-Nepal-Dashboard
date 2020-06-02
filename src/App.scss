@@ -2012,6 +2012,510 @@ table {
         }
     }
 }
+.MapExplorer {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+
+    &.stickied {
+        position: sticky !important;
+        top: 0;
+    }
+
+    .header {
+        align-self: flex-start;
+        color: $gray;
+        display: flex;
+        flex-direction: column;
+
+        h1,
+        h6 {
+            margin: 0;
+        }
+
+        h6 {
+            margin-bottom: 2rem;
+            margin-top: .75rem;
+        }
+    }
+
+    .svg-parent {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        margin-top: 2rem;
+        overflow: hidden;
+        width: 90%;
+
+        svg {
+            align-self: center;
+            width: 100%;
+
+            text {
+                fill: $gray;
+                font-family: 'archia';
+                font-size: 10px;
+                font-weight: 600;
+                text-align: right;
+            }
+        }
+    }
+
+    .legend {
+        margin-top: 1em;
+        width: 100%;
+
+        svg {
+            display: block;
+            overflow: visible;
+        }
+    }
+
+    .map-hover {
+        stroke-width: 2;
+    }
+
+    .back-button {
+        background: $yellow-light;
+        color: $orange;
+        position: absolute;
+        right: 0;
+        top: 2.75rem;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background: $yellow-hover;
+        }
+    }
+
+    .state-page-button {
+        background: $yellow-light;
+        border-radius: 5px;
+        color: $orange;
+        font-size: .75rem;
+        height: 1.5rem;
+        padding: .45rem;
+        padding-left: .75rem;
+        position: absolute;
+        right: 0;
+        top: -.5rem;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background: $yellow-hover;
+        }
+
+        abbr {
+            text-transform: none;
+        }
+
+        svg {
+            height: 12px;
+            margin-left: .25rem;
+            stroke: $orange-mid;
+            stroke-width: 3px;
+            vertical-align: middle;
+            width: 12px;
+        }
+    }
+
+    .meta {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 4rem;
+        justify-content: space-between;
+
+        h2 {
+            color: #e23028;
+            font-weight: 900;
+            margin-top: 0;
+            width: calc(100% - 10rem);
+            word-wrap: break-word;
+
+            &.active {
+                color: $blue;
+            }
+
+            &.recovered {
+                color: $green;
+            }
+
+            &.deceased {
+                color: $gray;
+            }
+
+            &.Red {
+                color: #d73027;
+            }
+
+            &.Orange {
+                color: #fee08b;
+            }
+
+            &.Green {
+                color: #66bd63;
+            }
+        }
+
+        h4 {
+            color: $gray-mid;
+            margin: 0;
+            word-wrap: break-word;
+        }
+
+        a {
+            width: 10rem;
+        }
+
+        .district {
+            color: #e23028;
+            line-height: 15px;
+            margin: 0;
+
+            span {
+                font-size: .75rem;
+                font-weight: 600;
+            }
+
+            &.active {
+                color: $blue;
+            }
+
+            &.recovered {
+                color: $green;
+            }
+
+            &.deceased {
+                color: $gray;
+            }
+        }
+
+        .unknown {
+            font-weight: 600;
+            position: absolute;
+            right: 0;
+            text-align: right;
+            top: 5.5rem;
+            width: 5rem;
+        }
+    }
+
+    .map-stats {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        position: relative;
+        width: 100%;
+        z-index: 10;
+
+        h1,
+        h5,
+        h6,
+        h3 {
+            margin: 0;
+        }
+
+        h3 {
+            color: $gray-mid;
+            font-weight: 900;
+        }
+
+        .stats {
+            background: $cherry-light;
+            border-radius: 5px;
+            color: $cherry-mid;
+            cursor: pointer;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            height: 3rem;
+            margin-bottom: 1rem;
+            margin-left: .25rem;
+            margin-right: .25rem;
+            padding: .25rem;
+            position: relative;
+            transition: all .1s ease-in-out;
+
+            .stats-bottom {
+                display: flex;
+                flex-direction: column;
+
+                h6 {
+                    font-weight: 900;
+                    margin-bottom: .25rem;
+                    margin-top: auto;
+                }
+            }
+
+            h1 {
+                color: $cherry;
+                font-size: 1em !important;
+                font-weight: 600;
+            }
+
+            &.is-green {
+                background: $green-light;
+
+                h5,
+                h6 {
+                    color: $green-mid;
+                }
+
+                h1 {
+                    color: $green;
+                }
+            }
+
+            &.is-blue {
+                background: $blue-light;
+
+                h5,
+                h6 {
+                    color: $blue-mid;
+                }
+
+                h1 {
+                    color: $blue;
+                }
+            }
+
+            &.is-gray {
+                background: $gray-light;
+
+                h5,
+                h6 {
+                    color: $gray-mid;
+                }
+
+                h1 {
+                    color: $gray;
+                }
+            }
+
+            &.is-yellow {
+                background: $yellow;
+
+                h5,
+                h6 {
+                    color: $white;
+                }
+
+                h1 {
+                    color: $white;
+                }
+            }
+
+            &.is-purple {
+                background: $purple-light;
+                padding-right: 1rem;
+
+                h5,
+                h6 {
+                    color: $purple-mid;
+
+                    &.timestamp {
+                        font-weight: 900;
+                        margin: 0;
+                    }
+                }
+
+                h1 {
+                    color: $purple;
+                }
+
+                svg {
+                    cursor: pointer;
+                    position: absolute;
+                    right: .35rem;
+                    stroke: $purple-mid;
+                    stroke-width: 3;
+                    top: 0;
+                    transition: stroke .2s ease-in-out;
+                    width: 12px;
+
+                    &:hover {
+                        stroke: $purple;
+                    }
+                }
+
+                .tooltip-tested {
+                    svg {
+                        bottom: .3rem;
+                        top: auto;
+                    }
+                }
+            }
+
+            &.focused {
+                margin-bottom: .5rem;
+                margin-top: -.5rem;
+                padding-bottom: .75rem;
+                padding-top: .75rem;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    #chart,
+    #legend {
+        filter: saturate(1.5);
+    }
+
+    .disclaimer {
+        backdrop-filter: saturate(180%) blur(20px);
+        background: $gray-light;
+        border-radius: 5px;
+        bottom: 50%;
+        color: $gray-dark;
+        display: flex;
+        flex-direction: row;
+        font-family: 'archia';
+        font-size: 12px;
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding: .5rem;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        width: 14rem;
+        z-index: 99;
+
+        svg {
+            margin-right: .25rem;
+            margin-top: -.9rem;
+            stroke-width: 2px;
+            width: 20px !important;
+        }
+    }
+
+    .footnote {
+        &.table-fineprint {
+            margin-bottom: 0;
+            margin-top: 1em;
+            text-align: left;
+        }
+    }
+}
+
+.tabs-map {
+    display: flex;
+    flex-direction: row;
+    margin-top: .5rem;
+    position: relative;
+    z-index: 99;
+
+    h4 {
+        display: table-cell;
+        font-family: 'archia';
+        font-size: 12px !important;
+        font-weight: 900;
+        height: 2rem;
+        margin-bottom: 0;
+        margin-top: 0;
+        vertical-align: middle;
+    }
+
+    .tab {
+        background: $gray-light;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        color: $gray-mid;
+        cursor: pointer;
+        height: 2rem;
+        margin-right: .25rem;
+        min-width: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        text-align: center;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            background: $gray-hover;
+        }
+
+        &.focused {
+            background: $gray-opaque;
+            color: $gray;
+        }
+
+        &.disabled {
+            background: $gray-opaque;
+            color: $gray-mid;
+        }
+    }
+
+    sup {
+        position: relative;
+        top: -.5em;
+        vertical-align: top;
+    }
+}
+
+// .MapExplorer {
+//     margin-top: 2rem;
+
+//     // .header,
+//     // .map-stats,
+//     // .back-button,
+//     // .last-update,
+//     // .unknown,
+//     // .footnote,
+//     // .state-page-button {
+//     //     display: none;
+//     // }
+
+//     .anchor {
+//         display: none;
+//     }
+
+//     .svg-parent {
+//         &:not(.legend) {
+//             height: 400px;
+//             width: 100%;
+
+//             svg {
+//                 height: 100%;
+//             }
+//         }
+//     }
+// }
+
+.last-update {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: auto;
+    margin-top: .25rem;
+    text-align: right;
+
+    h6 {
+        color: $green-mid;
+        font-weight: 900;
+    }
+
+    h3 {
+        color: $green;
+        font-weight: 600;
+    }
+
+    h3,
+    h6 {
+        margin: 0;
+    }
+}
 
 @media (max-width: 769px) {
     .Navbar {
