@@ -225,7 +225,14 @@ const Home = () => {
           {fetched && (
             <MainTable
               date={date}
-              {...facts}
+              total={facts.total}
+              active={facts.active}
+              recovered={facts.recovered}
+              deaths={facts.deaths}
+              additionalTotal={facts.newTotal}
+              additionalActive={facts.newActive}
+              additionalRecovery={facts.newRecovered}
+              additionalDeaths={facts.newDeath}
               provinceCases={provinceCases}
               totalData={daiCases}
             />
