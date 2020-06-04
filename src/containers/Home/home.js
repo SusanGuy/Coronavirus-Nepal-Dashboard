@@ -2,22 +2,24 @@ import React, { Fragment, useEffect, useState } from "react";
 import _ from "lodash";
 import Footer from "../../components/Footer/Footer";
 import moment from "moment";
+import QuickFacts from "../../components/QuickFacts/QuickFacts";
+import MiniGraph from "../../components/MiniGraph/MiniGraph";
+import MainTable from "../../components/MainTable/MainTable";
+import Municipality from "../../components/Municipality/Municipality";
 import axios from "../../axios";
+import MapViewer from "../../MapViewer";
+import Dome from "../../Dome";
 import {
   handleMerge,
   calculateAdditional,
   caclulateTimeSeries,
   getTotalDiff,
 } from "../../utils";
-import ContentLoader from "../../components/ContentLoader/ContentLoader";
-import RightContainer from "../../components/RightContainer/RightContainer";
-import LeftContainer from "../../components/LeftContainer/LeftContainer";
-const Home = ({ mode }) => {
-  const [mainCases, setTotalCases] = useState({
-    totalCases: [],
-  });
 
-  const [covidData, setCovidData] = useState([]);
+const Home = () => {
+  const [totalCases, setTotalCases] = useState(null);
+
+  const [covidData, setCovidData] = useState(null);
   const [totalData, setTotalData] = useState(null);
   const [fetched, setFetched] = useState(false);
 
@@ -37,7 +39,7 @@ const Home = ({ mode }) => {
         ]);
 
         if (!unmounted) {
-          setTotalCases({ totalCases: totalData });
+          setTotalCases(totalData);
           setCovidData(data);
           setTotalData(ownData);
           setFetched(true);
@@ -54,7 +56,6 @@ const Home = ({ mode }) => {
     };
   }, []);
 
-  const { totalCases } = mainCases;
   let sahiCases = [];
   let districtCases = [];
   const provinceCases = [];
@@ -198,45 +199,60 @@ const Home = ({ mode }) => {
     groupedTimeline = caclulateTimeSeries(groupedTimeline);
   }
 
+  let date = new Date();
+
+  if (covidData && covidData.length === facts.total) {
+    date = covidData[covidData.length - 1].modifiedOn;
+  }
+
   return (
     <Fragment>
       <div className="Home">
-        {!fetched ? (
-          <ContentLoader />
-        ) : (
-          <Fragment>
-            <LeftContainer
-              {...facts}
-              date={
-                covidData.length !== facts.total
-                  ? new Date()
-                  : covidData[covidData.length - 1].modifiedOn
-              }
+        <div className="home-left">
+          <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
+            <div className="actions">
+              {covidData && <h5>Updated {moment(new Date(date)).fromNow()}</h5>}
+            </div>
+          </div>
+          {covidData && <QuickFacts date={date} {...facts} />}
+          {totalData && <MiniGraph timeseries={totalData} />}
+          <h5
+            className="table-fineprint fadeInUp"
+            style={{ animationDelay: "1.5s" }}
+          >
+            Compiled from Ministry of Health & Population of Nepal
+          </h5>
+          {fetched && (
+            <MainTable
+              date={date}
+              total={facts.total}
+              active={facts.active}
+              recovered={facts.recovered}
+              deaths={facts.deaths}
+              additionalTotal={facts.newTotal}
+              additionalActive={facts.newActive}
+              additionalRecovery={facts.newRecovered}
+              additionalDeaths={facts.newDeath}
               provinceCases={provinceCases}
               totalData={daiCases}
-              ownData={totalData}
             />
-            <RightContainer
+          )}
+          {fetched && <Municipality />}
+        </div>
+        <div className="home-right">
+          {fetched && (
+            <MapViewer
+              prov={provinceCases}
+              dist={districtCases}
               {...facts}
-              date={covidData[covidData.length - 1].modifiedOn}
-              ownData={totalData}
-              mode={mode}
-              provinceCases={provinceCases}
-              groupedTimeline={groupedTimeline}
-              districtCases={districtCases.sort((a, b) => {
-                if (a.total < b.total) {
-                  return 1;
-                } else if (a.total > b.total) {
-                  return -1;
-                } else {
-                  return 0;
-                }
-              })}
-            />
-          </Fragment>
-        )}
+              date={date}
+            ></MapViewer>
+          )}
+          {totalData && (
+            <Dome ownData={totalData} groupedTimeline={groupedTimeline}></Dome>
+          )}
+        </div>
       </div>
-
       <Footer />
     </Fragment>
   );

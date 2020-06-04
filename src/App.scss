@@ -3382,48 +3382,52 @@ table {
   }
 }
 
-.timeseries-header {
-  align-self: center;
-  width: 100%;
-  margin-top: 3rem;
+.TimeSeriesExplorer {
+  margin: auto;
 
-  h1 {
-    color: $gray;
-    margin: 0;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
+  .timeseries-header {
+    align-self: center;
+    width: 100%;
+    margin-top: 3rem;
 
-  .scale-modes {
-    align-items: flex-end;
-    bottom: 0;
-    color: $gray;
-    display: flex;
-    flex-direction: row;
-    margin-top: 1rem;
-    right: 0;
-    z-index: 99;
-
-    label {
-      color: $gray-mid;
-      font-family: "archia";
-      font-size: 0.75rem;
-      font-weight: 900;
-      margin-right: 0.25rem;
-      transition: all 0.2s ease-in-out;
-      z-index: 99;
+    h1 {
+      color: $gray;
+      margin: 0;
+      margin-bottom: 2rem;
+      text-align: center;
     }
 
-    &:hover {
+    .scale-modes {
+      align-items: flex-end;
+      bottom: 0;
+      color: $gray;
+      display: flex;
+      flex-direction: row;
+      margin-top: 1rem;
+      right: 0;
+      z-index: 99;
+
       label {
-        &.main {
-          color: $gray;
+        color: $gray-mid;
+        font-family: "archia";
+        font-size: 0.75rem;
+        font-weight: 900;
+        margin-right: 0.25rem;
+        transition: all 0.2s ease-in-out;
+        z-index: 99;
+      }
+
+      &:hover {
+        label {
+          &.main {
+            color: $gray;
+          }
         }
       }
-    }
 
-    & > * {
-      align-self: center;
+      & > * {
+        align-self: center;
+      }
     }
   }
 
