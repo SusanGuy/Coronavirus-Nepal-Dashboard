@@ -114,7 +114,11 @@ export const getTotalDiff = (
         ).length;
   const additionalDeaths =
     deaths -
-    deathCases.filter(({ deathOn }) => getDateDiff(deathOn, date)).length;
+      deathCases.filter(({ deathOn }) => getDateDiff(deathOn, date)).length <
+    0
+      ? deaths
+      : deaths -
+        deathCases.filter(({ deathOn }) => getDateDiff(deathOn, date)).length;
   return {
     additionalTotal,
     additionalRecovery,
