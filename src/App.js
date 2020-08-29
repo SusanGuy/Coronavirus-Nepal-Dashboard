@@ -20,6 +20,7 @@ const App = () => {
   }, []);
 
   const [mode, setMode] = useState(true);
+
   return (
     <div className={`App ${!mode ? "" : "dark-mode"}`}>
       <Nav setMode={setMode} mode={mode} />
@@ -28,9 +29,8 @@ const App = () => {
         <Route path="/feed" exact component={() => <Feed mode={mode} />} />
         <Route path="/hospitals" exact component={EssentialsContainer} />
         <Route path="/charts" exact component={Charts}></Route>
-        <Route path="/" component={() => <Home mode={mode}></Home>} />
+        <Route path="/" component={Home} />
       </Switch>
-     
     </div>
   );
 };

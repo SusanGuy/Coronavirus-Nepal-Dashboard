@@ -17,6 +17,8 @@ const Loader = () => {
           viewBox={`0 0 ${width} 325`}
           position="absolute"
           className="fadeInUp"
+          backgroundColor="#eee"
+          foregroundColor="#eee"
         >
           <rect
             x={width / 2 - 60}
