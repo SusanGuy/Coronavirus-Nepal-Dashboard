@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import _ from "lodash";
 import Footer from "../../components/Footer/Footer";
+import ContentLoader from "../../components/ContentLoader/ContentLoader";
 import moment from "moment";
 import QuickFacts from "../../components/QuickFacts/QuickFacts";
 import MiniGraph from "../../components/MiniGraph/MiniGraph";
@@ -208,51 +209,60 @@ const Home = () => {
   return (
     <Fragment>
       <div className="Home">
-        <div className="home-left">
-          <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
-            <div className="actions">
-              {covidData && <h5>Updated {moment(new Date(date)).fromNow()}</h5>}
+        {!fetched ? (
+          <ContentLoader />
+        ) : (
+          <Fragment>
+            <div className="home-left">
+              <div className="header fadeInUp" style={{ animationDelay: "1s" }}>
+                <div className="actions">
+                  {covidData && (
+                    <h5>Updated {moment(new Date(date)).fromNow()}</h5>
+                  )}
+                </div>
+              </div>
+              <QuickFacts date={date} {...facts} />
+              <MiniGraph timeseries={totalData} />
+              <h5
+                className="table-fineprint fadeInUp"
+                style={{ animationDelay: "1.5s" }}
+              >
+                Compiled from Ministry of Health & Population of Nepal
+              </h5>
+
+              <MainTable
+                date={date}
+                total={facts.total}
+                active={facts.active}
+                recovered={facts.recovered}
+                deaths={facts.deaths}
+                additionalTotal={facts.newTotal}
+                additionalActive={facts.newActive}
+                additionalRecovery={facts.newRecovered}
+                additionalDeaths={facts.newDeath}
+                provinceCases={provinceCases}
+                totalData={daiCases}
+              />
+
+              <Municipality />
             </div>
-          </div>
-          {covidData && <QuickFacts date={date} {...facts} />}
-          {totalData && <MiniGraph timeseries={totalData} />}
-          <h5
-            className="table-fineprint fadeInUp"
-            style={{ animationDelay: "1.5s" }}
-          >
-            Compiled from Ministry of Health & Population of Nepal
-          </h5>
-          {fetched && (
-            <MainTable
-              date={date}
-              total={facts.total}
-              active={facts.active}
-              recovered={facts.recovered}
-              deaths={facts.deaths}
-              additionalTotal={facts.newTotal}
-              additionalActive={facts.newActive}
-              additionalRecovery={facts.newRecovered}
-              additionalDeaths={facts.newDeath}
-              provinceCases={provinceCases}
-              totalData={daiCases}
-            />
-          )}
-          {fetched && <Municipality />}
-        </div>
-        <div className="home-right">
-          {fetched && (
-            <MapViewer
-              prov={provinceCases}
-              dist={districtCases}
-              {...facts}
-              date={date}
-            ></MapViewer>
-          )}
-          {totalData && (
-            <Dome ownData={totalData} groupedTimeline={groupedTimeline}></Dome>
-          )}
-        </div>
+            <div className="home-right">
+              <MapViewer
+                prov={provinceCases}
+                dist={districtCases}
+                {...facts}
+                date={date}
+              ></MapViewer>
+
+              <Dome
+                ownData={totalData}
+                groupedTimeline={groupedTimeline}
+              ></Dome>
+            </div>
+          </Fragment>
+        )}
       </div>
+
       <Footer />
     </Fragment>
   );

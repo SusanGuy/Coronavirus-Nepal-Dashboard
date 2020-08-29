@@ -47,11 +47,7 @@ const Expand = ({ setExpand, mode, setMode }) => {
       })}
 
       {window.innerWidth < 768 && (
-        <div
-          className="fadeInUp"
-          style={{ animationDelay: "0.9s" }}
-          onClick={() => {}}
-        >
+        <div className="fadeInUp" style={{ animationDelay: "0.9s" }}>
           <div
             className="navbar-left"
             onClick={() => {
