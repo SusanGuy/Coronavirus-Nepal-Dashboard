@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import _ from "lodash";
 import Footer from "../../components/Footer/Footer";
 import ContentLoader from "../../components/ContentLoader/ContentLoader";
@@ -18,15 +18,14 @@ import {
 } from "../../utils";
 
 const Home = () => {
-  const [totalCases, setTotalCases] = useState(null);
-
-  const [covidData, setCovidData] = useState(null);
-  const [totalData, setTotalData] = useState(null);
+  const [totalCases, setTotalCases] = useState([]);
+  const [covidData, setCovidData] = useState([]);
+  const [totalData, setTotalData] = useState([]);
   const [fetched, setFetched] = useState(false);
-
+  const count = useRef(0);
+  console.log("Rerendering " + count.current++);
   useEffect(() => {
     let unmounted = false;
-
     const getStates = async () => {
       try {
         const [
