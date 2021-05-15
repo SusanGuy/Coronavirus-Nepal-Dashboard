@@ -25,15 +25,12 @@ function Charts() {
 
   const getStates = async () => {
     try {
-      const [
-        { data: summaryData },
-        { data: ownData },
-        stateDailyResponse,
-      ] = await Promise.all([
-        axios.get("https://data.nepalcorona.info/api/v1/covid/summary"),
-        ownaxios.get("/chart"),
-        axios.get("https://api.nepalcovid19.org/states_daily.json"),
-      ]);
+      const [{ data: summaryData }, { data: ownData }, stateDailyResponse] =
+        await Promise.all([
+          axios.get("https://data.askbhunte.com/api/v1/covid/summary"),
+          ownaxios.get("/chart"),
+          axios.get("https://api.nepalcovid19.org/states_daily.json"),
+        ]);
 
       ownData.forEach((l, i) => {
         const {

@@ -28,15 +28,12 @@ const Home = () => {
     let unmounted = false;
     const getStates = async () => {
       try {
-        const [
-          { data: totalData },
-          { data },
-          { data: ownData },
-        ] = await Promise.all([
-          axios.get("/"),
-          axios.get("https://data.nepalcorona.info/api/v1/covid"),
-          axios.get("/chart"),
-        ]);
+        const [{ data: totalData }, { data }, { data: ownData }] =
+          await Promise.all([
+            axios.get("/"),
+            axios.get("https://data.askbhunte.com/api/v1/covid"),
+            axios.get("/chart"),
+          ]);
 
         if (!unmounted) {
           setTotalCases(totalData);
