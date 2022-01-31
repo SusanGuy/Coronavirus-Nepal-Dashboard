@@ -1,6 +1,7 @@
 import TimeSeriesExplorer from "./components/TimeSeries/TimeSeriesExplorer";
 
 import axios from "axios";
+import ownaxios from './axios'
 import React, { useState } from "react";
 
 import { useEffectOnce } from "react-use";
@@ -28,7 +29,7 @@ function Dome({ groupedTimeline, ownData }) {
   const getStates = async () => {
     try {
       const [{ data }] = await Promise.all([
-        axios.get("https://api.nepalcovid19.org/latest_data.json"),
+        ownaxios.get("/chart/latest"),
       ]);
 
       setStates(data.statewise);
